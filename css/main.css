@@ -1244,6 +1244,10 @@ pre .javascript .function {
   .post-body {
     word-break: break-word;
   }
+  .post-body ol,
+  .post-body ul {
+    padding-inline-start: 20px;
+  }
 }
 .post-body span.exturl .fa {
   font-size: 14px;
@@ -1857,7 +1861,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #797cff;
+  background: #69ffb1;
 }
 .links-of-blogroll {
   font-size: 13px;
