@@ -120,7 +120,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="ツキの月">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:url" content="https://qjx.app/archives/2018/index.html">
 <meta property="og:site_name" content="ツキの月">
 <meta property="og:locale" content="zh-cn">
 <meta name="twitter:card" content="summary">
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
+  <link rel="canonical" href="https://qjx.app/archives/2018/"/>
 
 
 
@@ -146,6 +146,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128956609-1');
+</script>
 
 
 
@@ -333,9 +342,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/10/01/lex-and-yacc/" itemprop="url">
+            <a class="post-title-link" href="/2018/11/08/type-system/" itemprop="url">
               
-                <span itemprop="name">lex and yacc</span>
+                <span itemprop="name">type system</span>
               
             </a>
         
@@ -343,9 +352,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-01T16:38:38+08:00"
-              content="2018-10-01" >
-          10-01
+              datetime="2018-11-08T20:13:23+08:00"
+              content="2018-11-08" >
+          11-08
         </time>
       </div>
 
@@ -741,6 +750,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '5gDDhMCOXudNQsfKWESoBktX-gzGzoHsz',
+        appKey: 'J3Flt3RQntmHBCCLMsp65NhO',
+        placeholder: 'いいよ、こいよ！',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

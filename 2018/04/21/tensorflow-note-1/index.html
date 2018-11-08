@@ -121,7 +121,7 @@
   <meta name="description" content="一些基本概念。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow 笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2018/04/21/tensorflow-note-1/index.html">
+<meta property="og:url" content="https://qjx.app/2018/04/21/tensorflow-note-1/index.html">
 <meta property="og:site_name" content="ツキの月">
 <meta property="og:description" content="一些基本概念。">
 <meta property="og:locale" content="zh-cn">
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/21/tensorflow-note-1/"/>
+  <link rel="canonical" href="https://qjx.app/2018/04/21/tensorflow-note-1/"/>
 
 
 
@@ -150,6 +150,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128956609-1');
+</script>
 
 
 
@@ -298,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/tensorflow-note-1/">
+    <link itemprop="mainEntityOfPage" href="https://qjx.app/2018/04/21/tensorflow-note-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tsuki">
@@ -384,6 +393,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/21/tensorflow-note-1/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/04/21/tensorflow-note-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -410,7 +429,7 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The Beginning Of Everything</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment"># 定义 Graph</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">add_op = tf.add(x, y, name=<span class="string">'add_op'</span>) <span class="comment">#定义 Graph 结点 加法</span></span><br><span class="line">mul_op = tf.multiply(x, y, name=<span class="string">'mul_op'</span>) <span class="comment"># 乘法</span></span><br><span class="line">pow_op = tf.pow(add_op, mul_op, name=<span class="string">'pow_op'</span>) <span class="comment"># 幂</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">x--(+)-------\</span></span><br><span class="line"><span class="string"> X          (**)</span></span><br><span class="line"><span class="string">y--(*)-------/</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># Graph 只是结构，不会计算实际输出</span></span><br><span class="line">print(pow_op)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>Tensor("pow_op:0", shape=(), dtype=int32)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 真正的计算过程必须通过 Session 计算，把想要计算的节点传入 Session.run() </span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(pow_op))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; 9</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># Session 采用惰性计算</span></span><br><span class="line"><span class="comment"># 例如, 加入一个无用节点:</span></span><br><span class="line">useless = tf.multiply(x, add_op, name=<span class="string">'useless'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(pow_op)</span><br><span class="line">	<span class="comment"># 因为计算 pow_op 不需要 useless 的值, 所以 useless 不会被计算</span></span><br><span class="line">	<span class="comment"># Session 可传入一个要计算的节点的列表:</span></span><br><span class="line">    pow_op_result, useless_result = sess.run([pow_op, useless])</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [9, 3]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 这样都会被计算</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    tf.Session.run(fetches,</span></span><br><span class="line"><span class="string">                  feed_dict=None,</span></span><br><span class="line"><span class="string">                  options=None,</span></span><br><span class="line"><span class="string">                  run_metadata=None)</span></span><br><span class="line"><span class="string">    fetches 为想要计算的结点(Tensor)列表</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># 分布式计算</span></span><br><span class="line"><span class="comment"># 将部分 Graph 指定在某个设备上计算</span></span><br><span class="line"><span class="keyword">with</span> tf.device(<span class="string">'/gpu:1'</span>):</span><br><span class="line">    a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'a'</span>) <span class="comment"># 常量节点</span></span><br><span class="line">    b = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'b'</span>)</span><br><span class="line">    c = tf.multiply(a, b, name=<span class="string">'c'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session(config=tf.ConfigProto(log_device_placement=<span class="keyword">True</span>)) <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(c))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; c: (Mul): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; b: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; a: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    (这里从日志输出顺序也可看出惰性求值的求值顺序)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># 每一个 Session 对应一个 Graph</span></span><br><span class="line"><span class="comment"># 不要创建多个 Session 或 Graph</span></span><br><span class="line"><span class="comment"># 每个 Session 默认占用所有系统资源</span></span><br><span class="line"><span class="comment"># 而且不同 Session 间无法传递数据</span></span><br><span class="line"><span class="comment"># 可以在同一个 Graph 中创建不连通的子图, 并在同一个 Session 中分别计算</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果非得这么做: tf.Graph()</span></span><br><span class="line"><span class="comment"># Tensorflow 在程序开始时会隐式创建一个 Default Graph, </span></span><br><span class="line"><span class="comment"># 所有直接声明的节点都会加入这个 Graph</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新的 Graph:</span></span><br><span class="line">g = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    x = tf.add(<span class="number">3</span>, <span class="number">5</span>, name=<span class="string">'x in g'</span>)</span><br><span class="line"><span class="comment"># 创建 Session 时指定 Graph (否则为默认的Graph)</span></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g) <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 小心把默认 Graph 与 自定义 Graph 搞混</span></span><br><span class="line"><span class="comment"># 获得默认 Graph</span></span><br><span class="line">g_default = tf.get_default_graph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后分别添加节点</span></span><br><span class="line"><span class="keyword">with</span> g_default.as_default():</span><br><span class="line">    m = tf.constant(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    n = tf.constant(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The Beginning Of Everything</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment"># 定义 Graph</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">add_op = tf.add(x, y, name=<span class="string">'add_op'</span>) <span class="comment"># 定义 Graph 结点 加法 </span></span><br><span class="line">mul_op = tf.multiply(x, y, name=<span class="string">'mul_op'</span>) <span class="comment"># 乘法</span></span><br><span class="line">pow_op = tf.pow(add_op, mul_op, name=<span class="string">'pow_op'</span>) <span class="comment"># 幂</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">x--(+)-------\</span></span><br><span class="line"><span class="string"> X          (**)</span></span><br><span class="line"><span class="string">y--(*)-------/</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># Graph 只是结构，不会计算实际输出</span></span><br><span class="line">print(pow_op)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>Tensor("pow_op:0", shape=(), dtype=int32)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 真正的计算过程必须通过 Session 计算，把想要计算的节点传入 Session.run() </span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(pow_op))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; 9</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># Session 采用惰性计算</span></span><br><span class="line"><span class="comment"># 例如, 加入一个无用节点:</span></span><br><span class="line">useless = tf.multiply(x, add_op, name=<span class="string">'useless'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(pow_op)</span><br><span class="line">	<span class="comment"># 因为计算 pow_op 不需要 useless 的值, 所以 useless 不会被计算</span></span><br><span class="line">	<span class="comment"># Session 可传入一个要计算的节点的列表:</span></span><br><span class="line">    pow_op_result, useless_result = sess.run([pow_op, useless])</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [9, 3]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">    <span class="comment"># 这样都会被计算</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    tf.Session.run(fetches,</span></span><br><span class="line"><span class="string">                  feed_dict=None,</span></span><br><span class="line"><span class="string">                  options=None,</span></span><br><span class="line"><span class="string">                  run_metadata=None)</span></span><br><span class="line"><span class="string">    fetches 为想要计算的结点(Tensor) 列表</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 分布式计算</span></span><br><span class="line"><span class="comment"># 将部分 Graph 指定在某个设备上计算</span></span><br><span class="line"><span class="keyword">with</span> tf.device(<span class="string">'/gpu:1'</span>):</span><br><span class="line">    a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'a'</span>) <span class="comment"># 常量节点</span></span><br><span class="line">    b = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'b'</span>)</span><br><span class="line">    c = tf.multiply(a, b, name=<span class="string">'c'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session(config=tf.ConfigProto(log_device_placement=<span class="keyword">True</span>)) <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(c))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; c: (Mul): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; b: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; a: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    (这里从日志输出顺序也可看出惰性求值的求值顺序)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 每一个 Session 对应一个 Graph</span></span><br><span class="line"><span class="comment"># 不要创建多个 Session 或 Graph</span></span><br><span class="line"><span class="comment"># 每个 Session 默认占用所有系统资源</span></span><br><span class="line"><span class="comment"># 而且不同 Session 间无法传递数据</span></span><br><span class="line"><span class="comment"># 可以在同一个 Graph 中创建不连通的子图, 并在同一个 Session 中分别计算</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果非得这么做: tf.Graph()</span></span><br><span class="line"><span class="comment"># Tensorflow 在程序开始时会隐式创建一个 Default Graph, </span></span><br><span class="line"><span class="comment"># 所有直接声明的节点都会加入这个 Graph</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新的 Graph:</span></span><br><span class="line">g = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    x = tf.add(<span class="number">3</span>, <span class="number">5</span>, name=<span class="string">'x in g'</span>)</span><br><span class="line"><span class="comment"># 创建 Session 时指定 Graph (否则为默认的 Graph)</span></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g) <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 小心把默认 Graph 与 自定义 Graph 搞混</span></span><br><span class="line"><span class="comment"># 获得默认 Graph</span></span><br><span class="line">g_default = tf.get_default_graph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后分别添加节点</span></span><br><span class="line"><span class="keyword">with</span> g_default.as_default():</span><br><span class="line">    m = tf.constant(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    n = tf.constant(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -448,8 +467,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/01/lex-and-yacc/" rel="prev" title="lex and yacc">
-                lex and yacc <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/08/type-system/" rel="prev" title="type system">
+                type system <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -472,6 +491,9 @@
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -741,6 +763,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '5gDDhMCOXudNQsfKWESoBktX-gzGzoHsz',
+        appKey: 'J3Flt3RQntmHBCCLMsp65NhO',
+        placeholder: 'いいよ、こいよ！',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

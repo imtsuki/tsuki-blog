@@ -120,7 +120,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:url" content="https://qjx.app/about/index.html">
 <meta property="og:site_name" content="ツキの月">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2018-09-26T15:02:45.005Z">
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="https://qjx.app/about/"/>
 
 
 
@@ -147,6 +147,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128956609-1');
+</script>
 
 
 
@@ -341,6 +350,9 @@
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -610,6 +622,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '5gDDhMCOXudNQsfKWESoBktX-gzGzoHsz',
+        appKey: 'J3Flt3RQntmHBCCLMsp65NhO',
+        placeholder: 'いいよ、こいよ！',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

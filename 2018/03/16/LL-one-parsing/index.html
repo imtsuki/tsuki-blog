@@ -118,24 +118,24 @@
 
 
 
-  <meta name="description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到\(A\)的每个最终推导的起始（非）终结符号必然是\(\beta_1,\be">
+  <meta name="description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到 \(A\) 的每个最终推导的起始（非）终结符号必然是 \(\beta_1,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LL(1) 语法分析及抽象语法树的构建">
-<meta property="og:url" content="http://yoursite.com/2018/03/16/LL-one-parsing/index.html">
+<meta property="og:url" content="https://qjx.app/2018/03/16/LL-one-parsing/index.html">
 <meta property="og:site_name" content="ツキの月">
-<meta property="og:description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到\(A\)的每个最终推导的起始（非）终结符号必然是\(\beta_1,\be">
+<meta property="og:description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到 \(A\) 的每个最终推导的起始（非）终结符号必然是 \(\beta_1,">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2018-11-08T09:02:46.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LL(1) 语法分析及抽象语法树的构建">
-<meta name="twitter:description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到\(A\)的每个最终推导的起始（非）终结符号必然是\(\beta_1,\be">
+<meta name="twitter:description" content="左递归的消除 对于文法 \[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\] 其最左推导会产生左递归（\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)），导致推导无法终止。 为消除左递归，注意到 \(A\) 的每个最终推导的起始（非）终结符号必然是 \(\beta_1,">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/16/LL-one-parsing/"/>
+  <link rel="canonical" href="https://qjx.app/2018/03/16/LL-one-parsing/"/>
 
 
 
@@ -150,6 +150,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128956609-1');
+</script>
 
 
 
@@ -298,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/LL-one-parsing/">
+    <link itemprop="mainEntityOfPage" href="https://qjx.app/2018/03/16/LL-one-parsing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tsuki">
@@ -384,6 +393,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/16/LL-one-parsing/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/03/16/LL-one-parsing/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -412,9 +431,9 @@
 <p>对于文法</p>
 <p><span class="math display">\[A \rightarrow A\alpha_1 | A\alpha_2|...|\beta_1|\beta_2|...\]</span></p>
 <p>其最左推导会产生左递归（<span class="math inline">\(A\rightarrow A\alpha_1 \rightarrow AA\alpha_1...\)</span>），导致推导无法终止。</p>
-<p>为消除左递归，注意到<span class="math inline">\(A\)</span>的每个最终推导的起始（非）终结符号必然是<span class="math inline">\(\beta_1,\beta_2...\)</span>中的一个；因而这里引入中间产生式</p>
+<p>为消除左递归，注意到 <span class="math inline">\(A\)</span> 的每个最终推导的起始（非）终结符号必然是 <span class="math inline">\(\beta_1,\beta_2...\)</span> 中的一个；因而这里引入中间产生式</p>
 <p><span class="math display">\[R_A \rightarrow \alpha_1R_A|\alpha_2R_A|...|\epsilon\]</span></p>
-<p>同时将产生式<span class="math inline">\(A\)</span>改写为</p>
+<p>同时将产生式 <span class="math inline">\(A\)</span> 改写为</p>
 <p><span class="math display">\[A \rightarrow \beta_1R_A|\beta_2R_A|...\]</span></p>
 <p>这样便消除了左递归。</p>
 <p>（间接左递归略去）</p>
@@ -480,6 +499,9 @@
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -774,6 +796,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '5gDDhMCOXudNQsfKWESoBktX-gzGzoHsz',
+        appKey: 'J3Flt3RQntmHBCCLMsp65NhO',
+        placeholder: 'いいよ、こいよ！',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 
