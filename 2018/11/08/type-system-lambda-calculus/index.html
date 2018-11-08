@@ -118,21 +118,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://qjx.app/about/index.html">
+  <meta name="description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
+<meta name="keywords" content="Type System,Lambda calculus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类型推导 - λ 演算">
+<meta property="og:url" content="https://qjx.app/2018/11/08/type-system-lambda-calculus/index.html">
 <meta property="og:site_name" content="ツキの月">
+<meta property="og:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-09-26T15:02:45.005Z">
+<meta property="og:updated_time" content="2018-11-08T16:36:12.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
+<meta name="twitter:title" content="类型推导 - λ 演算">
+<meta name="twitter:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://qjx.app/about/"/>
+  <link rel="canonical" href="https://qjx.app/2018/11/08/type-system-lambda-calculus/"/>
 
 
 
@@ -142,7 +146,7 @@
   };
 </script>
 
-  <title>about | ツキの月</title>
+  <title>类型推导 - λ 演算 | ツキの月</title>
   
 
 
@@ -243,7 +247,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
   </li>
@@ -284,66 +288,190 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qjx.app/2018/11/08/type-system-lambda-calculus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tsuki">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar-rikka.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ツキの月">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">about</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">类型推导 - λ 演算
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-08 20:13:23" itemprop="dateCreated datePublished" datetime="2018-11-08T20:13:23+08:00">2018-11-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-09 00:36:12" itemprop="dateModified" datetime="2018-11-09T00:36:12+08:00">2018-11-09</time>
+              
+            
+          </span>
+
           
 
-        
-      </div>
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/08/type-system-lambda-calculus/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/08/type-system-lambda-calculus/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>最近在尝试给自己的一个<a href="https://github.com/imtsuki/NotC" target="_blank" rel="noopener">玩具级表达式解释器</a>（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 <span class="math inline">\(\rm Int \neq Int :: Bool\)</span> 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。</p>
+<h2 id="类型系统初探">类型系统初探</h2>
+<p>不同的语言有不同的类型系统 (type system)。从一种层面，类型系统可分为「<strong>强类型</strong> (strongly typed)」与「<strong>弱类型</strong> (weakly typed)」：强类型不允许隐式的类型转换，而弱类型则偏向于容忍这些。弱类型的典型例子便是 C/C++：两个完全不同的 <code>struct</code>，通过 <code>void *</code> 指针便可以无视所有规则互相转换，所有的内存都可以随意解读。不过，例如 <code>double</code> 与 <code>int</code> 的隐式转换，以及 JavaScript 中字符串到数字的隐式转换，由于都是语言已知的行为（类型提供的转换接口），严格意义上不应属于弱类型的表现。另一方面，类型系统又可分为「<strong>静态的</strong> (static)」与「<strong>动态的</strong> (dynamic)」：静态类型在编译期确定类型，抛出类型错误，而动态类型则在运行时进行这些检查。对于静态类型，若语法要求类型需要显式地声明，如 C/C++ <code>int x = 0;</code>，则称为<strong>静态显式类型</strong> (explicitly typed)；若不需要手工标记类型，而由编译器推在编译时推导，例如 Haskell，则为<strong>静态隐式类型</strong> (implicitly typed)。</p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Type-System/" rel="tag"># Type System</a>
+          
+            <a href="/tags/Lambda-calculus/" rel="tag"># Lambda calculus</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/tensorflow-note-1/" rel="next" title="TensorFlow 笔记（一）">
+                <i class="fa fa-chevron-left"></i> TensorFlow 笔记（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -376,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -476,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型系统初探"><span class="nav-number">1.</span> <span class="nav-text">类型系统初探</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
