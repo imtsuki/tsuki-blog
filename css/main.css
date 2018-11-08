@@ -1246,6 +1246,7 @@ pre .javascript .function {
   }
   .post-body ol,
   .post-body ul {
+    -webkit-padding-start: 20px;
     padding-inline-start: 20px;
   }
 }
@@ -1861,7 +1862,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #69ffb1;
+  background: #77339f;
 }
 .links-of-blogroll {
   font-size: 13px;
