@@ -21,6 +21,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'xoy5jfw',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
 
 
 
@@ -115,7 +125,7 @@
 <meta property="og:site_name" content="ツキの月">
 <meta property="og:description" content="草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-14T00:00:38.000Z">
+<meta property="og:updated_time" content="2018-11-08T08:01:06.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现">
 <meta name="twitter:description" content="草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。">
@@ -347,7 +357,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-14 08:00:38" itemprop="dateModified" datetime="2018-05-14T08:00:38+08:00">2018-05-14</time>
+                <time title="Modified: 2018-11-08 16:01:06" itemprop="dateModified" datetime="2018-11-08T16:01:06+08:00">2018-11-08</time>
               
             
           </span>
@@ -405,7 +415,7 @@
 <p>草泥马语是 <a href="https://segmentfault.com/u/noodles001" target="_blank" rel="noopener">Noodles@SegmentFault</a> 的发明。移步<a href="https://segmentfault.com/a/1190000000606169" target="_blank" rel="noopener">编程语言中的精品——草泥马语</a>来查看该语言的完整介绍。</p>
 </blockquote>
 <p>草泥马语是马勒戈壁第一款拥有自主知识产权的，以马勒戈壁上顽强生存的草泥马们为主体的编程语言。草泥马语语法生动丰富，内容健康活泼，是一门老少皆宜，人人适用的编程语言。它的出现弥补了我戈壁在国际编程语言界中的一项空白。</p>
-<p>草泥马语是一个基于堆和栈的编程语言，该语言的最大特点在于：所有操作均由 “草”、“泥”、“马”及“河蟹” 这 4 个命令完成，文件内的其他字符都作为注释而不参与程序执行。</p>
+<p>草泥马语是一个基于堆和栈的编程语言，该语言的最大特点在于：所有操作均由 「草」、「泥」、「马」及「河蟹」 这 4 个命令完成，文件内的其他字符都作为注释而不参与程序执行。</p>
 <p>这个草泥马语虚拟机的实现采用了先进的 JOT（Just Out of Time）编译引擎，并且运行于西艾鲁阿尔（CLR）虚拟机中，运行速度大幅度降低同时，还使用了戈壁内外各种先进技术，使的草泥马语不十分可靠。</p>
 <p>在 C# 环境下编译后，运行命令</p>
 <pre><code>AlpacaVM filename</code></pre>
@@ -533,7 +543,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
