@@ -1487,7 +1487,7 @@ pre .javascript .function {
 .posts-expand .post-title {
   text-align: center;
   word-break: break-word;
-  font-weight: 300;
+  font-weight: 200;
   font-family: "PingFang SC", "Microsoft YaHei";
 }
 .posts-expand .post-title-link {
@@ -1862,7 +1862,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9e98ff;
+  background: #08ff22;
 }
 .links-of-blogroll {
   font-size: 13px;

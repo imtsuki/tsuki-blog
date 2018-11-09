@@ -118,18 +118,18 @@
 
 
 
-  <meta name="description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
+  <meta name="description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
 <meta name="keywords" content="Type System,Lambda calculus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类型推导 - λ 演算">
 <meta property="og:url" content="https://qjx.app/2018/11/08/type-system-lambda-calculus/index.html">
 <meta property="og:site_name" content="ツキの月">
-<meta property="og:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
+<meta property="og:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-08T16:36:12.509Z">
+<meta property="og:updated_time" content="2018-11-09T03:27:59.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类型推导 - λ 演算">
-<meta name="twitter:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
+<meta name="twitter:description" content="最近在尝试给自己的一个玩具级表达式解释器（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 \(\rm Int \neq Int :: Bool\) 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(elegant)。 类型系统初探 不同的语言有不同的类型系统 (type system)。">
 
 
 
@@ -367,7 +367,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-09 00:36:12" itemprop="dateModified" datetime="2018-11-09T00:36:12+08:00">2018-11-09</time>
+                <time title="Modified: 2018-11-09 11:27:59" itemprop="dateModified" datetime="2018-11-09T11:27:59+08:00">2018-11-09</time>
               
             
           </span>
@@ -410,9 +410,26 @@
       
 
       
-        <p>最近在尝试给自己的一个<a href="https://github.com/imtsuki/NotC" target="_blank" rel="noopener">玩具级表达式解释器</a>（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 <span class="math inline">\(\rm Int \neq Int :: Bool\)</span> 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(Elegant)。</p>
+        <p>最近在尝试给自己的一个<a href="https://github.com/imtsuki/NotC" target="_blank" rel="noopener">玩具级表达式解释器</a>（还称不上是一门语言）加上类型系统。起初想简单地把所有规则硬编码进解释器，诸如 <span class="math inline">\(\rm Int \neq Int :: Bool\)</span> 云云； 可不久便发现，这样的拓展性不高。譬如，若要实现自定义运算符的功能，便不能很好的和现有的逻辑统一起来。这些远远谈不上「优美」(elegant)。</p>
 <h2 id="类型系统初探">类型系统初探</h2>
-<p>不同的语言有不同的类型系统 (type system)。从一种层面，类型系统可分为「<strong>强类型</strong> (strongly typed)」与「<strong>弱类型</strong> (weakly typed)」：强类型不允许隐式的类型转换，而弱类型则偏向于容忍这些。弱类型的典型例子便是 C/C++：两个完全不同的 <code>struct</code>，通过 <code>void *</code> 指针便可以无视所有规则互相转换，所有的内存都可以随意解读。不过，例如 <code>double</code> 与 <code>int</code> 的隐式转换，以及 JavaScript 中字符串到数字的隐式转换，由于都是语言已知的行为（类型提供的转换接口），严格意义上不应属于弱类型的表现。另一方面，类型系统又可分为「<strong>静态的</strong> (static)」与「<strong>动态的</strong> (dynamic)」：静态类型在编译期确定类型，抛出类型错误，而动态类型则在运行时进行这些检查。对于静态类型，若语法要求类型需要显式地声明，如 C/C++ <code>int x = 0;</code>，则称为<strong>静态显式类型</strong> (explicitly typed)；若不需要手工标记类型，而由编译器推在编译时推导，例如 Haskell，则为<strong>静态隐式类型</strong> (implicitly typed)。</p>
+<p>不同的语言有不同的类型系统 (type system)。从一种层面，类型系统可分为「<strong>强类型</strong> (strongly typed)」与「<strong>弱类型</strong> (weakly typed)」：强类型不允许隐式的类型转换，而弱类型则偏向于容忍这些。弱类型的典型例子便是 C/C++：两个完全不同的 <code>struct</code>，通过 <code>void *</code> 指针便可以无视所有规则互相转换，所有的内存都可以随意解读。不过，例如 <code>double</code> 与 <code>int</code> 的隐式转换，以及 JavaScript 中字符串到数字的隐式转换，由于都是语言已知的行为（类型提供的转换接口），严格意义上不应属于弱类型的表现。</p>
+<p>另一方面，类型系统又可分为「<strong>静态的</strong> (static)」与「<strong>动态的</strong> (dynamic)」：静态类型在编译期确定类型，抛出类型错误，而动态类型则在运行时进行这些检查。对于静态类型，若语法要求类型需要显式地声明，如 C/C++ <code>int x = 0;</code>，则称为<strong>静态显式类型</strong> (explicitly typed)；若不需要手工标记类型，而由编译器推在编译时推导，例如 Haskell，则为<strong>静态隐式类型</strong> (implicitly typed)。</p>
+<p>类型系统可以看作一套附着在语言语法上的符号证明系统。而一切，都要从 <span class="math inline">\(\lambda\)</span> 演算开始。</p>
+<h2 id="λ-演算"><span class="math inline">\(λ\)</span> 演算</h2>
+<p>单纯从语法 (syntax) 的角度（不涉及任何语义 (semantics)）来看，<span class="math inline">\(λ\)</span> 演算只是一套符号推导系统。一个合法的 <span class="math inline">\(λ\)</span> 项 (term) 由以下产生式给出：</p>
+<p><span class="math display">\[
+\begin{align*}
+t \ \ &amp; \rightarrow \ \ x &amp; \textbf{[Variable]}\\
+     &amp;\ \ |\ \ \ \ \lambda x.t_1 &amp; \textbf{[Abstraction]}\\
+     &amp;\ \ |\ \ \ \ t_1 t_2 &amp; \textbf{[Application]}\\
+\end{align*}
+\]</span></p>
+<p>其中，</p>
+<ul>
+<li><span class="math inline">\(x\)</span> 为一个合法的 <span class="math inline">\(\lambda\)</span> 项，称为<strong>变量</strong> (Variable)；</li>
+<li><span class="math inline">\(\lambda x.t_1\)</span> 为一个合法的 <span class="math inline">\(\lambda\)</span> 项，称为从项 <span class="math inline">\(t_1\)</span> 中<strong>抽象</strong> (Abstraction) 出 <span class="math inline">\(x\)</span>；</li>
+<li><span class="math inline">\(t_1 t_2\)</span> 为一个合法的 <span class="math inline">\(\lambda\)</span> 项，称为把项 <span class="math inline">\(t_1\)</span> <strong>应用</strong> (Application) 于 <span class="math inline">\(t_2\)</span>。</li>
+</ul>
 
       
     </div>
@@ -623,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型系统初探"><span class="nav-number">1.</span> <span class="nav-text">类型系统初探</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型系统初探"><span class="nav-number">1.</span> <span class="nav-text">类型系统初探</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#λ-演算"><span class="nav-number">2.</span> <span class="nav-text">\(λ\) 演算</span></a></li></ol></div>
             
 
           </div>
@@ -839,6 +856,7 @@
   
     
       <script type="text/x-mathjax-config">
+    settings.renderer = "SVG";
     MathJax.Hub.Config({
       tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
