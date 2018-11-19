@@ -1862,7 +1862,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff69ff;
+  background: #39ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2961,6 +2961,9 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.post-body {
+  font-feature-settings: "lnum", "calt", "liga", "clig";
 }
 @media (max-width: 767px) {
   .post-body {
