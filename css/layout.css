@@ -27,7 +27,7 @@ body {
   text-align: center;
 }
 #title h1 {
-  font-family: Soraka, "Source Han Serif SC", serif !important;
+  font-family: Soraka, "Source Han Serif SC", source-han-serif-sc, serif !important;
 }
 #menu-outer {
   text-align: center;
