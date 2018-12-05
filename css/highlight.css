@@ -1,0 +1,47 @@
+.highlight {
+    color: #323232;
+    background: #fff
+}
+
+.highlight .comment, .highlight .quote {
+    color: #969896
+}
+
+.highlight .regexp {
+    color: #a71d5d
+}
+
+.highlight .number {
+    color: #0086b3
+}
+
+.highlight .builtin-name, .highlight .bullet, .highlight .deletion,
+.highlight .link, .highlight .meta, .highlight .params, .highlight .symbol,
+.highlight .tag, .highlight .template-variable, .highlight .variable {
+    color: #323232
+}
+
+.highlight .built_in, .highlight .literal {
+    color: #0086b3
+}
+
+.highlight .attribute, .highlight .name, .highlight .section, .highlight .selector-class,
+.highlight .selector-id, .highlight .title, .highlight .type {
+    color: #795da3
+}
+
+.highlight .addition, .highlight .selector-tag, .highlight .string {
+    color: #183691
+}
+
+.highlight .keyword {
+    color: #a71d5d
+}
+
+.highlight .emphasis {
+    font-style: italic
+}
+
+.highlight .strong {
+    font-weight: 700
+}

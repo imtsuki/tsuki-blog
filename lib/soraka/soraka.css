@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Soraka;
+    font-weight: 400;
+    font-style: italic;
+    src: url(assets/s-italic.woff2) format('woff2'),url(assets/s-italic.woff) format('woff'),url(assets/s-italic.ttf) format('opentype')
+}
+
+@font-face {
+    font-family: Soraka;
+    font-weight: 700;
+    font-style: normal;
+    src: url(assets/s-bold.woff2) format('woff2'),url(assets/s-bold.woff) format('woff'),url(assets/s-bold.ttf) format('opentype')
+}
+
+@font-face {
+    font-family: Soraka;
+    font-weight: 700;
+    font-style: italic;
+    src: url(assets/s-bolditalic.woff2) format('woff2'),url(assets/s-bolditalic.woff) format('woff'),url(assets/s-bolditalic.ttf) format('opentype')
+}
+
+@font-face {
+    font-family: Soraka;
+    font-weight: 400;
+    font-style: normal;
+    src: url(assets/s-regular.woff2) format('woff2'),url(assets/s-regular.woff) format('woff'),url(assets/s-regular.ttf) format('opentype')
+}

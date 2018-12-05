@@ -1,845 +1,105 @@
+
+
+
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next pisces" lang="zh-cn">
+<html lang="zh-cn">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'xoy5jfw',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
-
-
-
-
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="HandheldFriendly" content="true">
+  
+    <meta name="google-site-verification" content="Sf3TQAKc2EfeBR3ltsbYlbX06bHJ4-QbsC_7Jko3zZ8">
   
   
+    <meta name="baidu-site-verification" content="lkLxPcUTqE">
+  
+  <title>TensorFlow 笔记（一） [ ツキの月 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
     
+      <link rel="stylesheet" href="/css/shiro.css">
     
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="Sf3TQAKc2EfeBR3ltsbYlbX06bHJ4-QbsC_7Jko3zZ8" />
-
-
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="lkLxPcUTqE" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.4.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
+      <link rel="stylesheet" href="/css/layout.css">
+    
+      <link rel="stylesheet" href="/css/post.css">
+    
+      <link rel="stylesheet" href="/css/content.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+      <link rel="stylesheet" href="/lib/soraka/soraka.css">
+    
+      <link rel="stylesheet" href="/lib/typo.css/typo.css">
+    
   
-
-
-
-
-  <meta name="description" content="一些基本概念。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="TensorFlow 笔记（一）">
-<meta property="og:url" content="https://qjx.app/2018/04/21/tensorflow-note-1/index.html">
-<meta property="og:site_name" content="ツキの月">
-<meta property="og:description" content="一些基本概念。">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-14T00:00:38.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow 笔记（一）">
-<meta name="twitter:description" content="一些基本概念。">
-
-
-
-
-
-
-  <link rel="canonical" href="https://qjx.app/2018/04/21/tensorflow-note-1/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>TensorFlow 笔记（一） | ツキの月</title>
-  
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-128956609-1');
-</script>
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
 </head>
+<body>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">ツキの月</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<div id="header">
+  <a href="/">
+    <div id="title">
+      <h1>ツキの月</h1>
     </div>
-    
-  </div>
+  </a>
+</div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
   </div>
 </div>
 
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
+<div id="content-outer">
+  <div id="content-inner" class="content typo">
     
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
-
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qjx.app/2018/04/21/tensorflow-note-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tsuki">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar-rikka.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ツキの月">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">TensorFlow 笔记（一）
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-04-21 04:44:33" itemprop="dateCreated datePublished" datetime="2018-04-21T04:44:33+08:00">2018-04-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-05-14 08:00:38" itemprop="dateModified" datetime="2018-05-14T08:00:38+08:00">2018-05-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">一些基本概念。</div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The Beginning Of Everything</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment"># 定义 Graph</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">add_op = tf.add(x, y, name=<span class="string">'add_op'</span>) <span class="comment">#定义 Graph 结点 加法</span></span><br><span class="line">mul_op = tf.multiply(x, y, name=<span class="string">'mul_op'</span>) <span class="comment"># 乘法</span></span><br><span class="line">pow_op = tf.pow(add_op, mul_op, name=<span class="string">'pow_op'</span>) <span class="comment"># 幂</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">x--(+)-------\</span></span><br><span class="line"><span class="string"> X          (**)</span></span><br><span class="line"><span class="string">y--(*)-------/</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># Graph 只是结构，不会计算实际输出</span></span><br><span class="line">print(pow_op)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>Tensor("pow_op:0", shape=(), dtype=int32)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 真正的计算过程必须通过 Session 计算，把想要计算的节点传入 Session.run() </span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(pow_op))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; 9</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># Session 采用惰性计算</span></span><br><span class="line"><span class="comment"># 例如, 加入一个无用节点:</span></span><br><span class="line">useless = tf.multiply(x, add_op, name=<span class="string">'useless'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(pow_op)</span><br><span class="line">	<span class="comment"># 因为计算 pow_op 不需要 useless 的值, 所以 useless 不会被计算</span></span><br><span class="line">	<span class="comment"># Session 可传入一个要计算的节点的列表:</span></span><br><span class="line">    pow_op_result, useless_result = sess.run([pow_op, useless])</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [9, 3]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 这样都会被计算</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    tf.Session.run(fetches,</span></span><br><span class="line"><span class="string">                  feed_dict=None,</span></span><br><span class="line"><span class="string">                  options=None,</span></span><br><span class="line"><span class="string">                  run_metadata=None)</span></span><br><span class="line"><span class="string">    fetches 为想要计算的结点(Tensor)列表</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># 分布式计算</span></span><br><span class="line"><span class="comment"># 将部分 Graph 指定在某个设备上计算</span></span><br><span class="line"><span class="keyword">with</span> tf.device(<span class="string">'/gpu:1'</span>):</span><br><span class="line">    a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'a'</span>) <span class="comment"># 常量节点</span></span><br><span class="line">    b = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">'b'</span>)</span><br><span class="line">    c = tf.multiply(a, b, name=<span class="string">'c'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session(config=tf.ConfigProto(log_device_placement=<span class="keyword">True</span>)) <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(c))</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; c: (Mul): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; b: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; a: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    (这里从日志输出顺序也可看出惰性求值的求值顺序)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="comment"># 每一个 Session 对应一个 Graph</span></span><br><span class="line"><span class="comment"># 不要创建多个 Session 或 Graph</span></span><br><span class="line"><span class="comment"># 每个 Session 默认占用所有系统资源</span></span><br><span class="line"><span class="comment"># 而且不同 Session 间无法传递数据</span></span><br><span class="line"><span class="comment"># 可以在同一个 Graph 中创建不连通的子图, 并在同一个 Session 中分别计算</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果非得这么做: tf.Graph()</span></span><br><span class="line"><span class="comment"># Tensorflow 在程序开始时会隐式创建一个 Default Graph, </span></span><br><span class="line"><span class="comment"># 所有直接声明的节点都会加入这个 Graph</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新的 Graph:</span></span><br><span class="line">g = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    x = tf.add(<span class="number">3</span>, <span class="number">5</span>, name=<span class="string">'x in g'</span>)</span><br><span class="line"><span class="comment"># 创建 Session 时指定 Graph (否则为默认的Graph)</span></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g) <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 小心把默认 Graph 与 自定义 Graph 搞混</span></span><br><span class="line"><span class="comment"># 获得默认 Graph</span></span><br><span class="line">g_default = tf.get_default_graph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后分别添加节点</span></span><br><span class="line"><span class="keyword">with</span> g_default.as_default():</span><br><span class="line">    m = tf.constant(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    n = tf.constant(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/16/LL-one-parsing/" rel="next" title="LL(1) 语法分析及抽象语法树的构建">
-                <i class="fa fa-chevron-left"></i> LL(1) 语法分析及抽象语法树的构建
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/08/type-system-lambda-calculus/" rel="prev" title="类型推导 - λ 演算">
-                类型推导 - λ 演算 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar-rikka.jpg"
-                alt="tsuki" />
-            
-              <p class="site-author-name" itemprop="name">tsuki</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">categories</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/imtsuki" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:me@qjx.app" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-heart"></i>
+<article id="post">
+<header>
+  <h1>TensorFlow 笔记（一）</h1>
+  <div class="meta">
+  <span class="page-date">
+  <time datetime="2018-04-20T20:44:33.000Z">
+            2018-04-21
+  </time>
   </span>
-  <span class="author" itemprop="copyrightHolder">tsuki</span>
-
   
+  <span class="tag-link">
+        <a href="/tags/深度学习/">
+          #深度学习
+        </a>
+  </span>
+      
+  </div>
+</header>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># The Beginning Of Everything</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment"># &#x5B9A;&#x4E49; Graph</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">add_op = tf.add(x, y, name=<span class="string">&apos;add_op&apos;</span>) <span class="comment">#&#x5B9A;&#x4E49; Graph &#x7ED3;&#x70B9; &#x52A0;&#x6CD5;</span></span><br><span class="line">mul_op = tf.multiply(x, y, name=<span class="string">&apos;mul_op&apos;</span>) <span class="comment"># &#x4E58;&#x6CD5;</span></span><br><span class="line">pow_op = tf.pow(add_op, mul_op, name=<span class="string">&apos;pow_op&apos;</span>) <span class="comment"># &#x5E42;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">x--(+)-------\</span></span><br><span class="line"><span class="string"> X          (**)</span></span><br><span class="line"><span class="string">y--(*)-------/</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># Graph &#x53EA;&#x662F;&#x7ED3;&#x6784;&#xFF0C;&#x4E0D;&#x4F1A;&#x8BA1;&#x7B97;&#x5B9E;&#x9645;&#x8F93;&#x51FA;</span></span><br><span class="line">print(pow_op)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>Tensor(&quot;pow_op:0&quot;, shape=(), dtype=int32)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># &#x771F;&#x6B63;&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x5FC5;&#x987B;&#x901A;&#x8FC7; Session &#x8BA1;&#x7B97;&#xFF0C;&#x628A;&#x60F3;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x8282;&#x70B9;&#x4F20;&#x5165; Session.run() </span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(pow_op))</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; 9</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># Session &#x91C7;&#x7528;&#x60F0;&#x6027;&#x8BA1;&#x7B97;</span></span><br><span class="line"><span class="comment"># &#x4F8B;&#x5982;, &#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x65E0;&#x7528;&#x8282;&#x70B9;:</span></span><br><span class="line">useless = tf.multiply(x, add_op, name=<span class="string">&apos;useless&apos;</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(pow_op)</span><br><span class="line">	<span class="comment"># &#x56E0;&#x4E3A;&#x8BA1;&#x7B97; pow_op &#x4E0D;&#x9700;&#x8981; useless &#x7684;&#x503C;, &#x6240;&#x4EE5; useless &#x4E0D;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;</span></span><br><span class="line">	<span class="comment"># Session &#x53EF;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x8282;&#x70B9;&#x7684;&#x5217;&#x8868;:</span></span><br><span class="line">    pow_op_result, useless_result = sess.run([pow_op, useless])</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [9, 3]</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># &#x8FD9;&#x6837;&#x90FD;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    tf.Session.run(fetches,</span></span><br><span class="line"><span class="string">                  feed_dict=None,</span></span><br><span class="line"><span class="string">                  options=None,</span></span><br><span class="line"><span class="string">                  run_metadata=None)</span></span><br><span class="line"><span class="string">    fetches &#x4E3A;&#x60F3;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x70B9;(Tensor)&#x5217;&#x8868;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># &#x5206;&#x5E03;&#x5F0F;&#x8BA1;&#x7B97;</span></span><br><span class="line"><span class="comment"># &#x5C06;&#x90E8;&#x5206; Graph &#x6307;&#x5B9A;&#x5728;&#x67D0;&#x4E2A;&#x8BBE;&#x5907;&#x4E0A;&#x8BA1;&#x7B97;</span></span><br><span class="line"><span class="keyword">with</span> tf.device(<span class="string">&apos;/gpu:1&apos;</span>):</span><br><span class="line">    a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">&apos;a&apos;</span>) <span class="comment"># &#x5E38;&#x91CF;&#x8282;&#x70B9;</span></span><br><span class="line">    b = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>, <span class="number">6.0</span>], name=<span class="string">&apos;b&apos;</span>)</span><br><span class="line">    c = tf.multiply(a, b, name=<span class="string">&apos;c&apos;</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session(config=tf.ConfigProto(log_device_placement=<span class="keyword">True</span>)) <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(c))</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; c: (Mul): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; b: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; a: (Const): /job:localhost/replica:0/task:0/device:GPU:1</span></span><br><span class="line"><span class="string">    (&#x8FD9;&#x91CC;&#x4ECE;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x987A;&#x5E8F;&#x4E5F;&#x53EF;&#x770B;&#x51FA;&#x60F0;&#x6027;&#x6C42;&#x503C;&#x7684;&#x6C42;&#x503C;&#x987A;&#x5E8F;)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># &#x6BCF;&#x4E00;&#x4E2A; Session &#x5BF9;&#x5E94;&#x4E00;&#x4E2A; Graph</span></span><br><span class="line"><span class="comment"># &#x4E0D;&#x8981;&#x521B;&#x5EFA;&#x591A;&#x4E2A; Session &#x6216; Graph</span></span><br><span class="line"><span class="comment"># &#x6BCF;&#x4E2A; Session &#x9ED8;&#x8BA4;&#x5360;&#x7528;&#x6240;&#x6709;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;</span></span><br><span class="line"><span class="comment"># &#x800C;&#x4E14;&#x4E0D;&#x540C; Session &#x95F4;&#x65E0;&#x6CD5;&#x4F20;&#x9012;&#x6570;&#x636E;</span></span><br><span class="line"><span class="comment"># &#x53EF;&#x4EE5;&#x5728;&#x540C;&#x4E00;&#x4E2A; Graph &#x4E2D;&#x521B;&#x5EFA;&#x4E0D;&#x8FDE;&#x901A;&#x7684;&#x5B50;&#x56FE;, &#x5E76;&#x5728;&#x540C;&#x4E00;&#x4E2A; Session &#x4E2D;&#x5206;&#x522B;&#x8BA1;&#x7B97;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x5982;&#x679C;&#x975E;&#x5F97;&#x8FD9;&#x4E48;&#x505A;: tf.Graph()</span></span><br><span class="line"><span class="comment"># Tensorflow &#x5728;&#x7A0B;&#x5E8F;&#x5F00;&#x59CB;&#x65F6;&#x4F1A;&#x9690;&#x5F0F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Default Graph, </span></span><br><span class="line"><span class="comment"># &#x6240;&#x6709;&#x76F4;&#x63A5;&#x58F0;&#x660E;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x52A0;&#x5165;&#x8FD9;&#x4E2A; Graph</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x521B;&#x5EFA;&#x65B0;&#x7684; Graph:</span></span><br><span class="line">g = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    x = tf.add(<span class="number">3</span>, <span class="number">5</span>, name=<span class="string">&apos;x in g&apos;</span>)</span><br><span class="line"><span class="comment"># &#x521B;&#x5EFA; Session &#x65F6;&#x6307;&#x5B9A; Graph (&#x5426;&#x5219;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;Graph)</span></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g) <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x5C0F;&#x5FC3;&#x628A;&#x9ED8;&#x8BA4; Graph &#x4E0E; &#x81EA;&#x5B9A;&#x4E49; Graph &#x641E;&#x6DF7;</span></span><br><span class="line"><span class="comment"># &#x83B7;&#x5F97;&#x9ED8;&#x8BA4; Graph</span></span><br><span class="line">g_default = tf.get_default_graph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x7136;&#x540E;&#x5206;&#x522B;&#x6DFB;&#x52A0;&#x8282;&#x70B9;</span></span><br><span class="line"><span class="keyword">with</span> g_default.as_default():</span><br><span class="line">    m = tf.constant(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">with</span> g.as_default():</span><br><span class="line">    n = tf.constant(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
+</article>
+
+<div id="paginator">
   
 </div>
 
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
+</div>
 
+<div id="bottom-outer">
+  <div id="footer">
+      Copyright © 2018 Tsuki. Powered by Hexo and <a href="https://github.com/imtsuki/hexo-theme-shiro">Shiro</a>.
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/shiro.js"></script>
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.config.menuSettings.renderer = "SVG";
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }},
-      CommonHTML: { linebreaks: { automatic: true } },
-      "HTML-CSS": { linebreaks: { automatic: true } },
-      SVG: { linebreaks: { automatic: true } }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

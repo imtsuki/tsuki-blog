@@ -1,889 +1,116 @@
+
+
+
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next pisces" lang="zh-cn">
+<html lang="zh-cn">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'xoy5jfw',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
-
-
-
-
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="HandheldFriendly" content="true">
+  
+    <meta name="google-site-verification" content="Sf3TQAKc2EfeBR3ltsbYlbX06bHJ4-QbsC_7Jko3zZ8">
   
   
+    <meta name="baidu-site-verification" content="lkLxPcUTqE">
+  
+  <title>AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现 [ ツキの月 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
     
+      <link rel="stylesheet" href="/css/shiro.css">
     
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="Sf3TQAKc2EfeBR3ltsbYlbX06bHJ4-QbsC_7Jko3zZ8" />
-
-
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="lkLxPcUTqE" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.4.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
+      <link rel="stylesheet" href="/css/layout.css">
+    
+      <link rel="stylesheet" href="/css/post.css">
+    
+      <link rel="stylesheet" href="/css/content.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+      <link rel="stylesheet" href="/lib/soraka/soraka.css">
+    
+      <link rel="stylesheet" href="/lib/typo.css/typo.css">
+    
   
-
-
-
-
-  <meta name="description" content="草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现">
-<meta property="og:url" content="https://qjx.app/2017/08/06/AlpacaVM/index.html">
-<meta property="og:site_name" content="ツキの月">
-<meta property="og:description" content="草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-08T08:01:06.082Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现">
-<meta name="twitter:description" content="草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。">
-
-
-
-
-
-
-  <link rel="canonical" href="https://qjx.app/2017/08/06/AlpacaVM/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现 | ツキの月</title>
-  
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128956609-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-128956609-1');
-</script>
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
 </head>
+<body>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">ツキの月</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<div id="header">
+  <a href="/">
+    <div id="title">
+      <h1>ツキの月</h1>
     </div>
-    
-  </div>
+  </a>
+</div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
   </div>
 </div>
 
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
+<div id="content-outer">
+  <div id="content-inner" class="content typo">
     
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
-
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qjx.app/2017/08/06/AlpacaVM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tsuki">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar-rikka.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ツキの月">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-08-06 15:30:09" itemprop="dateCreated datePublished" datetime="2017-08-06T15:30:09+08:00">2017-08-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-08 16:01:06" itemprop="dateModified" datetime="2018-11-08T16:01:06+08:00">2018-11-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/闲谈/" itemprop="url" rel="index"><span itemprop="name">闲谈</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">草泥马语是一门基于堆栈操作，语法生动丰富，内容健康活泼，老少皆宜，人人适用的编程语言。这篇文章探讨了她的实现。</div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="语言介绍">语言介绍</h2>
-<blockquote>
-<p>草泥马语是 <a href="https://segmentfault.com/u/noodles001" target="_blank" rel="noopener">Noodles@SegmentFault</a> 的发明。移步<a href="https://segmentfault.com/a/1190000000606169" target="_blank" rel="noopener">编程语言中的精品——草泥马语</a>来查看该语言的完整介绍。</p>
-</blockquote>
-<p>草泥马语是马勒戈壁第一款拥有自主知识产权的，以马勒戈壁上顽强生存的草泥马们为主体的编程语言。草泥马语语法生动丰富，内容健康活泼，是一门老少皆宜，人人适用的编程语言。它的出现弥补了我戈壁在国际编程语言界中的一项空白。</p>
-<p>草泥马语是一个基于堆和栈的编程语言，该语言的最大特点在于：所有操作均由 「草」、「泥」、「马」及「河蟹」 这 4 个命令完成，文件内的其他字符都作为注释而不参与程序执行。</p>
-<p>这个草泥马语虚拟机的实现采用了先进的 JOT（Just Out of Time）编译引擎，并且运行于西艾鲁阿尔（CLR）虚拟机中，运行速度大幅度降低同时，还使用了戈壁内外各种先进技术，使的草泥马语不十分可靠。</p>
-<p>在 C# 环境下编译后，运行命令</p>
-<pre><code>AlpacaVM filename</code></pre>
-<p>即可输出指定文件中所定义的草泥马语程序对应的结果。</p>
-<p>例如，以下的输入</p>
-<pre><code>草草草泥马 马草草草泥草草草草泥泥马 草马草 泥马草泥 草草草泥草泥草马 泥马草草 草草草泥马 泥草草草 草马草 草草草泥草泥泥马 泥草草泥 马泥草草泥草草草泥草泥马 马草马草泥草草草草泥泥马 马草草草泥草草草泥草泥马 草马马 马马马</code></pre>
-<p>将会产生输出：</p>
-<pre><code>1
-2
-3
-4
-5
-6
-7
-8
-9
-10</code></pre>
-<p>即 1-10 的循环。</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/30/tour-in-beijing/" rel="prev" title="胡同、东交民巷与宫城">
-                胡同、东交民巷与宫城 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar-rikka.jpg"
-                alt="tsuki" />
-            
-              <p class="site-author-name" itemprop="name">tsuki</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">categories</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/imtsuki" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:me@qjx.app" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语言介绍"><span class="nav-number">1.</span> <span class="nav-text">语言介绍</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-heart"></i>
+<article id="post">
+<header>
+  <h1>AlpacaVM - 一个基于堆栈操作的语言的虚拟机实现</h1>
+  <div class="meta">
+  <span class="page-date">
+  <time datetime="2017-08-06T07:30:09.000Z">
+            2017-08-06
+  </time>
   </span>
-  <span class="author" itemprop="copyrightHolder">tsuki</span>
-
   
+  <span class="tag-link">
+        <a href="/tags/闲谈/">
+          #闲谈
+        </a>
+  </span>
+      
+  </div>
+</header>
+  <h2 id="&#x8BED;&#x8A00;&#x4ECB;&#x7ECD;">&#x8BED;&#x8A00;&#x4ECB;&#x7ECD;</h2>
+<blockquote>
+<p>&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x662F; <a href="https://segmentfault.com/u/noodles001" target="_blank" rel="noopener">Noodles@SegmentFault</a> &#x7684;&#x53D1;&#x660E;&#x3002;&#x79FB;&#x6B65;<a href="https://segmentfault.com/a/1190000000606169" target="_blank" rel="noopener">&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x7CBE;&#x54C1;&#x2014;&#x2014;&#x8349;&#x6CE5;&#x9A6C;&#x8BED;</a>&#x6765;&#x67E5;&#x770B;&#x8BE5;&#x8BED;&#x8A00;&#x7684;&#x5B8C;&#x6574;&#x4ECB;&#x7ECD;&#x3002;</p>
+</blockquote>
+<p>&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x662F;&#x9A6C;&#x52D2;&#x6208;&#x58C1;&#x7B2C;&#x4E00;&#x6B3E;&#x62E5;&#x6709;&#x81EA;&#x4E3B;&#x77E5;&#x8BC6;&#x4EA7;&#x6743;&#x7684;&#xFF0C;&#x4EE5;&#x9A6C;&#x52D2;&#x6208;&#x58C1;&#x4E0A;&#x987D;&#x5F3A;&#x751F;&#x5B58;&#x7684;&#x8349;&#x6CE5;&#x9A6C;&#x4EEC;&#x4E3A;&#x4E3B;&#x4F53;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x8BED;&#x6CD5;&#x751F;&#x52A8;&#x4E30;&#x5BCC;&#xFF0C;&#x5185;&#x5BB9;&#x5065;&#x5EB7;&#x6D3B;&#x6CFC;&#xFF0C;&#x662F;&#x4E00;&#x95E8;&#x8001;&#x5C11;&#x7686;&#x5B9C;&#xFF0C;&#x4EBA;&#x4EBA;&#x9002;&#x7528;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;&#x5B83;&#x7684;&#x51FA;&#x73B0;&#x5F25;&#x8865;&#x4E86;&#x6211;&#x6208;&#x58C1;&#x5728;&#x56FD;&#x9645;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x754C;&#x4E2D;&#x7684;&#x4E00;&#x9879;&#x7A7A;&#x767D;&#x3002;</p>
+<p>&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x5806;&#x548C;&#x6808;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x8BE5;&#x8BED;&#x8A00;&#x7684;&#x6700;&#x5927;&#x7279;&#x70B9;&#x5728;&#x4E8E;&#xFF1A;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5747;&#x7531; &#x300C;&#x8349;&#x300D;&#x3001;&#x300C;&#x6CE5;&#x300D;&#x3001;&#x300C;&#x9A6C;&#x300D;&#x53CA;&#x300C;&#x6CB3;&#x87F9;&#x300D; &#x8FD9; 4 &#x4E2A;&#x547D;&#x4EE4;&#x5B8C;&#x6210;&#xFF0C;&#x6587;&#x4EF6;&#x5185;&#x7684;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#x90FD;&#x4F5C;&#x4E3A;&#x6CE8;&#x91CA;&#x800C;&#x4E0D;&#x53C2;&#x4E0E;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5B9E;&#x73B0;&#x91C7;&#x7528;&#x4E86;&#x5148;&#x8FDB;&#x7684; JOT&#xFF08;Just Out of Time&#xFF09;&#x7F16;&#x8BD1;&#x5F15;&#x64CE;&#xFF0C;&#x5E76;&#x4E14;&#x8FD0;&#x884C;&#x4E8E;&#x897F;&#x827E;&#x9C81;&#x963F;&#x5C14;&#xFF08;CLR&#xFF09;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#xFF0C;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x5927;&#x5E45;&#x5EA6;&#x964D;&#x4F4E;&#x540C;&#x65F6;&#xFF0C;&#x8FD8;&#x4F7F;&#x7528;&#x4E86;&#x6208;&#x58C1;&#x5185;&#x5916;&#x5404;&#x79CD;&#x5148;&#x8FDB;&#x6280;&#x672F;&#xFF0C;&#x4F7F;&#x7684;&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x4E0D;&#x5341;&#x5206;&#x53EF;&#x9760;&#x3002;</p>
+<p>&#x5728; C# &#x73AF;&#x5883;&#x4E0B;&#x7F16;&#x8BD1;&#x540E;&#xFF0C;&#x8FD0;&#x884C;&#x547D;&#x4EE4; <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">AlpacaVM filename</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5373;&#x53EF;&#x8F93;&#x51FA;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x4E2D;&#x6240;&#x5B9A;&#x4E49;&#x7684;&#x8349;&#x6CE5;&#x9A6C;&#x8BED;&#x7A0B;&#x5E8F;&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x7684;&#x8F93;&#x5165; <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x8349;&#x8349;&#x8349;&#x6CE5;&#x9A6C; &#x9A6C;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x6CE5;&#x9A6C; &#x8349;&#x9A6C;&#x8349; &#x6CE5;&#x9A6C;&#x8349;&#x6CE5; &#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x6CE5;&#x8349;&#x9A6C; </span><br><span class="line">&#x6CE5;&#x9A6C;&#x8349;&#x8349; &#x8349;&#x8349;&#x8349;&#x6CE5;&#x9A6C; &#x6CE5;&#x8349;&#x8349;&#x8349; &#x8349;&#x9A6C;&#x8349; &#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x6CE5;&#x6CE5;&#x9A6C; &#x6CE5;&#x8349;&#x8349;&#x6CE5; </span><br><span class="line">&#x9A6C;&#x6CE5;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x6CE5;&#x9A6C; &#x9A6C;&#x8349;&#x9A6C;&#x8349;&#x6CE5;&#x8349;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x6CE5;&#x9A6C; &#x9A6C;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x8349;&#x8349;&#x6CE5;&#x8349;&#x6CE5;&#x9A6C; </span><br><span class="line">&#x8349;&#x9A6C;&#x9A6C; &#x9A6C;&#x9A6C;&#x9A6C;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5C06;&#x4F1A;&#x4EA7;&#x751F;&#x8F93;&#x51FA;&#xFF1A; <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5373; 1-10 &#x7684;&#x5FAA;&#x73AF;&#x3002;</p>
 
+</article>
+
+<div id="paginator">
   
 </div>
 
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
+</div>
 
+<div id="bottom-outer">
+  <div id="footer">
+      Copyright © 2018 Tsuki. Powered by Hexo and <a href="https://github.com/imtsuki/hexo-theme-shiro">Shiro</a>.
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/shiro.js"></script>
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.config.menuSettings.renderer = "SVG";
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }},
-      CommonHTML: { linebreaks: { automatic: true } },
-      "HTML-CSS": { linebreaks: { automatic: true } },
-      SVG: { linebreaks: { automatic: true } }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
