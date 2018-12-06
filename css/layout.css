@@ -1,15 +1,15 @@
 html {
   height: 100%;
   font-size: 18px;
+  border-top: 2px solid #000;
 }
 @media (max-width: 767px) {
-  html {
+  body {
     margin-left: 1.5rem !important;
     margin-right: 1.5rem !important;
   }
 }
 body {
-  border-top: 2px solid #000;
   text-rendering: geometricPrecision;
   line-height: 1.5;
   font-family: Soraka, "Source Han Serif SC", serif;
@@ -64,6 +64,15 @@ article header .meta .page-date:after {
 article header .meta a {
   background-image: none !important;
   color: #ccc !important;
+}
+.tag-name {
+  font-family: Soraka, "Source Han Serif SC", source-han-serif-sc, serif !important;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  color: #808080;
+}
+.tag-name:before {
+  content: "#";
 }
 #paginator {
   text-align: center;
