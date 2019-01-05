@@ -38,7 +38,7 @@
 
 
 
-  <title>Archives: 8/2017: 2017 | ツキの月</title>
+  <title>Shell 之道 | ツキの月</title>
   
     <!-- stylesheets list from _config.yml -->
     
@@ -83,28 +83,46 @@
 <div id="content-outer">
   <div id="content-inner" class="content typo">
     
-
-
-
-
-  <h1>8/2017</h1>
-
+<article id="post">
+<header>
+  <h1>Shell 之道</h1>
+  <div class="meta">
+  <span class="page-date">
+  <time datetime="2019-01-05T07:24:52.000Z">
+            2019-01-05
+  </time>
+  </span>
   
-    <div class="archive-item">
-      <a href="/2017/08/06/AlpacaVM/">
-        AlpacaVM
-      </a>
-      <time datetime="2017-08-06T07:30:09.000Z">
-        2017-08-06
-      </time>
-    </div>
-  
-
-  <div id="paginator">
-    <span class="page-number current">1</span>
+  <span class="tag-link">
+        <a href="/tags/Shell/">
+          #Shell
+        </a>
+  </span>
+      
   </div>
+</header>
+  <h2 id="set">&gt; set</h2>
+<p><code>set</code> &#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x5B9A;&#x5236; shell &#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x5E38;&#x5E38;&#x653E;&#x5728; shell &#x811A;&#x672C;&#x7684;&#x524D;&#x9762;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">set</span> -euxo pipefail</span><br></pre></td></tr></table></figure>
+<p>&#x6BCF;&#x4E2A;&#x53C2;&#x6570;&#x5206;&#x522B;&#x6709;&#x5982;&#x4E0B;&#x6548;&#x679C;&#x3002;</p>
+<h3 id="set--e"><code>set -e</code></h3>
+<p>&#x811A;&#x672C;&#x6267;&#x884C;&#x4E2D;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;&#x811A;&#x672C;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+<h3 id="set--u"><code>set -u</code></h3>
+<p>&#x5F53;&#x811A;&#x672C;&#x6267;&#x884C;&#x4E2D;&#x9047;&#x5230;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x62A5;&#x9519;&#x5E76;&#x7EC8;&#x6B62;&#x6267;&#x884C;&#x3002;</p>
+<h3 id="set--o-pipefail"><code>set -o pipefail</code></h3>
+<p>&#x5982;&#x679C;&#x5728;&#x7BA1;&#x9053;&#x547D;&#x4EE4;&#x4E2D;&#xFF0C;&#x524D;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x62A5;&#x9519;&#xFF0C;&#x4F46;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x6B63;&#x786E;&#xFF0C;&#x90A3;&#x4E48; <code>set -e</code> &#x5C31;&#x4E0D;&#x80FD;&#x8BA9;&#x811A;&#x672C;&#x505C;&#x6B62;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5229;&#x7528; <code>set -o pipefail</code>&#xFF0C;&#x5C31;&#x53EF;&#x8BA9;&#x7BA1;&#x9053;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x811A;&#x672C;&#x4E5F;&#x4F1A;&#x505C;&#x6B62;&#x6267;&#x884C;&#x3002;</p>
+<h3 id="set--x"><code>set -x</code></h3>
+<p>&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x7684;&#x56DE;&#x663E;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x4E0B;&#x811A;&#x672C;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -x</span><br><span class="line"><span class="built_in">echo</span> foobar</span><br></pre></td></tr></table></figure>
+<p>&#x5C06;&#x4F1A;&#x4EA7;&#x751F;&#x5982;&#x4E0B;&#x8F93;&#x51FA;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bash script.sh</span><br><span class="line">+ <span class="built_in">echo</span> foobar</span><br><span class="line">foobar</span><br></pre></td></tr></table></figure>
 
+</article>
 
+<div id="paginator">
+  
+</div>
 
   </div>
 </div>
