@@ -12,7 +12,6 @@ html {
 body {
   text-rendering: geometricPrecision;
   line-height: 1.5;
-  font-family: Soraka, "Source Han Serif SC", serif;
   font-feature-settings: "lnum", "calt", "liga", "clig";
 }
 #content-outer {

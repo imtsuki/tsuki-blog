@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+/* Modified for theme Shiro by Tsuki */
+
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
 html {
   color: #000;
@@ -86,7 +88,7 @@ del {
   text-decoration: line-through;
 }
 
-address, caption, cite, code, dfn, em, th, var {
+address, caption, cite, code, dfn, th, var {
   font-style: normal;
   font-weight: 400;
 }
@@ -209,11 +211,6 @@ strong, b {
   table-layout: fixed;
 }
 
-/* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
-.serif {
-  font-family: Palatino, Optima, Georgia, serif;
-}
-
 /* 保证块/段落之间的空白隔行 */
 .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
 .typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote {
@@ -286,9 +283,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 同 ul/ol，在文章中应用 table 基本格式 */
 .typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption {
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
   padding: 0.5em 1em;
-  color: #666;
+  color: #555;
 }
 
 .typo table th, .typo-table th {
@@ -297,6 +294,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .typo table thead th, .typo-table thead th {
   background: #f1f1f1;
+  color: #444;
+  font-family: Soraka, PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 
 .typo table caption {
