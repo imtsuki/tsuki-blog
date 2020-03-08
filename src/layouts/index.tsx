@@ -3,11 +3,11 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import 'modern-normalize';
-import '../styles/normalize';
+import '@/styles/normalize';
 
-import Header from '../components/Header';
-import LayoutRoot from '../components/LayoutRoot';
-import LayoutMain from '../components/LayoutMain';
+import Header from '@/components/Header';
+import LayoutRoot from '@/components/LayoutRoot';
+import LayoutMain from '@/components/LayoutMain';
 
 interface StaticQueryProps {
   site: {

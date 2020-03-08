@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 import { Link } from 'gatsby';
 
-import { heights, dimensions, colors } from '../styles/variables';
-import Container from './Container';
+import { heights, dimensions, colors } from '@/styles/variables';
+import Container from '@/components/Container';
 
 const StyledHeader = styled.header`
   height: ${heights.header}px;

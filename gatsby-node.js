@@ -1,24 +1,23 @@
-'use strict'
-
-const path = require('path')
+const path = require('path');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   // Sometimes, optional fields tend to get not picked up by the GraphQL
   // interpreter if not a single content uses it. Therefore, we're putting them
   // through `createNodeField` so that the fields still exist and GraphQL won't
   // trip up. An empty string is still required in replacement to `null`.
 
+  // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const { permalink, layout } = node.frontmatter
-      const { relativePath } = getNode(node.parent)
+      const { permalink, layout } = node.frontmatter;
+      const { relativePath } = getNode(node.parent);
 
-      let slug = permalink
+      let slug = permalink;
 
       if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`
+        slug = `/${relativePath.replace('.md', '')}/`;
       }
 
       // Used to generate URL to view this content.
@@ -26,20 +25,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         name: 'slug',
         value: slug || ''
-      })
+      });
 
       // Used to determine a page layout.
       createNodeField({
         node,
         name: 'layout',
         value: layout || ''
-      })
+      });
     }
   }
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const allMarkdown = await graphql(`
     {
@@ -54,15 +53,14 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
   if (allMarkdown.errors) {
-    console.error(allMarkdown.errors)
-    throw new Error(allMarkdown.errors)
+    throw new Error(allMarkdown.errors);
   }
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const { slug, layout } = node.fields
+    const { slug, layout } = node.fields;
 
     createPage({
       path: slug,
@@ -80,6 +78,6 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available in page queries as GraphQL variables.
         slug
       }
-    })
-  })
-}
+    });
+  });
+};

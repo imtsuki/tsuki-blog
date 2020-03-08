@@ -1,18 +1,25 @@
-'use strict'
-
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
+    title: 'ツキの月',
+    description: 'To be continued...',
     keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+    siteUrl: 'https://qjx.app',
     author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
+      name: 'imtsuki',
+      url: 'https://twitter.com/real_imtsuki',
+      email: 'me@qjx.app'
     }
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@': 'src'
+        },
+        extensions: []
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -57,4 +64,4 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet'
   ]
-}
+};
