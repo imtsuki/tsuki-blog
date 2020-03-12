@@ -6,23 +6,21 @@ import { Link } from 'gatsby';
 import { heights, dimensions, colors } from '@/styles/variables';
 import Container from '@/components/Container';
 
-const StyledHeader = styled.header`
+const StyledFooter = styled.footer`
   height: ${heights.header}px;
   padding: 0 ${dimensions.containerPadding}rem;
-  background-color: ${colors.brand};
   color: ${transparentize(0.5, colors.white)};
 `;
 
-const HeaderInner = styled(Container)`
+const FooterInner = styled(Container)`
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 100%;
 `;
 
-const HomepageLink = styled(Link)`
-  color: ${colors.white};
-  font-size: 1.5rem;
+const Copyright = styled(Link)`
+  color: ${colors.gray.calm};
 
   &:hover,
   &:focus {
@@ -30,16 +28,21 @@ const HomepageLink = styled(Link)`
   }
 `;
 
-interface HeaderProps {
-  title: string;
+interface FooterProps {
+  author: {
+    name: string;
+  };
+  buildTime: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
-  <StyledHeader>
-    <HeaderInner>
-      <HomepageLink to="/">{title}</HomepageLink>
-    </HeaderInner>
-  </StyledHeader>
+const Footer: React.FC<FooterProps> = ({ author, buildTime }) => (
+  <StyledFooter>
+    <FooterInner>
+      <Copyright to="/">
+        Copyright © {buildTime} {author.name}. Built with Gatsby.
+      </Copyright>
+    </FooterInner>
+  </StyledFooter>
 );
 
-export default Header;
+export default Footer;

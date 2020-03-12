@@ -17,14 +17,14 @@ module.exports = {
         alias: {
           '@': 'src'
         },
-        extensions: []
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: `${__dirname}/src/content`
+        path: `${__dirname}/content`
       }
     },
     {
@@ -46,6 +46,12 @@ module.exports = {
               maxWidth: 1140,
               quality: 90,
               linkImagesToOriginal: false
+            }
+          },
+          {
+            resolve: 'gatsby-remark-katex',
+            options: {
+              strict: 'ignore'
             }
           }
         ]

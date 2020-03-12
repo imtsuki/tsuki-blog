@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import Page from '../components/Page';
-import Container from '../components/Container';
-import IndexLayout from '../layouts';
+import Page from '@/components/Page';
+import Container from '@/components/Container';
+import IndexLayout from '@/layouts';
 
-interface PageTemplateProps {
+import 'katex/dist/katex.min.css';
+
+interface PostTemplateProps {
   data: {
     site: {
       siteMetadata: {
@@ -22,27 +24,32 @@ interface PageTemplateProps {
       excerpt: string;
       frontmatter: {
         title: string;
+        date: string;
+        lang: string;
       };
     };
   };
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
+const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
   <IndexLayout>
     <Page>
       <Container>
-        <h1>{data.markdownRemark.frontmatter.title}</h1>
-        {/* eslint-disable-next-line react/no-danger */}
-        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+        <article lang={data.markdownRemark.frontmatter.lang}>
+          <h1>{data.markdownRemark.frontmatter.title}</h1>
+          <p>{data.markdownRemark.frontmatter.date}</p>
+          {/* eslint-disable-next-line react/no-danger */}
+          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+        </article>
       </Container>
     </Page>
   </IndexLayout>
 );
 
-export default PageTemplate;
+export default PostTemplate;
 
 export const query = graphql`
-  query PageTemplateQuery($slug: String!) {
+  query PostTemplateQuery($slug: String!) {
     site {
       siteMetadata {
         title
@@ -58,6 +65,8 @@ export const query = graphql`
       excerpt
       frontmatter {
         title
+        date(formatString: "YYYY-MM-DD")
+        lang
       }
     }
   }

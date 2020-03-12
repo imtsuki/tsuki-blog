@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-import 'modern-normalize';
 import '@/styles/normalize';
+import 'han-css/dist/han.min.css';
 
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import LayoutRoot from '@/components/LayoutRoot';
 import LayoutMain from '@/components/LayoutMain';
 
@@ -15,7 +16,11 @@ interface StaticQueryProps {
       title: string;
       description: string;
       keywords: string;
+      author: {
+        name: string;
+      };
     };
+    buildTime: string;
   };
 }
 
@@ -27,7 +32,12 @@ const IndexLayout: React.FC = ({ children }) => (
           siteMetadata {
             title
             description
+            keywords
+            author {
+              name
+            }
           }
+          buildTime(formatString: "YYYY")
         }
       }
     `}
@@ -39,9 +49,13 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'description', content: data.site.siteMetadata.description },
             { name: 'keywords', content: data.site.siteMetadata.keywords }
           ]}
-        />
+        >
+          {/* eslint-disable-next-line jsx-a11y/lang */}
+          <html lang="zh-Hans" />
+        </Helmet>
         <Header title={data.site.siteMetadata.title} />
         <LayoutMain>{children}</LayoutMain>
+        <Footer author={data.site.siteMetadata.author} buildTime={data.site.buildTime} />
       </LayoutRoot>
     )}
   />

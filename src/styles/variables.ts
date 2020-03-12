@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
 export const colors = {
-  brand: '#663399',
+  brand: '#000',
   lilac: '#9d7cbf',
   accent: '#ffb238',
   success: '#37b635',
@@ -33,7 +33,8 @@ export const breakpoints = {
   sm: 576,
   md: 768,
   lg: 992,
-  xl: 1200
+  xl: 1200,
+  temp: 480
 };
 
 export const widths = {
