@@ -10,7 +10,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
-    case 'MarkdownRemark': {
+    case 'MarkdownRemark':
+    case 'Mdx': {
       const { permalink, layout } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
@@ -40,9 +41,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const allMarkdown = await graphql(`
+  const allMdx = await graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMdx(limit: 1000) {
         edges {
           node {
             fields {
@@ -55,11 +56,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  if (allMarkdown.errors) {
-    throw new Error(allMarkdown.errors);
+  if (allMdx.errors) {
+    throw new Error(allMdx.errors);
   }
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  allMdx.data.allMdx.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields;
 
     createPage({

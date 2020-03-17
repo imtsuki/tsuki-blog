@@ -8,7 +8,7 @@ import PostEntry from '@/components/PostEntry';
 
 interface IndexPageProps {
   data: {
-    allMarkdownRemark: {
+    allMdx: {
       edges: Array<{
         node: {
           fields: { slug: string };
@@ -27,7 +27,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
     <Page>
       <Container>
         <ul>
-          {data.allMarkdownRemark.edges.map(({ node }) => {
+          {data.allMdx.edges.map(({ node }) => {
             const { title, date } = node.frontmatter;
             const { slug } = node.fields;
             return <PostEntry key={slug} slug={slug} title={title} date={date} />;
@@ -42,7 +42,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           fields {

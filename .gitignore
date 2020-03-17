@@ -125,3 +125,4 @@ $RECYCLE.BIN/
 # =========================
 
 content/posts/*.md
+content/posts/*.mdx

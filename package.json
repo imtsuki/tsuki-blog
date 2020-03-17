@@ -1,6 +1,6 @@
 {
   "name": "tsuki-blog",
-  "description": "Tsuki's personal blog",
+  "description": "tsuki's Blog",
   "version": "0.1.0",
   "private": true,
   "author": "imtsuki <me@qjx.app>",
@@ -16,7 +16,7 @@
     "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "start": "npm run dev",
+    "start": "gatsby develop",
     "test": "npm run type-check && npm run lint",
     "type-check": "tsc"
   },
@@ -26,6 +26,8 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
+    "@mdx-js/mdx": "^1.5.7",
+    "@mdx-js/react": "^1.5.7",
     "babel-plugin-styled-components": "^1.10.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.10.0",
@@ -33,6 +35,7 @@
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^2.1.0",
     "gatsby-plugin-emotion": "^4.1.0",
+    "gatsby-plugin-mdx": "^1.0.83",
     "gatsby-plugin-react-helmet": "^3.1.23",
     "gatsby-plugin-sharp": "^2.2.1",
     "gatsby-plugin-typescript": "^2.1.0",
@@ -44,7 +47,6 @@
     "gatsby-remark-smartypants": "^2.1.0",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-json": "^2.2.0",
-    "gatsby-transformer-remark": "^2.5.0",
     "gatsby-transformer-sharp": "^2.2.0",
     "han-css": "^3.3.0",
     "katex": "^0.11.1",

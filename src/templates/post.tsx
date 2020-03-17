@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Page from '@/components/Page';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import 'katex/dist/katex.min.css';
 
@@ -19,8 +20,8 @@ interface PostTemplateProps {
         };
       };
     };
-    markdownRemark: {
-      html: string;
+    mdx: {
+      body: string;
       excerpt: string;
       frontmatter: {
         title: string;
@@ -35,11 +36,10 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
   <IndexLayout>
     <Page>
       <Container>
-        <article lang={data.markdownRemark.frontmatter.lang}>
-          <h1>{data.markdownRemark.frontmatter.title}</h1>
-          <p>{data.markdownRemark.frontmatter.date}</p>
-          {/* eslint-disable-next-line react/no-danger */}
-          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+        <article lang={data.mdx.frontmatter.lang}>
+          <h1>{data.mdx.frontmatter.title}</h1>
+          <p>{data.mdx.frontmatter.date}</p>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </article>
       </Container>
     </Page>
@@ -60,8 +60,8 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       excerpt
       frontmatter {
         title
