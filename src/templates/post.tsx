@@ -5,6 +5,7 @@ import Page from '@/components/Page';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 
 import 'katex/dist/katex.min.css';
 
@@ -16,7 +17,8 @@ interface PostTemplateProps {
         description: string;
         author: {
           name: string;
-          url: string;
+          twitter: string;
+          github: string;
         };
       };
     };
@@ -39,7 +41,9 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
         <article lang={data.mdx.frontmatter.lang}>
           <h1>{data.mdx.frontmatter.title}</h1>
           <p>{data.mdx.frontmatter.date}</p>
-          <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          <MDXProvider components={{}}>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </MDXProvider>
         </article>
       </Container>
     </Page>
@@ -56,7 +60,8 @@ export const query = graphql`
         description
         author {
           name
-          url
+          twitter
+          github
         }
       }
     }

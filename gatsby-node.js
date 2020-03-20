@@ -10,7 +10,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
-    case 'MarkdownRemark':
     case 'Mdx': {
       const { permalink, layout } = node.frontmatter;
       const { relativePath } = getNode(node.parent);

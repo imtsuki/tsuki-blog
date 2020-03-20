@@ -1,12 +1,11 @@
-# Tsuki blog
-
-This is a starter kit for [Gatsby.js](https://www.gatsbyjs.org/) websites written in TypeScript. It includes the bare essentials for you to get started (styling, Markdown parsing, minimal toolset).
+# tsuki's Blog
 
 ## 🗒️ Features
 
+- React with Gatsby
 - TypeScript
 - ESLint (with custom ESLint rules)
-- Markdown rendering with Remark
+- Markdown rendering with MDX
 - Basic component structure
 - Styling with [emotion](https://emotion.sh/)
 

@@ -9,7 +9,7 @@ import PostEntry from '@/components/PostEntry';
 interface IndexPageProps {
   data: {
     allMdx: {
-      edges: Array<{
+      edges: {
         node: {
           fields: { slug: string };
           frontmatter: {
@@ -17,7 +17,7 @@ interface IndexPageProps {
             title: string;
           };
         };
-      }>;
+      }[];
     };
   };
 }

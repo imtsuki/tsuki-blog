@@ -6,7 +6,8 @@ module.exports = {
     siteUrl: 'https://qjx.app',
     author: {
       name: 'imtsuki',
-      url: 'https://twitter.com/real_imtsuki',
+      twitter: 'https://twitter.com/real_imtsuki',
+      github: 'https://github.com/imtsuki',
       email: 'me@qjx.app'
     }
   },
