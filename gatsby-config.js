@@ -10,7 +10,9 @@ module.exports = {
       twitter: 'https://twitter.com/iimtsuki',
       github: 'https://github.com/imtsuki',
       email: 'me@qjx.app'
-    }
+    },
+    googleSiteVerificationCode: 'Sf3TQAKc2EfeBR3ltsbYlbX06bHJ4-QbsC_7Jko3zZ8',
+    baiduSiteVerificationCode: 'lkLxPcUTqE'
   },
   plugins: [
     {
@@ -59,6 +61,12 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants'
         ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-128956609-1'
       }
     },
     'gatsby-transformer-json',

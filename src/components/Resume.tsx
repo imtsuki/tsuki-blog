@@ -35,7 +35,7 @@ const Resume: React.FC<ResumeProps> = ({ path }) => {
     return () => {
       window.removeEventListener('resize', resetDimensions);
     };
-  });
+  }, []);
 
   return (
     <div ref={containerRef} style={{ maxWidth: '100%' }}>

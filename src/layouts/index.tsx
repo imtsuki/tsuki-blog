@@ -19,6 +19,8 @@ interface StaticQueryProps {
       author: {
         name: string;
       };
+      googleSiteVerificationCode: string;
+      baiduSiteVerificationCode: string;
     };
     buildTime: string;
   };
@@ -36,6 +38,8 @@ const IndexLayout: React.FC = ({ children }) => (
             author {
               name
             }
+            googleSiteVerificationCode
+            baiduSiteVerificationCode
           }
           buildTime(formatString: "YYYY")
         }
@@ -47,7 +51,9 @@ const IndexLayout: React.FC = ({ children }) => (
           title={data.site.siteMetadata.title}
           meta={[
             { name: 'description', content: data.site.siteMetadata.description },
-            { name: 'keywords', content: data.site.siteMetadata.keywords }
+            { name: 'keywords', content: data.site.siteMetadata.keywords },
+            { name: 'google-site-verification', content: data.site.siteMetadata.googleSiteVerificationCode },
+            { name: 'baidu-site-verification', content: data.site.siteMetadata.baiduSiteVerificationCode }
           ]}
         >
           {/* eslint-disable-next-line jsx-a11y/lang */}
