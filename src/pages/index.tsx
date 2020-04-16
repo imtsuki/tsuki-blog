@@ -5,13 +5,17 @@ import Page from '@/components/Page';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
 import PostEntry from '@/components/PostEntry';
+import R from 'ramda';
 
 interface IndexPageProps {
   data: {
     allMdx: {
       edges: {
         node: {
-          fields: { slug: string };
+          fields: {
+            layout: string;
+            slug: string;
+          };
           frontmatter: {
             date: string;
             title: string;
@@ -27,11 +31,13 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
     <Page>
       <Container>
         <ul>
-          {data.allMdx.edges.map(({ node }) => {
-            const { title, date } = node.frontmatter;
-            const { slug } = node.fields;
-            return <PostEntry key={slug} slug={slug} title={title} date={date} />;
-          })}
+          {data.allMdx.edges
+            .filter(({ node }) => node.fields.layout === 'post')
+            .map(({ node }) => {
+              const { title, date } = node.frontmatter;
+              const { slug } = node.fields;
+              return <PostEntry key={slug} slug={slug} title={title} date={date} />;
+            })}
         </ul>
       </Container>
     </Page>
@@ -46,6 +52,7 @@ export const pageQuery = graphql`
       edges {
         node {
           fields {
+            layout
             slug
           }
           frontmatter {

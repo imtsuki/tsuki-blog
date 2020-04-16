@@ -22,6 +22,8 @@ const FooterInner = styled(Container)`
 const Copyright = styled(Link)`
   color: ${colors.gray.calm};
 
+  font-size: 0.5rem;
+
   &:hover,
   &:focus {
     text-decoration: none;
@@ -38,7 +40,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ author, buildTime }) => (
   <StyledFooter>
     <FooterInner>
-      <Copyright to="/">
+      <Copyright to="/about">
         Copyright © {buildTime} {author.name}. Built with Gatsby.
       </Copyright>
     </FooterInner>

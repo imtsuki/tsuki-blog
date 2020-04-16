@@ -2,11 +2,12 @@ module.exports = {
   siteMetadata: {
     title: 'ツキの月',
     description: 'To be continued...',
-    keywords: 'gatsbyjs, gatsby, javascript, sample, something',
+    keywords: 'blog, gatsbyjs, system',
     siteUrl: 'https://qjx.app',
+    lang: 'zh-Hans',
     author: {
       name: 'imtsuki',
-      twitter: 'https://twitter.com/real_imtsuki',
+      twitter: 'https://twitter.com/iimtsuki',
       github: 'https://github.com/imtsuki',
       email: 'me@qjx.app'
     }
@@ -38,7 +39,8 @@ module.exports = {
             options: {
               maxWidth: 1140,
               quality: 90,
-              linkImagesToOriginal: false
+              linkImagesToOriginal: true,
+              withWebp: true
             }
           },
           {

@@ -11,13 +11,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'Mdx': {
-      const { permalink, layout } = node.frontmatter;
+      const { permalink, layout, lang } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
       let slug = permalink;
 
       if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`;
+        slug = `/${relativePath.replace('.mdx', '').replace('.md', '')}/`;
       }
 
       // Used to generate URL to view this content.
@@ -31,7 +31,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         node,
         name: 'layout',
-        value: layout || ''
+        value: layout || 'post'
+      });
+
+      // Used to determine a page layout.
+      createNodeField({
+        node,
+        name: 'lang',
+        value: lang || 'zh-Hans'
       });
     }
   }

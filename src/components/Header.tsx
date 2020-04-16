@@ -9,20 +9,31 @@ import Container from '@/components/Container';
 const StyledHeader = styled.header`
   height: ${heights.header}px;
   padding: 0 ${dimensions.containerPadding}rem;
-  background-color: ${colors.brand};
+
   color: ${transparentize(0.5, colors.white)};
 `;
 
 const HeaderInner = styled(Container)`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 `;
 
 const HomepageLink = styled(Link)`
-  color: ${colors.white};
+  color: ${colors.black};
   font-size: 1.5rem;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+`;
+
+const AboutLink = styled(Link)`
+  color: ${colors.black};
+  font-size: 1rem;
 
   &:hover,
   &:focus {
@@ -38,6 +49,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
       <HomepageLink to="/">{title}</HomepageLink>
+      <AboutLink to="/about">Resume</AboutLink>
     </HeaderInner>
   </StyledHeader>
 );

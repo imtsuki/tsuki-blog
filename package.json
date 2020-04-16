@@ -13,10 +13,10 @@
     "build": "gatsby build",
     "clean": "rimraf public && rimraf .cache",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "dev": "gatsby develop",
+    "dev": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "start": "gatsby develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "test": "npm run type-check && npm run lint",
     "type-check": "tsc"
   },
@@ -29,6 +29,7 @@
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "@types/ramda": "^0.26.44",
+    "@types/react-pdf": "^4.0.3",
     "babel-plugin-styled-components": "^1.10.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.10.0",
@@ -59,6 +60,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "6.0.0-beta.2",
+    "react-pdf": "^4.1.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {

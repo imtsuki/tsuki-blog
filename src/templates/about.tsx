@@ -7,9 +7,7 @@ import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import 'katex/dist/katex.min.css';
-
-interface PostTemplateProps {
+interface AboutTemplateProps {
   data: {
     site: {
       siteMetadata: {
@@ -30,19 +28,18 @@ interface PostTemplateProps {
       };
       frontmatter: {
         title: string;
-        date: string;
+        lang: string;
       };
     };
   };
 }
 
-const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
+const AboutTemplate: React.FC<AboutTemplateProps> = ({ data }) => (
   <IndexLayout>
     <Page>
       <Container>
         <article lang={data.mdx.fields.lang}>
           <h1>{data.mdx.frontmatter.title}</h1>
-          <p>{data.mdx.frontmatter.date}</p>
           <MDXProvider components={{ Link }}>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>
@@ -52,10 +49,10 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
   </IndexLayout>
 );
 
-export default PostTemplate;
+export default AboutTemplate;
 
 export const query = graphql`
-  query PostTemplateQuery($slug: String!) {
+  query AboutTemplateQuery($slug: String!) {
     site {
       siteMetadata {
         title
@@ -75,7 +72,6 @@ export const query = graphql`
       }
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD")
       }
     }
   }
