@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'Mdx': {
-      const { permalink, layout, lang } = node.frontmatter;
+      const { permalink, layout, lang, date } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
       let slug = permalink;
@@ -19,6 +19,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       if (!slug) {
         slug = `/${relativePath.replace('.mdx', '').replace('.md', '')}/`;
       }
+
+      const d = new Date(date);
+
+      const legacySlug = `/${d.getFullYear()}/${`0${d.getMonth() + 1}`.slice(-2)}/${`0${d.getDate()}`.slice(-2)}/${slug.replace(
+        '/posts/',
+        ''
+      )}`;
 
       // Used to generate URL to view this content.
       createNodeField({
@@ -40,12 +47,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'lang',
         value: lang || 'zh-Hans'
       });
+
+      createNodeField({
+        node,
+        name: 'legacySlug',
+        value: legacySlug || '/void/'
+      });
     }
   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const allMdx = await graphql(`
     {
@@ -55,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               layout
               slug
+              legacySlug
             }
           }
         }
@@ -67,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   allMdx.data.allMdx.edges.forEach(({ node }) => {
-    const { slug, layout } = node.fields;
+    const { slug, layout, legacySlug } = node.fields;
 
     createPage({
       path: slug,
@@ -86,5 +100,6 @@ exports.createPages = async ({ graphql, actions }) => {
         slug
       }
     });
+    createRedirect({ fromPath: legacySlug.slice(0, -1), toPath: slug.slice(0, -1), isPermanent: true });
   });
 };
