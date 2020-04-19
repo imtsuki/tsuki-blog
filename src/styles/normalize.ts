@@ -103,13 +103,10 @@ export default `
 
     border-left: .2rem solid ${colors.ui.bright};
     color: ${colors.gray.calm};
-    line-height: 0.8;
 
     p {
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     padding-left: 1rem;
