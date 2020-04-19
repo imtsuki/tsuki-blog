@@ -119,14 +119,3 @@ $RECYCLE.BIN/
 # =========================
 
 .vscode/
-
-# =========================
-# dev only
-# =========================
-
-content/posts/*.md
-content/posts/*.mdx
-content/assets/*
-content/images/*
-content/*.md
-content/*.mdx
