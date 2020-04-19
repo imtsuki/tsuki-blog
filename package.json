@@ -18,7 +18,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "start": "gatsby develop -H 0.0.0.0",
     "test": "npm run type-check && npm run lint",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "postinstall": "patch-package"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -42,8 +43,10 @@
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-nprogress": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.1.23",
+    "gatsby-plugin-sass": "^2.2.3",
     "gatsby-plugin-sharp": "^2.2.1",
     "gatsby-plugin-typescript": "^2.1.0",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-copy-linked-files": "^2.1.0",
     "gatsby-remark-images": "^3.1.0",
     "gatsby-remark-katex": "^3.1.25",
@@ -56,6 +59,7 @@
     "han-css": "^3.3.0",
     "katex": "^0.11.1",
     "modern-normalize": "^0.5.0",
+    "node-sass": "^4.13.1",
     "polished": "^3.4.1",
     "prism-themes": "^1.1.0",
     "prismjs": "^1.16.0",
@@ -83,6 +87,8 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.1",
     "gh-pages": "^2.0.1",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3"
   }

@@ -15,6 +15,7 @@ export default `
   html {
     font-size: ${dimensions.fontSize.regular}px !important;
     line-height: ${dimensions.lineHeight.regular} !important;
+    font-variant-numeric: lining-nums;
   }
 
   body {
@@ -100,15 +101,18 @@ export default `
   blockquote {
     margin: 0 0;
 
-    border-left: .2rem solid ${colors.ui.light};
+    border-left: .2rem solid ${colors.ui.bright};
     color: ${colors.gray.calm};
+    line-height: 0.8;
 
     p {
+
       &:last-child {
         margin-bottom: 0;
       }
     }
-    padding-left: 1.25rem;
+
+    padding-left: 1rem;
     @media (min-width: ${getEmSize(breakpoints.temp)}em) {
       padding-right: 5rem;
 

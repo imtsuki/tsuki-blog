@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Page from '@/components/Page';
+import Time from '@/components/Time';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -42,7 +43,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
       <Container>
         <article lang={data.mdx.fields.lang}>
           <h1>{data.mdx.frontmatter.title}</h1>
-          <p>{data.mdx.frontmatter.date}</p>
+          <Time date="">{data.mdx.frontmatter.date}</Time>
           <MDXProvider components={{ Link }}>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>

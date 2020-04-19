@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import styled from '@emotion/styled';
+import Time from '@/components/Time';
 
 interface PostEntryProps {
   slug: string;
@@ -8,16 +8,9 @@ interface PostEntryProps {
   title: string;
 }
 
-const StyledTime = styled.time`
-  color: #808080;
-  min-width: 200px;
-  margin-right: 16px;
-  font-size: 14px;
-`;
-
 const PostEntry: React.FC<PostEntryProps> = ({ slug, date, title }) => (
   <div>
-    <StyledTime>{date}</StyledTime>
+    <Time date={date}>{date}</Time>
     <Link to={slug}>{title}</Link>
   </div>
 );
