@@ -29,7 +29,7 @@ export default `
   }
 
   a {
-    color: ${colors.brand};
+    color: ${colors.black};
     text-decoration: none;
 
     &:hover,
@@ -107,8 +107,8 @@ export default `
   blockquote {
     margin: 0 0;
 
-    border-left: .2rem solid ${colors.ui.bright};
-    color: ${colors.gray.calm};
+    border-left: .2rem solid ${colors.brand};
+    color: ${colors.brand};
 
     p {
       margin-top: 0;
