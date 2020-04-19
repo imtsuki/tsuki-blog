@@ -65,6 +65,7 @@
     "prismjs": "^1.16.0",
     "ramda": "^0.27.0",
     "react": "^16.8.6",
+    "react-content-loader": "^5.0.4",
     "react-dom": "^16.8.6",
     "react-helmet": "6.0.0-beta.2",
     "react-pdf": "^4.1.0",

@@ -1,6 +1,8 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import styled from '@emotion/styled';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
+import ContentLoader from 'react-content-loader';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -16,6 +18,15 @@ function removeTextLayerOffset() {
     }
   });
 }
+
+const ResumeContainer = styled.div`
+  max-width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
+const StyledLoader = styled(ContentLoader)`
+  padding: 1rem;
+`;
 
 interface ResumeProps {
   path: string;
@@ -38,11 +49,11 @@ const Resume: React.FC<ResumeProps> = ({ path }) => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ maxWidth: '100%' }}>
-      <Document file={path} renderMode="canvas">
-        <Page pageNumber={1} width={width} renderMode="canvas" onLoadSuccess={removeTextLayerOffset} />
+    <ResumeContainer ref={containerRef}>
+      <Document file={path} renderMode="canvas" loading={<StyledLoader />}>
+        <Page pageNumber={1} width={width} renderMode="canvas" loading={<StyledLoader />} onLoadSuccess={removeTextLayerOffset} />
       </Document>
-    </div>
+    </ResumeContainer>
   );
 };
 

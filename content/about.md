@@ -5,7 +5,6 @@ lang: en
 ---
 
 import Resume from "@/components/Resume";
-import ResumePDF from "./assets/resume.pdf";
 
 A developer. A photographer. A creator. An imaginer.
 
@@ -15,4 +14,4 @@ Find me on [GitHub](https://github.com/imtsuki) | [Twitter](https://twitter.com/
 
 In case you want to check out my résumé, here's the [PDF](https://github.com/imtsuki/resume/blob/master/resume.pdf):
 
-<Resume path={ResumePDF} />
+<Resume path="https://raw.githubusercontent.com/imtsuki/resume/master/resume.pdf" />
