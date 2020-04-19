@@ -10,7 +10,7 @@ interface PostEntryProps {
 
 const PostEntry: React.FC<PostEntryProps> = ({ slug, date, title }) => (
   <div>
-    <Time date={date}>{date}</Time>
+    <Time>{date}</Time>
     <Link to={slug}>{title}</Link>
   </div>
 );

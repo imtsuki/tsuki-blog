@@ -1,10 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-interface TimeProps {
-  date: string;
-}
-
 const StyledTime = styled.time`
   color: #808080;
   min-width: 200px;
@@ -13,6 +9,6 @@ const StyledTime = styled.time`
   font-variant-numeric: tabular-nums lining-nums;
 `;
 
-const Time: React.FC<TimeProps> = ({ children, date }) => <StyledTime>{children}</StyledTime>;
+const Time: React.FC = ({ children }) => <StyledTime>{children}</StyledTime>;
 
 export default Time;

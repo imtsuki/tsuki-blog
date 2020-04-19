@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 
 import Page from '@/components/Page';
 import Time from '@/components/Time';
+import Tag from '@/components/Tag';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -32,6 +33,7 @@ interface PostTemplateProps {
       frontmatter: {
         title: string;
         date: string;
+        tags: string[];
       };
     };
   };
@@ -43,7 +45,10 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
       <Container>
         <article lang={data.mdx.fields.lang}>
           <h1>{data.mdx.frontmatter.title}</h1>
-          <Time date="">{data.mdx.frontmatter.date}</Time>
+          <Time>{data.mdx.frontmatter.date}</Time>
+          {data.mdx.frontmatter.tags.map(tag => (
+            <Tag>{tag}</Tag>
+          ))}
           <MDXProvider components={{ Link }}>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>
@@ -77,6 +82,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
+        tags
       }
     }
   }
