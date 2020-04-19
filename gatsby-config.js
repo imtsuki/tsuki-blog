@@ -16,10 +16,11 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        trackingId: 'UA-128956609-1',
-        head: true
+        trackingId: `UA-128956609-1`,
+        head: false,
+        anonymize: true
       }
     },
     {
@@ -83,7 +84,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
+        siteUrl: 'https://qjx.app'
       }
     },
     'gatsby-plugin-emotion',
