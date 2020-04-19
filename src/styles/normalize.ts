@@ -1,4 +1,4 @@
-import { dimensions, fonts, colors, breakpoints } from '@/styles/variables';
+import { dimensions, colors, breakpoints } from '@/styles/variables';
 import { getEmSize } from '@/styles/mixins';
 
 export default `
@@ -34,6 +34,12 @@ export default `
 
     &:hover,
     &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  article {
+    a {
       text-decoration: underline;
     }
   }
@@ -112,7 +118,6 @@ export default `
     padding-left: 1rem;
     @media (min-width: ${getEmSize(breakpoints.temp)}em) {
       padding-right: 5rem;
-
     }
   }
 `;

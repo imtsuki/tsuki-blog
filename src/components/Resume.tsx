@@ -39,8 +39,8 @@ const Resume: React.FC<ResumeProps> = ({ path }) => {
 
   return (
     <div ref={containerRef} style={{ maxWidth: '100%' }}>
-      <Document file={path} renderMode="svg">
-        <Page pageNumber={1} width={width} renderMode="svg" onLoadSuccess={removeTextLayerOffset} />
+      <Document file={path} renderMode="canvas">
+        <Page pageNumber={1} width={width} renderMode="canvas" onLoadSuccess={removeTextLayerOffset} />
       </Document>
     </div>
   );

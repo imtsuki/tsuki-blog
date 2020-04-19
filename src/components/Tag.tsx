@@ -5,8 +5,9 @@ const StyledSpan = styled.span`
   color: #808080;
   min-width: 200px;
   margin-right: 0.5em;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-variant-numeric: tabular-nums lining-nums;
+  text-transform: uppercase;
 
   &:before {
     content: '#';

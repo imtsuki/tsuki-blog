@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
       <HomepageLink to="/">{title}</HomepageLink>
-      <AboutLink to="/about">Resume</AboutLink>
+      <AboutLink to="/about">About</AboutLink>
     </HeaderInner>
   </StyledHeader>
 );

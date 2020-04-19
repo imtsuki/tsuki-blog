@@ -22,7 +22,7 @@ const FooterInner = styled(Container)`
 const Copyright = styled(Link)`
   color: ${colors.gray.calm};
 
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 
   &:hover,
   &:focus {
