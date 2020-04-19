@@ -9,8 +9,6 @@ import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import 'katex/dist/katex.min.css';
-
 interface PostTemplateProps {
   data: {
     site: {
