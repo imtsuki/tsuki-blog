@@ -16,6 +16,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-128956609-1',
+        head: true
+      }
+    },
+    {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
@@ -70,12 +77,6 @@ module.exports = {
         color: `dimgray`,
         // Disable the loading spinner.
         showSpinner: false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-128956609-1'
       }
     },
     'gatsby-transformer-json',
