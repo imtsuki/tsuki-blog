@@ -1,4 +1,4 @@
-# tsuki's Blog
+# tsuki's blog
 
 ## 🗒️ Features
 
