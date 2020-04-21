@@ -1,5 +1,5 @@
 ---
-title: TensorFlow 笔记（一）
+title: TensorFlow 笔记
 date: 2018-04-21
 description: 一些基本概念。
 tags:
@@ -14,7 +14,7 @@ import tensorflow as tf
 # 定义 Graph
 x = 1
 y = 2
-add_op = tf.add(x, y, name='add_op') #定义 Graph 结点 加法
+add_op = tf.add(x, y, name='add_op') # 定义 Graph 结点 加法
 mul_op = tf.multiply(x, y, name='mul_op') # 乘法
 pow_op = tf.pow(add_op, mul_op, name='pow_op') # 幂
 """
