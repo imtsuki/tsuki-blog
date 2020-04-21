@@ -120,4 +120,8 @@ export default `
       padding-right: 5rem;
     }
   }
+
+  pre, code, kbd {
+    font-variant-ligatures: none;
+  }
 `;
