@@ -27,21 +27,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         ''
       )}`;
 
-      // Used to generate URL to view this content.
       createNodeField({
         node,
         name: 'slug',
         value: slug || ''
       });
 
-      // Used to determine a page layout.
       createNodeField({
         node,
         name: 'layout',
         value: layout || 'post'
       });
 
-      // Used to determine a page layout.
       createNodeField({
         node,
         name: 'lang',

@@ -7,6 +7,23 @@ import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+const AboutTemplate: React.FC<AboutTemplateProps> = ({ data }) => (
+  <IndexLayout>
+    <Page>
+      <Container>
+        <article lang={data.mdx.fields.lang}>
+          <h1>{data.mdx.frontmatter.title}</h1>
+          <MDXProvider components={{ Link }}>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </MDXProvider>
+        </article>
+      </Container>
+    </Page>
+  </IndexLayout>
+);
+
+export default AboutTemplate;
+
 interface AboutTemplateProps {
   data: {
     site: {
@@ -33,23 +50,6 @@ interface AboutTemplateProps {
     };
   };
 }
-
-const AboutTemplate: React.FC<AboutTemplateProps> = ({ data }) => (
-  <IndexLayout>
-    <Page>
-      <Container>
-        <article lang={data.mdx.fields.lang}>
-          <h1>{data.mdx.frontmatter.title}</h1>
-          <MDXProvider components={{ Link }}>
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
-          </MDXProvider>
-        </article>
-      </Container>
-    </Page>
-  </IndexLayout>
-);
-
-export default AboutTemplate;
 
 export const query = graphql`
   query AboutTemplateQuery($slug: String!) {

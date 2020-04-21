@@ -16,9 +16,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-gtag`,
+      resolve: 'gatsby-plugin-gtag',
       options: {
-        trackingId: `UA-128956609-1`,
+        trackingId: 'UA-128956609-1',
         head: false,
         anonymize: true
       }
@@ -42,7 +42,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [`.mdx`, `.md`],
+        extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -72,10 +72,10 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
+      resolve: 'gatsby-plugin-nprogress',
       options: {
         // Setting a color is optional.
-        color: `dimgray`,
+        color: 'dimgray',
         // Disable the loading spinner.
         showSpinner: false
       }
@@ -88,7 +88,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-emotion',
-    `gatsby-plugin-sass`,
+    'gatsby-plugin-sass',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

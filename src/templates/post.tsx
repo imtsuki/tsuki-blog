@@ -9,6 +9,27 @@ import IndexLayout from '@/layouts';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
+  <IndexLayout>
+    <Page>
+      <Container>
+        <article lang={data.mdx.fields.lang}>
+          <h1>{data.mdx.frontmatter.title}</h1>
+          <Time>{data.mdx.frontmatter.date}</Time>
+          {data.mdx.frontmatter.tags.map(tag => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+          <MDXProvider components={{ Link }}>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </MDXProvider>
+        </article>
+      </Container>
+    </Page>
+  </IndexLayout>
+);
+
+export default PostTemplate;
+
 interface PostTemplateProps {
   data: {
     site: {
@@ -36,27 +57,6 @@ interface PostTemplateProps {
     };
   };
 }
-
-const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
-  <IndexLayout>
-    <Page>
-      <Container>
-        <article lang={data.mdx.fields.lang}>
-          <h1>{data.mdx.frontmatter.title}</h1>
-          <Time>{data.mdx.frontmatter.date}</Time>
-          {data.mdx.frontmatter.tags.map(tag => (
-            <Tag>{tag}</Tag>
-          ))}
-          <MDXProvider components={{ Link }}>
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
-          </MDXProvider>
-        </article>
-      </Container>
-    </Page>
-  </IndexLayout>
-);
-
-export default PostTemplate;
 
 export const query = graphql`
   query PostTemplateQuery($slug: String!) {

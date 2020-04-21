@@ -6,25 +6,6 @@ import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
 import PostEntry from '@/components/PostEntry';
 
-interface IndexPageProps {
-  data: {
-    allMdx: {
-      edges: {
-        node: {
-          fields: {
-            layout: string;
-            slug: string;
-          };
-          frontmatter: {
-            date: string;
-            title: string;
-          };
-        };
-      }[];
-    };
-  };
-}
-
 const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
   <IndexLayout>
     <Page>
@@ -44,6 +25,25 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
 );
 
 export default IndexPage;
+
+interface IndexPageProps {
+  data: {
+    allMdx: {
+      edges: {
+        node: {
+          fields: {
+            layout: string;
+            slug: string;
+          };
+          frontmatter: {
+            date: string;
+            title: string;
+          };
+        };
+      }[];
+    };
+  };
+}
 
 export const pageQuery = graphql`
   query {
