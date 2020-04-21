@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Page from '@/components/Page';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
 
 const AboutTemplate: React.FC<AboutTemplateProps> = ({ data }) => (
   <IndexLayout>
+    <Helmet title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`} />
     <Page>
       <Container>
         <article lang={data.mdx.fields.lang}>

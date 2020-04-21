@@ -1,22 +1,24 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Page from '@/components/Page';
 import Time from '@/components/Time';
 import Tag from '@/components/Tag';
 import Container from '@/components/Container';
 import IndexLayout from '@/layouts';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
 
 const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
   <IndexLayout>
+    <Helmet title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`} />
     <Page>
       <Container>
         <article lang={data.mdx.fields.lang}>
           <h1>{data.mdx.frontmatter.title}</h1>
           <Time>{data.mdx.frontmatter.date}</Time>
-          {data.mdx.frontmatter.tags.map(tag => (
+          {data.mdx.frontmatter.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
           <MDXProvider components={{ Link }}>

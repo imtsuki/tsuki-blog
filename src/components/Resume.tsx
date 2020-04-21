@@ -9,7 +9,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 // https://github.com/wojtekmaj/react-pdf/issues/332#issuecomment-458121654
 function removeTextLayerOffset() {
   const textLayers = document.querySelectorAll('.react-pdf__Page__textContent');
-  textLayers.forEach(layer => {
+  textLayers.forEach((layer) => {
     if (layer instanceof HTMLElement) {
       const { style } = layer;
       style.top = '0';
@@ -50,7 +50,12 @@ const Resume: React.FC<ResumeProps> = ({ path }) => {
 
   return (
     <ResumeContainer ref={containerRef}>
-      <Document file={path} renderMode="canvas" loading={<StyledLoader />}>
+      <Document
+        file={path}
+        renderMode="canvas"
+        loading={<StyledLoader />}
+        error={<div style={{ padding: '1em', textAlign: 'center' }}>Failed to load PDF file.</div>}
+      >
         <Page pageNumber={1} width={width} renderMode="canvas" loading={<StyledLoader />} onLoadSuccess={removeTextLayerOffset} />
       </Document>
     </ResumeContainer>
