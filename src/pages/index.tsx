@@ -10,7 +10,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
   <IndexLayout>
     <Page>
       <Container>
-        <ul>
+        <ul style={{ listStyleType: 'none' }}>
           {data.allMdx.edges
             .filter(({ node }) => node.fields.layout === 'post')
             .map(({ node }) => {

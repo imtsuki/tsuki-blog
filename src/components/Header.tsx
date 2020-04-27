@@ -48,7 +48,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
-      <HomepageLink to="/">{title}</HomepageLink>
+      <HomepageLink to="/" lang="ja">
+        {title}
+      </HomepageLink>
       <AboutLink to="/about">About</AboutLink>
     </HeaderInner>
   </StyledHeader>

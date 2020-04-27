@@ -124,4 +124,14 @@ export default `
   pre, code, kbd {
     font-variant-ligatures: none;
   }
+
+  .katex { font-size: 1em !important; }
+
+  .footnotes {
+    font-size: 0.8rem;
+  }
+
+  .footnote-backref {
+    text-decoration: none;
+  }
 `;
