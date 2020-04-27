@@ -87,6 +87,18 @@ module.exports = {
         siteUrl: 'https://qjx.app'
       }
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `ツキの月`,
+        short_name: `ツキの月`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#000000`,
+        display: `browser`,
+        icon: 'src/images/icon.png'
+      }
+    },
     'gatsby-plugin-emotion',
     'gatsby-plugin-sass',
     'gatsby-plugin-typescript',
