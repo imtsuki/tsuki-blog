@@ -88,17 +88,19 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `ツキの月`,
-        short_name: `ツキの月`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#000000`,
-        display: `browser`,
+        name: 'ツキの月',
+        short_name: 'ツキの月',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        display: 'minimal-ui',
         icon: 'src/images/icon.png'
       }
     },
+    'gatsby-plugin-offline',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-sass',
     'gatsby-plugin-typescript',
