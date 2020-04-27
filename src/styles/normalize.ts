@@ -125,7 +125,19 @@ export default `
     font-variant-ligatures: none;
   }
 
-  .katex { font-size: 1em !important; }
+  .katex {
+    font-size: 1em !important;
+  }
+
+  .katex-display > .katex {
+    max-width: 100%;
+  }
+
+  .katex-display > .katex > .katex-html {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
   .footnotes {
     font-size: 0.8rem;
