@@ -143,7 +143,7 @@ export default `
     font-size: 0.8rem;
   }
 
-  .footnote-backref {
+  .footnote-backref, .footnote-ref {
     text-decoration: none;
   }
 `;
