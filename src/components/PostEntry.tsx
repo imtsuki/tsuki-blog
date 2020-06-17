@@ -9,11 +9,11 @@ interface PostEntryProps {
 }
 
 const PostEntry: React.FC<PostEntryProps> = ({ slug, date, title }) => (
-  <li>
-    <span style={{ float: 'left' }}>
+  <li style={{ display: 'flex' }}>
+    <span>
       <Time>{date}</Time>
     </span>
-    <span style={{ display: 'table-cell' }}>
+    <span>
       <Link to={slug}>{title}</Link>
     </span>
   </li>

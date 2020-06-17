@@ -1,5 +1,5 @@
 ---
-title: PageRank Algorithm
+title: PageRank
 date: 2020-04-27
 tags:
   - PageRank
