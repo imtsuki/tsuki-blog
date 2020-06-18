@@ -10,7 +10,7 @@ interface PostEntryProps {
 
 const PostEntry: React.FC<PostEntryProps> = ({ slug, date, title }) => (
   <li style={{ display: 'flex' }}>
-    <span>
+    <span style={{ flexGrow: 0, flexShrink: 0 }}>
       <Time>{date}</Time>
     </span>
     <span>
