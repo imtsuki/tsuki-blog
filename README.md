@@ -1,14 +1,3 @@
-# tsuki's blog
-
-## 🗒️ Features
-
-- React with Gatsby
-- TypeScript
-- ESLint (with custom ESLint rules)
-- Markdown rendering with MDX
-- Basic component structure
-- Styling with [emotion](https://emotion.sh/)
-
-## ❤️ Credits
+# 🚧 Source code of my blog
 
 Built with [Gatsby](https://www.gatsbyjs.org/) - the blazing-fast static site generator for [React](https://facebook.github.io/react/).
