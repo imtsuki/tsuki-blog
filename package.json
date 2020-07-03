@@ -70,6 +70,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "6.0.0",
     "react-pdf": "^4.1.0",
+    "react-rough-notation": "^0.1.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {

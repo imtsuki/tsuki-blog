@@ -6,18 +6,20 @@ tags:
   - Google
 ---
 
+import Mark, { Highlight, Box, Circle, Underline } from "@/components/Mark";
+
 ## Rationale
 
-PageRank 算法基于以下两个假设：
+PageRank 算法基于以下<Box>两个假设</Box>：
 
-1. **数量假设：**某页面接受到的入链数量越多，则该页面越重要；
-2. **质量假设：**某页面接受到的入链质量越高，则该页面越重要。
+1. **数量假设：**某页面接受到的<Underline>入链数量越多</Underline>，则该页面越重要；
+2. **质量假设：**某页面接受到的<Underline>入链质量越高</Underline>，则该页面越重要。
 
 假设 2 事实上为每个页面都赋予了一个权重。PageRank 算法基于上述假设，利用入链的数量与质量，来估算该页面的重要性。
 
 ## PageRank Algorithm
 
-PageRank 算法可概括为：如果某页面入链等级之和越高，则该页面的等级也越高。
+PageRank 算法可概括为：<Highlight>如果某页面入链等级之和越高，则该页面的等级也越高</Highlight>。
 
 首先，我们从一个简化版的 PageRank 算法出发。令 $p$ 为一页面，$F_p$ 为 $p$ 链出页面的集合，$B_p$ 为 $p$ 入链页面的集合。令 $N_p = |F_p|$ 为页面 $p$ 出链的数目。简化版的 PageRank 值 $R$ 定义如下：
 
@@ -27,7 +29,7 @@ $$
 
 其中，$c$ 为正则化常数，使得整体值收敛。该公式形式化了我们之前对 PageRank 算法的概括：页面 $p$ 的 PageRank 值为其入链贡献之和。这里注意到，每个入链 $q$ 的 $R$ 值根据其链出总数 $N_q$ 平分。也就是说，$q$ 会把其自身的 $R$ 值平均分配给其所有的出链。
 
-这个公式事实上是递归迭代的。不过在完整的 PageRank 算法下，对于任意的初值，以该公式经过迭代计算，最终总能收敛到一组稳定值。实践中，常取初值 $R_0(p_i) = 1 / n$。
+这个公式事实上是递归迭代的。不过在完整的 PageRank 算法下，<Highlight>对于任意的初值，以该公式经过迭代计算，最终总能收敛到一组稳定值。</Highlight>实践中，常取初值 $R_0(p_i) = 1 / n$。
 
 该公式也可以采用矩阵形式表述。设 $A$ 为一方阵，其行列对应所有页面。若有从 $p$ 指向 $q$ 的一条链接，则令 $A_{p, q} =  {1}/{N_p}$；否则 $A_{p, q} = 0$。这样，上述定义可表示为
 
@@ -50,11 +52,11 @@ $$
 
 这样，PageRank 向量 $\mathbf{R}$ 事实上即为矩阵 $A$ 的一个特征向量。
 
-该简化版本的 PageRank 事实上有一些缺陷：如果一组网页相互成环且没有出链，且有一些其他页面指向这组页面，那么在迭代计算时，这个局部会不断积累 $R$ 值，导致整体无法收敛。这被称作 rank sink。
+该简化版本的 PageRank 事实上有一些缺陷：如果一组网页相互成环且没有出链，且有一些其他页面指向这组页面，那么在迭代计算时，这个局部会不断积累 $R$ 值，导致整体无法收敛。这被称作 <Box>rank sink</Box>。
 
 ### Random Surfer Model
 
-为了解决 rank sink 的问题，PageRank 引入了阻尼系数 (decay factor) 的概念[^Haveliwala(1999)]。阻尼系数基于这样一个假设：在用户随机地点击页面链接进行浏览的过程中，如果用户进入了一个 rank sink，他并不会在这组网页中无限循环，而是很有可能停止点击，随机开启另一个新的页面重新开始浏览。这样，经过修改的完整 PageRank 算法 $R'$ 定义如下：
+为了解决 rank sink 的问题，PageRank 引入了<Box>阻尼系数 (decay factor)</Box> 的概念[^Haveliwala(1999)]。阻尼系数基于这样一个假设：在用户随机地点击页面链接进行浏览的过程中，如果用户进入了一个 rank sink，他并不会在这组网页中无限循环，而是很有可能停止点击，随机开启另一个新的页面重新开始浏览。这样，经过修改的完整 PageRank 算法 $R'$ 定义如下：
 
 [^Haveliwala(1999)]: Taher Haveliwala. Efficient computation of pagerank. Technical report, Stanford, 1999.
 
@@ -62,7 +64,7 @@ $$
 R'_{t + 1}(p) = \frac{1 - d}{n} + d\sum_{q \in B_p}\frac{R'_{t}(q)}{N_q}, \text{where } d \in (0, 1)
 $$
 
-这里，$d$ 为阻尼系数。在论文中，它被设置为 $0.85$，代表用户继续点击的概率[^Page.et.al.(1999)]。
+这里，$d$ 为阻尼系数。在论文中，它被设置为<Circle> $0.85$</Circle>，代表用户继续点击的概率[^Page.et.al.(1999)]。
 
 [^Page.et.al.(1999)]: Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The pagerank citation ranking: Bringing order to the web. Technical report, Stanford InfoLab, 1999.
 
@@ -76,7 +78,7 @@ $$
 
 ### Rank Leak
 
-Page Rank 的另一个问题是所谓悬空链接 (dangling links)，指没有出链的独立网页。解决方法很简单：将这些节点先从图中去除，待计算完成后在加入进去。这些节点不会对整体的结果造成太大的影响。
+Page Rank 的另一个问题是所谓<Box>悬空链接 (dangling links)</Box>，指没有出链的独立网页。解决方法很简单：将这些节点先从图中去除，待计算完成后在加入进去。这些节点不会对整体的结果造成太大的影响。
 
 ## Properties of PageRank Algorithm
 
