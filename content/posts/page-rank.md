@@ -6,7 +6,7 @@ tags:
   - Google
 ---
 
-import Mark, { Highlight, Box, Circle, Underline } from "@/components/Mark";
+import Annotation, { Highlight, Box, Circle, Underline } from "@/components/Annotation";
 
 ## Rationale
 
