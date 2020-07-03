@@ -3,11 +3,16 @@ import * as React from 'react';
 import { RoughNotation, RoughNotationProps } from 'react-rough-notation';
 
 const Mark: React.FC<RoughNotationProps> = ({ children, type, color }) => (
-  <RoughNotation show type={type} color={color} animationDelay={500} strokeWidth={2} multiline>
-    {children}
-  </RoughNotation>
+  <>
+    {typeof window !== 'undefined' ? (
+      <RoughNotation show type={type} color={color} animationDelay={500} strokeWidth={2} multiline>
+        {children}
+      </RoughNotation>
+    ) : (
+      <></>
+    )}
+  </>
 );
-
 export const Highlight: React.FC<RoughNotationProps> = ({ children }) => (
   <Mark type="highlight" color="yellow">
     {children}
