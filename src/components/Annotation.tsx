@@ -16,19 +16,19 @@ const Annotation: React.FC<RoughNotationProps> = ({ children, type, color }) => 
 };
 
 export const Highlight: React.FC<RoughNotationProps> = ({ children }) => (
-  <Annotation type="highlight" color="yellow">
+  <Annotation type="highlight" color="gold">
     {children}
   </Annotation>
 );
 
 export const Underline: React.FC<RoughNotationProps> = ({ children }) => (
-  <Annotation type="underline" color="blue">
+  <Annotation type="underline" color="dodgerblue">
     {children}
   </Annotation>
 );
 
 export const Box: React.FC<RoughNotationProps> = ({ children }) => (
-  <Annotation type="box" color="crimson">
+  <Annotation type="box" color="green">
     {children}
   </Annotation>
 );

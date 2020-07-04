@@ -64,7 +64,7 @@ $$
 R'_{t + 1}(p) = \frac{1 - d}{n} + d\sum_{q \in B_p}\frac{R'_{t}(q)}{N_q}, \text{where } d \in (0, 1)
 $$
 
-这里，$d$ 为阻尼系数。在论文中，它被设置为<Circle> $0.85$</Circle>，代表用户继续点击的概率[^Page.et.al.(1999)]。
+这里，$d$ 为阻尼系数。在论文中，它被设置为 <Circle>$0.85$</Circle>，代表用户继续点击的概率[^Page.et.al.(1999)]。
 
 [^Page.et.al.(1999)]: Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The pagerank citation ranking: Bringing order to the web. Technical report, Stanford InfoLab, 1999.
 
