@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 
 import { heights, dimensions, colors } from '@/styles/variables';
 import Container from '@/components/Container';
+import titleSvg from '@/images/title.svg';
 
 const StyledHeader = styled.header`
   height: ${heights.header}px;
@@ -22,13 +23,7 @@ const HeaderInner = styled(Container)`
 `;
 
 const HomepageLink = styled(Link)`
-  color: ${colors.black};
-  font-size: 1.5rem;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+  font-size: 0;
 `;
 
 const AboutLink = styled(Link)`
@@ -49,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
       <HomepageLink to="/" lang="ja">
-        {title}
+        <img src={titleSvg} alt={title} />
       </HomepageLink>
       <AboutLink to="/about">About</AboutLink>
     </HeaderInner>
