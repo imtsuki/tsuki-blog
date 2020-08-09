@@ -12,7 +12,10 @@ import IndexLayout from '@/layouts';
 
 const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => (
   <IndexLayout>
-    <Helmet title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`} />
+    <Helmet
+      title={`${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}`}
+      meta={[{ name: 'twitter:title', content: `${data.mdx.frontmatter.title} | ${data.site.siteMetadata.title}` }]}
+    />
     <Page>
       <Container>
         <article lang={data.mdx.fields.lang}>
