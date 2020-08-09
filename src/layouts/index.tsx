@@ -52,7 +52,11 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'description', content: data.site.siteMetadata.description },
             { name: 'keywords', content: data.site.siteMetadata.keywords },
             { name: 'google-site-verification', content: data.site.siteMetadata.googleSiteVerificationCode },
-            { name: 'baidu-site-verification', content: data.site.siteMetadata.baiduSiteVerificationCode }
+            { name: 'baidu-site-verification', content: data.site.siteMetadata.baiduSiteVerificationCode },
+            { name: 'twitter:card', content: 'summary' },
+            { name: 'twitter:creator', content: '@iimtsuki' },
+            { name: 'twitter:site', content: '@iimtsuki' },
+            { name: 'twitter:title', content: data.site.siteMetadata.title }
           ]}
         >
           {/* eslint-disable-next-line jsx-a11y/lang */}
