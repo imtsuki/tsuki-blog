@@ -26,15 +26,21 @@ const HomepageLink = styled(Link)`
   font-size: 0;
 `;
 
-const AboutLink = styled(Link)`
+const NavigationLink = styled(Link)`
   color: ${colors.black};
   font-size: 1rem;
+  margin-left: 1rem;
 
   &:hover,
   &:focus {
     text-decoration: none;
   }
 `;
+
+const NavigationBar = styled.div(`
+  display: flex;
+  flex-direction: row;
+`);
 
 interface HeaderProps {
   title: string;
@@ -43,10 +49,13 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
-      <HomepageLink to="/" lang="ja">
+      <HomepageLink to="/">
         <img src={titleSvg} alt={title} />
       </HomepageLink>
-      <AboutLink to="/about">About</AboutLink>
+      <NavigationBar>
+        <NavigationLink to="/about">About</NavigationLink>
+        <NavigationLink to="/rss.xml">RSS</NavigationLink>
+      </NavigationBar>
     </HeaderInner>
   </StyledHeader>
 );
