@@ -8,6 +8,7 @@ module.exports = {
     author: {
       name: 'imtsuki',
       twitter: 'https://twitter.com/iimtsuki',
+      twitterId: '@iimtsuki',
       github: 'https://github.com/imtsuki',
       email: 'me@qjx.app'
     },

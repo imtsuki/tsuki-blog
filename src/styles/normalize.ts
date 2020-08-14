@@ -1,5 +1,4 @@
-import { dimensions, colors, breakpoints } from '@/styles/variables';
-import { getEmSize } from '@/styles/mixins';
+import { dimensions, colors } from '@/styles/variables';
 
 export default `
   html {
@@ -105,9 +104,10 @@ export default `
   }
 
   blockquote {
-    margin: 0 0;
+    margin: 0 0 !important;
 
-    border-left: .2rem solid ${colors.brand};
+    background-color: #F8F8F8;
+
     color: ${colors.brand};
 
     p {
@@ -115,10 +115,8 @@ export default `
       margin-bottom: 0;
     }
 
+    padding-right: 1rem;
     padding-left: 1rem;
-    @media (min-width: ${getEmSize(breakpoints.temp)}em) {
-      padding-right: 5rem;
-    }
   }
 
   pre, code, kbd {

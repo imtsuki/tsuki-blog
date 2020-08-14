@@ -17,6 +17,7 @@ interface StaticQueryProps {
       keywords: string;
       author: {
         name: string;
+        twitterId: string;
       };
       googleSiteVerificationCode: string;
       baiduSiteVerificationCode: string;
@@ -36,6 +37,7 @@ const IndexLayout: React.FC = ({ children }) => (
             keywords
             author {
               name
+              twitterId
             }
             googleSiteVerificationCode
             baiduSiteVerificationCode
@@ -54,8 +56,8 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'google-site-verification', content: data.site.siteMetadata.googleSiteVerificationCode },
             { name: 'baidu-site-verification', content: data.site.siteMetadata.baiduSiteVerificationCode },
             { name: 'twitter:card', content: 'summary' },
-            { name: 'twitter:creator', content: '@iimtsuki' },
-            { name: 'twitter:site', content: '@iimtsuki' },
+            { name: 'twitter:creator', content: data.site.siteMetadata.author.twitterId },
+            { name: 'twitter:site', content: data.site.siteMetadata.author.twitterId },
             { name: 'twitter:title', content: data.site.siteMetadata.title }
           ]}
         >
