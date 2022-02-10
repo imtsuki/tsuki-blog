@@ -61,7 +61,7 @@
     "han-css": "^3.3.0",
     "katex": "^0.11.1",
     "modern-normalize": "^0.6.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "polished": "^3.5.2",
     "prism-themes": "^1.4.0",
     "prismjs": "^1.20.0",
