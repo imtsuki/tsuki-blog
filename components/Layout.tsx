@@ -1,17 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { PropsWithChildren } from 'react';
-import logoSvg from '../public/logo.svg';
-import { Cormorant, Noto_Serif_SC } from '@next/font/google';
+import { Noto_Serif_SC } from '@next/font/google';
+import { Logo } from './Logo';
 
-const cormorant = Cormorant({ subsets: ['latin'] });
 const notoSerif = Noto_Serif_SC({
   weight: ['400', '900'],
-  subsets: ['chinese-simplified'],
-});
-
-const notoSerif900 = Noto_Serif_SC({
-  weight: '900',
   subsets: ['chinese-simplified'],
 });
 
@@ -22,7 +15,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
     >
       <header className="mx-auto mb-12 mt-8 flex max-w-prose items-center justify-between">
         <Link href="/">
-          <Image src={logoSvg} alt="Back to home page" />
+          <Logo />
         </Link>
         <nav className="flex space-x-4">
           <Link href="/about">About</Link>
