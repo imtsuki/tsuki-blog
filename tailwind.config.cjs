@@ -6,17 +6,7 @@ module.exports = {
     './layouts/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      typography: {
-        quoteless: {
-          css: {
-            blockquote: { 'font-style': 'normal' },
-            'blockquote p:first-of-type::before': { content: 'none' },
-            'blockquote p:first-of-type::after': { content: 'none' },
-          },
-        },
-      },
-    },
+    extend: {},
   },
   plugins: [require('@tailwindcss/typography')],
 };

@@ -9,7 +9,7 @@ const AboutPage = () => {
       <Head>
         <title>{`I am... | ${metadata.title}`}</title>
       </Head>
-      <article className="prose prose-zinc prose-quoteless mx-auto dark:prose-invert">
+      <article className="prose prose-zinc mx-auto dark:prose-invert">
         <h1>I am...</h1>
         <p>You guess.</p>
       </article>

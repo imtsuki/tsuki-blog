@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .prose blockquote {
+    @apply not-italic;
+  }
+
+  .prose blockquote p:first-of-type::before {
+    @apply content-none;
+  }
+
+  .prose blockquote p:last-of-type::after {
+    @apply content-none;
+  }
+}
+
 .katex-html {
   @apply overflow-x-auto overflow-y-hidden;
 }
