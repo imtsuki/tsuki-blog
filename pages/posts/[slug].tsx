@@ -31,7 +31,7 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
           {formattedDate}
         </time>
         <span className="space-x-2 uppercase text-zinc-500 dark:text-zinc-400">
-          {source.frontmatter?.tags?.map((tag) => (
+          {(source.frontmatter?.tags as unknown as string[]).map((tag) => (
             <span className="before:content-['#']" key={tag}>
               {tag}
             </span>
