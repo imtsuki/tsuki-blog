@@ -14,8 +14,12 @@
   .prose blockquote p:last-of-type::after {
     @apply content-none;
   }
-}
 
-.katex-html {
-  @apply overflow-x-auto overflow-y-hidden;
+  .prose .katex-html {
+    @apply overflow-x-auto overflow-y-hidden;
+  }
+
+  .prose .data-footnote-backref {
+    @apply font-mono font-normal;
+  }
 }
