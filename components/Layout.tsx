@@ -6,6 +6,7 @@ import { Logo } from './Logo';
 const notoSerif = Noto_Serif_SC({
   weight: ['400', '900'],
   subsets: ['chinese-simplified'],
+  display: 'swap',
 });
 
 export const Layout = ({ children }: PropsWithChildren) => {
