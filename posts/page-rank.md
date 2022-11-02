@@ -12,8 +12,8 @@ import Annotation, { Highlight, Box, Circle, Underline } from "@/components/Anno
 
 PageRank 算法基于以下<Box>两个假设</Box>：
 
-1. **数量假设：**某页面接受到的<Underline>入链数量越多</Underline>，则该页面越重要；
-2. **质量假设：**某页面接受到的<Underline>入链质量越高</Underline>，则该页面越重要。
+1. **数量假设:** 某页面接受到的<Underline>入链数量越多</Underline>，则该页面越重要；
+2. **质量假设:** 某页面接受到的<Underline>入链质量越高</Underline>，则该页面越重要。
 
 假设 2 事实上为每个页面都赋予了一个权重。PageRank 算法基于上述假设，利用入链的数量与质量，来估算该页面的重要性。
 

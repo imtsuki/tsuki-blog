@@ -6,6 +6,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeRewrite from 'rehype-rewrite';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 import { imageSize } from 'image-size';
 import { Element } from 'hast';
 
@@ -37,7 +38,7 @@ export const getMdxSourceBySlug = async (
   const source = await getSourceBySlug(slug);
   const mdxSource = await serialize(source, {
     mdxOptions: {
-      remarkPlugins: [remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath],
       rehypePlugins: [
         [
           rehypeRewrite,
