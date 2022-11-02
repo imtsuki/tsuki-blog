@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import rehypeImgSize from 'rehype-img-size';
 import rehypeKatex from 'rehype-katex';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeRewrite from 'rehype-rewrite';
 import remarkMath from 'remark-math';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { imageSize } from 'image-size';
+import { Element } from 'hast';
 
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_ROOT = path.join(process.cwd(), 'posts');
@@ -37,7 +39,13 @@ export const getMdxSourceBySlug = async (
     mdxOptions: {
       remarkPlugins: [remarkMath],
       rehypePlugins: [
-        [rehypeImgSize, { dir: 'public' }],
+        [
+          rehypeRewrite,
+          {
+            selector: 'img',
+            rewrite: rewriteImageSize,
+          },
+        ],
         rehypeKatex,
         rehypePrism,
       ],
@@ -47,4 +55,19 @@ export const getMdxSourceBySlug = async (
 
   // Date objects cannot be passed across Next.js boundary
   return JSON.parse(JSON.stringify(mdxSource));
+};
+
+const rewriteImageSize = (node: Element, index: number, parent: Element) => {
+  if (!node.properties || !node.properties.src) {
+    console.warn('img node without src', node);
+    return;
+  }
+  let src = node.properties.src as string;
+  if (src.startsWith('/')) {
+    let { width, height } = imageSize(path.join(process.cwd(), 'public', src));
+    node.properties.width = width;
+    node.properties.height = height;
+  } else {
+    console.warn(`Image ${src} is not local.`);
+  }
 };
