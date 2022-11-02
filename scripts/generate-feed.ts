@@ -1,2 +1,2 @@
 import { Feed } from 'feed';
-import { metadata } from '../lib/meta';
+import siteConfig from '../site.config.js';

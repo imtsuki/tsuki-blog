@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import matter from 'gray-matter';
 
 import { Layout } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
-import Head from 'next/head';
-import { metadata } from '../lib/meta';
+
+import siteConfig from '../site.config.js';
 
 interface IndexPageProps {
   posts: any[];
@@ -16,7 +17,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
   return (
     <Layout>
       <Head>
-        <title>{`${metadata.title}`}</title>
+        <title>{`${siteConfig.title}`}</title>
       </Head>
       <ul className="mx-auto max-w-lg">
         {posts.map((post) => (

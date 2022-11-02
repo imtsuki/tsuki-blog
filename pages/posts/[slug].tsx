@@ -8,7 +8,8 @@ import { format } from 'date-fns';
 
 import { Layout, mdxComponents } from '../../components';
 import { postSlugs, getMdxSourceBySlug } from '../../lib/content';
-import { metadata } from '../../lib/meta';
+
+import siteConfig from '../../site.config.js';
 
 interface PostPageProps {
   source: MDXRemoteSerializeResult;
@@ -20,7 +21,7 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
   return (
     <Layout>
       <Head>
-        <title>{`${source.frontmatter?.title} | ${metadata.title}`}</title>
+        <title>{`${source.frontmatter?.title} | ${siteConfig.title}`}</title>
       </Head>
       <article className="prose prose-zinc mx-auto dark:prose-invert">
         <h1>{source.frontmatter?.title}</h1>

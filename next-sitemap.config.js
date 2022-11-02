@@ -1,6 +1,8 @@
+import siteConfig from './site.config.js';
+
 /** @type {import('next-sitemap').IConfig} */
 const nextSitemapConfig = {
-  siteUrl: 'https://qjx.app',
+  siteUrl: siteConfig.url,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
 };
