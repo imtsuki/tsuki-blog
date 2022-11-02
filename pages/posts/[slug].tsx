@@ -3,6 +3,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Giscus from '@giscus/react';
 
 import { format } from 'date-fns';
 
@@ -39,6 +40,12 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
           ))}
         </span>
         <MDXRemote {...source} components={mdxComponents} />
+        <hr />
+        <Giscus
+          {...siteConfig.giscus}
+          mapping="specific"
+          term={source.frontmatter?.title}
+        />
       </article>
     </Layout>
   );
