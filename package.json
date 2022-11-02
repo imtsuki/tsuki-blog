@@ -8,7 +8,9 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "build": "next build && pnpm generate-sitemap && pnpm generate-feed",
+    "generate-sitemap": "next-sitemap",
+    "generate-feed": "ts-node ./scripts/generate-feed.ts",
     "start": "next start",
     "lint": "next lint"
   },
