@@ -41,10 +41,10 @@ items.sort((a, b) => (a.date > b.date ? -1 : 1));
 
 items.forEach((item) => feed.addItem(item));
 
-console.log('Writing RSS feed to public/feed.xml');
+console.log('Writing RSS feed to public/rss.xml');
 
 const rss = feed.rss2();
 
-await fs.promises.writeFile('public/feed.xml', rss);
+await fs.promises.writeFile('public/rss.xml', rss);
 
 console.log('Done generating RSS feed');

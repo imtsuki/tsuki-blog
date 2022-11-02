@@ -42,5 +42,7 @@ public/robots.txt
 public/sitemap.xml
 public/sitemap-*.xml
 
-# feed
+# RSS feed
 public/feed.xml
+public/rss.xml
+
