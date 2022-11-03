@@ -1,9 +1,11 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { Favicon } from '../components/Favicon';
 
 const Document = () => {
   return (
     <Html className="text-black dark:bg-zinc-900 dark:text-white">
       <Head>
+        <Favicon />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
