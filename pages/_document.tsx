@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const Document = () => {
   return (
-    <Html className="text-black dark:bg-zinc-900 dark:text-white">
+    <Html className="dark:bg-zinc-900 dark:text-white">
       <Head>
         {/**
          * Favicons
