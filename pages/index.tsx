@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import matter from 'gray-matter';
 
-import { Layout } from '../components';
+import { Layout, TwitterCard } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
 
 import siteConfig from '../site.config.js';
@@ -18,6 +18,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
     <Layout>
       <Head>
         <title>{`${siteConfig.title}`}</title>
+        <TwitterCard title={`${siteConfig.title}`} />
       </Head>
       <ul className="mx-auto max-w-lg">
         {posts.map((post) => (

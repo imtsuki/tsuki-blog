@@ -15,9 +15,9 @@ const feed = new Feed({
   link: siteConfig.url,
   image: `${siteConfig.url}/icon.png`,
   favicon: `${siteConfig.url}/favicon.ico`,
-  copyright: siteConfig.author,
+  copyright: siteConfig.author.name,
   author: {
-    name: siteConfig.author,
+    name: siteConfig.author.name,
     link: siteConfig.url,
   },
 });
