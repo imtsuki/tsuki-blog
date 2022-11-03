@@ -5,8 +5,6 @@ tags:
   - Thoughts
 ---
 
-import Annotation, { Highlight, Box, Circle, Underline } from "@/components/Annotation";
-
 <div lang="en">
 
 > WARNING: This post is highly opinionated and biased, collected randomly from the author's extremely limited feelings and thoughts.

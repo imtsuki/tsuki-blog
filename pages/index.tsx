@@ -1,13 +1,10 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import matter from 'gray-matter';
 
-import { Layout, TwitterCard } from '../components';
+import { Layout, Head } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
-
-import siteConfig from '../site.config.js';
 
 interface IndexPageProps {
   posts: any[];
@@ -16,10 +13,7 @@ interface IndexPageProps {
 const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
   return (
     <Layout>
-      <Head>
-        <title>{`${siteConfig.title}`}</title>
-        <TwitterCard title={`${siteConfig.title}`} />
-      </Head>
+      <Head />
       <ul className="mx-auto max-w-lg">
         {posts.map((post) => (
           <li className="flex space-x-4 max-[320px]:flex-col" key={post.slug}>

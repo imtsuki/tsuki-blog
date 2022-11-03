@@ -1,16 +1,11 @@
-import Head from 'next/head';
 import Giscus from '@giscus/react';
-import { Layout, TwitterCard } from '../components';
+import { Layout, Head } from '../components';
 import siteConfig from '../site.config.js';
 
 const AboutPage = () => {
-  const pageTitle = `I am... | ${siteConfig.title}`;
   return (
     <Layout>
-      <Head>
-        <title>{pageTitle}</title>
-        <TwitterCard title={pageTitle} />
-      </Head>
+      <Head title="I am..." />
       <article className="prose prose-zinc mx-auto dark:prose-invert">
         <h1>I am...</h1>
         <p>You guess.</p>
