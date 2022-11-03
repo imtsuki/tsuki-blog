@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Layout } from './Layout';
 import { Head } from './Head';
 import { Logo } from './Logo';
-import { Favicon } from './Favicon';
 
 /** Custom components/renderers to pass to MDX. */
 export const mdxComponents = {
@@ -19,4 +18,4 @@ export const mdxComponents = {
   Head,
 };
 
-export { Favicon, Layout, Logo, Head };
+export { Layout, Logo, Head };
