@@ -1,8 +1,7 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Image from 'next/image';
 import { Layout } from './Layout';
-import { TwitterCard } from './TwitterCard';
+import { Head } from './Head';
 import { Logo } from './Logo';
 import { Favicon } from './Favicon';
 
@@ -20,4 +19,4 @@ export const mdxComponents = {
   Head,
 };
 
-export { Favicon, Layout, Logo, TwitterCard };
+export { Favicon, Layout, Logo, Head };

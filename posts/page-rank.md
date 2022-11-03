@@ -6,8 +6,6 @@ tags:
   - Google
 ---
 
-import Annotation, { Highlight, Box, Circle, Underline } from "@/components/Annotation";
-
 ## Rationale
 
 PageRank 算法基于以下<Box>两个假设</Box>：
