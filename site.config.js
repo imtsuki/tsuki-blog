@@ -2,7 +2,7 @@ const siteConfig = {
   title: 'ツキの月',
   description: 'To be continued...',
   url: 'https://qjx.app',
-  author: 'imtsuki',
+  author: { name: 'imtsuki', twitter: '@imtsuki' },
   /** @type {import('@giscus/react').GiscusProps} */
   giscus: {
     repo: 'imtsuki/tsuki-blog',

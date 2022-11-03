@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { Favicon } from '../components/Favicon';
+import { Favicon } from '../components';
 
 const Document = () => {
   return (
