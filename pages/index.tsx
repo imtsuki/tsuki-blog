@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import matter from 'gray-matter';
 
-import { Layout, Head } from '../components';
+import { Layout, Meta } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
 
 interface IndexPageProps {
@@ -13,7 +13,7 @@ interface IndexPageProps {
 const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
   return (
     <Layout>
-      <Head />
+      <Meta />
       <ul className="mx-auto max-w-lg">
         {posts.map((post) => (
           <li className="flex space-x-4 max-[320px]:flex-col" key={post.slug}>

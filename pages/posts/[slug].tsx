@@ -6,7 +6,7 @@ import Giscus from '@giscus/react';
 
 import { format } from 'date-fns';
 
-import { Layout, Head, mdxComponents } from '../../components';
+import { Layout, Meta, mdxComponents } from '../../components';
 import { postSlugs, getMdxSourceBySlug } from '../../lib/content';
 
 import siteConfig from '../../site.config.js';
@@ -20,7 +20,7 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
   const formattedDate = format(date, 'yyyy-MM-dd');
   return (
     <Layout>
-      <Head title={source.frontmatter?.title} />
+      <Meta title={source.frontmatter?.title} />
       <article className="prose prose-zinc mx-auto dark:prose-invert">
         <h1>{source.frontmatter?.title}</h1>
         <time

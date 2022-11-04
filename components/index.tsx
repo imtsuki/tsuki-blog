@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Layout } from './Layout';
-import { Head } from './Head';
 import { Logo } from './Logo';
+import { Meta } from './Meta';
 
 /** Custom components/renderers to pass to MDX. */
 export const mdxComponents = {
@@ -15,7 +15,7 @@ export const mdxComponents = {
   Box: dynamic(() => import('./Annotation').then((mod) => mod.Box)),
   Circle: dynamic(() => import('./Annotation').then((mod) => mod.Circle)),
   Highlight: dynamic(() => import('./Annotation').then((mod) => mod.Highlight)),
-  Head,
+  Head: Meta,
 };
 
-export { Layout, Logo, Head };
+export { Layout, Logo, Meta };

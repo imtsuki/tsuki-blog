@@ -7,7 +7,7 @@ interface HeadProps extends PropsWithChildren {
   description?: string;
 }
 
-export const Head = ({ title, description, children }: HeadProps) => {
+export const Meta = ({ title, description, children }: HeadProps) => {
   const { twitter } = siteConfig.author;
   const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
   return (
