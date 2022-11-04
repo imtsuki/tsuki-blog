@@ -2,11 +2,12 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { NextSeo } from 'next-seo';
 import Giscus from '@giscus/react';
 
 import { format } from 'date-fns';
 
-import { Layout, Meta, mdxComponents } from '../../components';
+import { Layout, mdxComponents } from '../../components';
 import { postSlugs, getMdxSourceBySlug } from '../../lib/content';
 
 import siteConfig from '../../site.config.js';
@@ -18,9 +19,11 @@ interface PostPageProps {
 const PostPage: NextPage<PostPageProps> = ({ source }) => {
   const date = new Date(source.frontmatter?.date ?? '1970-01-01');
   const formattedDate = format(date, 'yyyy-MM-dd');
+  const description =
+    source.frontmatter?.description ?? source.frontmatter?.title;
   return (
     <Layout>
-      <Meta title={source.frontmatter?.title} />
+      <NextSeo title={source.frontmatter?.title} description={description} />
       <article className="prose prose-zinc mx-auto dark:prose-invert">
         <h1>{source.frontmatter?.title}</h1>
         <time
