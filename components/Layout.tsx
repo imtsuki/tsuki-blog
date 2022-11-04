@@ -28,7 +28,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
       <footer className="mx-auto my-12 max-w-prose">
         <small>
           Copyright © {new Date().getFullYear()} {siteConfig.author.name}. Built
-          with Next.js.
+          with <Link href="https://nextjs.org/">Next.js</Link>.
         </small>
       </footer>
     </div>
