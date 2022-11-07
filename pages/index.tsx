@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import matter from 'gray-matter';
 
 import { Layout } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
 
 interface IndexPageProps {
+  // TODO: Add type for posts
   posts: any[];
 }
 
@@ -20,7 +21,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
               className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
               dateTime={post.frontmatter.date}
             >
-              {format(new Date(post.frontmatter.date), 'yyyy-MM-dd')}
+              {formatInTimeZone(post.frontmatter.date, 'UTC', 'yyyy-MM-dd')}
             </time>
             <Link
               className="text-lg"

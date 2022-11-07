@@ -5,7 +5,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { NextSeo } from 'next-seo';
 import Giscus from '@giscus/react';
 
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 
 import { Layout, mdxComponents } from '../../components';
 import { postSlugs, getMdxSourceBySlug } from '../../lib/content';
@@ -18,7 +18,7 @@ interface PostPageProps {
 
 const PostPage: NextPage<PostPageProps> = ({ source }) => {
   const date = new Date(source.frontmatter?.date ?? '1970-01-01');
-  const formattedDate = format(date, 'yyyy-MM-dd');
+  const formattedDate = formatInTimeZone(date, 'UTC', 'yyyy-MM-dd');
   const description =
     source.frontmatter?.description ?? source.frontmatter?.title;
   return (

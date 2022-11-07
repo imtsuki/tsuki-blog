@@ -14,6 +14,7 @@ specifiers:
   '@vercel/analytics': ^0.1.3
   autoprefixer: ^10.4.13
   date-fns: ^2.29.3
+  date-fns-tz: ^1.3.7
   eslint: 8.26.0
   eslint-config-next: 13.0.0
   eslint-config-prettier: ^8.5.0
@@ -44,6 +45,7 @@ dependencies:
   '@next/font': 13.0.1
   '@vercel/analytics': 0.1.3_react@18.2.0
   date-fns: 2.29.3
+  date-fns-tz: 1.3.7_date-fns@2.29.3
   image-size: 1.0.2
   next: 13.0.1_biqbaboplfbrettd7655fr4n2y
   next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
@@ -1035,6 +1037,14 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns-tz/1.3.7_date-fns@2.29.3:
+    resolution: {integrity: sha512-1t1b8zyJo+UI8aR+g3iqr5fkUHWpd58VBx8J/ZSQ+w7YrGlw80Ag4sA86qkfCXRBLmMc4I2US+aPMd4uKvwj5g==}
+    peerDependencies:
+      date-fns: '>=2.0.0'
+    dependencies:
+      date-fns: 2.29.3
+    dev: false
 
   /date-fns/2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
