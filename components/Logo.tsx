@@ -4,7 +4,7 @@ export const Logo = () => (
     width="108"
     height="40"
     viewBox="0 0 108 40"
-    className="fill-black dark:fill-white"
+    fill="currentColor"
   >
     <g id="title" data-name="title">
       <path
