@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@giscus/react': ^2.2.0
+  '@giscus/react': ^2.2.4
   '@next/env': 13.0.1
   '@next/font': 13.0.1
   '@swc/core': ^1.3.11
@@ -42,7 +42,7 @@ specifiers:
   typescript: 4.8.4
 
 dependencies:
-  '@giscus/react': 2.2.0_biqbaboplfbrettd7655fr4n2y
+  '@giscus/react': 2.2.4_biqbaboplfbrettd7655fr4n2y
   '@next/font': 13.0.1
   '@vercel/analytics': 0.1.3_react@18.2.0
   date-fns: 2.29.3
@@ -129,13 +129,13 @@ packages:
       - supports-color
     dev: true
 
-  /@giscus/react/2.2.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-MXjKAQyO85ZdC8OVApNQsJhPvTJcuUf5GmQw2KdvNcBVivUpVrA+NUppdwsrI+lK6jEX4ZMVOCnbJ5GaQddaAA==}
+  /@giscus/react/2.2.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-VkXZ36HL30ynThncflHxPwY/5Ay4a8HuqS3zMczj4a+oIqG1A7IRNeviteYl9lH6FOVc8zSIh/yfLQOIiyrBrw==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       react-dom: ^16 || ^17 || ^18
     dependencies:
-      giscus: 1.2.0
+      giscus: 1.2.4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -176,8 +176,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@lit/reactive-element/1.4.1:
-    resolution: {integrity: sha512-qDv4851VFSaBWzpS02cXHclo40jsbAjRXnebNXpm0uVg32kCneZPo9RYVQtrTNICtZ+1wAYHu1ZtxWSWMbKrBw==}
+  /@lit/reactive-element/1.4.2:
+    resolution: {integrity: sha512-VMOxsWh/QDwrxPsgkSQnuZ+8mfNy1OTjzzUdLBvvZtpahwPTHTeVZ51RZRqO4xfKVrR+btIPA8D01IL3xeG66w==}
     dev: false
 
   /@mdx-js/mdx/2.1.5:
@@ -1690,10 +1690,10 @@ packages:
       get-intrinsic: 1.1.3
     dev: true
 
-  /giscus/1.2.0:
-    resolution: {integrity: sha512-IpfWvU0/hYbMGQKuoPlED8wWmluRYIOjtrBCnL7logsWjMpPRxiAC2pUIC0+SC0pDMOqXrk1onTYMHgwgRpRzg==}
+  /giscus/1.2.4:
+    resolution: {integrity: sha512-c//t+vrEDNJ3jcM2TLz6UG7gZHyRDdYtj2PV0TaKk8eKMfq4OB8K1BFclaQ0UbUh6UN6hp89BNJTTcnibkiILA==}
     dependencies:
-      lit: 2.4.0
+      lit: 2.4.1
     dev: false
 
   /glob-parent/5.1.2:
@@ -2186,7 +2186,7 @@ packages:
   /lit-element/3.2.2:
     resolution: {integrity: sha512-6ZgxBR9KNroqKb6+htkyBwD90XGRiqKDHVrW/Eh0EZ+l+iC+u+v+w3/BA5NGi4nizAVHGYvQBHUDuSmLjPp7NQ==}
     dependencies:
-      '@lit/reactive-element': 1.4.1
+      '@lit/reactive-element': 1.4.2
       lit-html: 2.4.0
     dev: false
 
@@ -2196,10 +2196,10 @@ packages:
       '@types/trusted-types': 2.0.2
     dev: false
 
-  /lit/2.4.0:
-    resolution: {integrity: sha512-fdgzxEtLrZFQU/BqTtxFQCLwlZd9bdat+ltzSFjvWkZrs7eBmeX0L5MHUMb3kYIkuS8Xlfnii/iI5klirF8/Xg==}
+  /lit/2.4.1:
+    resolution: {integrity: sha512-qohSgLiyN1cFnJG26dIiY03S4F49857A0AHQfnS0zYtnUVnD2MFvx+UT52rtXsIuNFQrnUupX+zyGSATlk1f/A==}
     dependencies:
-      '@lit/reactive-element': 1.4.1
+      '@lit/reactive-element': 1.4.2
       lit-element: 3.2.2
       lit-html: 2.4.0
     dev: false
