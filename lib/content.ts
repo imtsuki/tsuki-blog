@@ -50,6 +50,7 @@ export const getMdxSourceBySlug = async (
         rehypeKatex,
         rehypePrism,
       ],
+      development: false,
     },
     parseFrontmatter: true,
   });

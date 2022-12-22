@@ -1,9 +1,5 @@
 lockfileVersion: 5.4
 
-overrides:
-  '@mdx-js/mdx': 2.1.5
-  '@mdx-js/react': 2.1.5
-
 specifiers:
   '@giscus/react': ^2.2.4
   '@next/env': 13.1.0
@@ -184,8 +180,8 @@ packages:
     resolution: {integrity: sha512-fQh9FDK0LPTwDk+0HhSZEtb8K0LTN1wXerwpGrWA+a8tWulYRDLI4vQDWp4GOIsewn0572KYV/oZ3+492D7osA==}
     dev: false
 
-  /@mdx-js/mdx/2.1.5:
-    resolution: {integrity: sha512-zEG0lt+Bl/r5U6e0TOS7qDbsXICtemfAPquxWFsMbdzrvlWaqMGemLl+sjVpqlyaaiCiGVQBSGdCk0t1qXjkQg==}
+  /@mdx-js/mdx/2.2.1:
+    resolution: {integrity: sha512-hZ3ex7exYLJn6FfReq8yTvA6TE53uW9UHJQM9IlSauOuS55J9y8RtA7W+dzp6Yrzr00/U1sd7q+Wf61q6SfiTQ==}
     dependencies:
       '@types/estree-jsx': 1.0.0
       '@types/mdx': 2.0.3
@@ -208,8 +204,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react/2.1.5_react@18.2.0:
-    resolution: {integrity: sha512-3Az1I6SAWA9R38rYjz5rXBrGKeZhq96CSSyQtqY+maPj8stBsoUH5pNcmIixuGkufYsh8F5+ka2CVPo2fycWZw==}
+  /@mdx-js/react/2.2.1_react@18.2.0:
+    resolution: {integrity: sha512-YdXcMcEnqZhzql98RNrqYo9cEhTTesBiCclEtoiQUbJwx87q9453GTapYU6kJ8ZZ2ek1Vp25SiAXEFy5O/eAPw==}
     peerDependencies:
       react: '>=16'
     dependencies:
@@ -2833,8 +2829,8 @@ packages:
       react: '>=16.x <=18.x'
       react-dom: '>=16.x <=18.x'
     dependencies:
-      '@mdx-js/mdx': 2.1.5
-      '@mdx-js/react': 2.1.5_react@18.2.0
+      '@mdx-js/mdx': 2.2.1
+      '@mdx-js/react': 2.2.1_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       vfile: 5.3.6
