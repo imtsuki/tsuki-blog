@@ -24,7 +24,7 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
   return (
     <Layout>
       <NextSeo title={source.frontmatter?.title} description={description} />
-      <article className="prose prose-zinc mx-auto dark:prose-invert">
+      <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
         <h1>{source.frontmatter?.title}</h1>
         <time
           className="mr-4 text-zinc-500 dark:text-zinc-400"

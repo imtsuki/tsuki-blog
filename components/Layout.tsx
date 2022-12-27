@@ -5,7 +5,7 @@ import { Logo } from './Logo';
 import siteConfig from '../site.config.js';
 
 const notoSerif = Noto_Serif_SC({
-  weight: ['400', '900'],
+  weight: ['400', '600', '900'],
   subsets: ['chinese-simplified'],
   display: 'swap',
 });
