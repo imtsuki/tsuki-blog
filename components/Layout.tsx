@@ -21,6 +21,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         </Link>
         <nav className="flex space-x-4">
           <Link href="/about">About</Link>
+          <Link href="/tags">Tags</Link>
           <Link href="/rss.xml">Feed</Link>
         </nav>
       </header>
