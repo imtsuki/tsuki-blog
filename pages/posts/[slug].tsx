@@ -25,14 +25,18 @@ const PostPage: NextPage<PostPageProps> = ({ source }) => {
     <Layout>
       <NextSeo title={source.frontmatter?.title} description={description} />
       <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
-        <h1>{source.frontmatter?.title}</h1>
+        <h1>
+          <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
+            {source.frontmatter?.title}
+          </span>
+        </h1>
         <time
           className="mr-4 text-zinc-500 dark:text-zinc-400"
           dateTime={source.frontmatter?.date}
         >
           {formattedDate}
         </time>
-        <span className="space-x-2 uppercase text-zinc-500 dark:text-zinc-400">
+        <span className="space-x-2 text-sm uppercase text-zinc-500 dark:text-zinc-400">
           {(source.frontmatter?.tags as unknown as string[]).map((tag) => (
             <span className="before:content-['#']" key={tag}>
               {tag}

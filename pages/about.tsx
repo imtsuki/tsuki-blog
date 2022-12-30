@@ -8,7 +8,11 @@ const AboutPage = () => {
     <Layout>
       <NextSeo title="I am..." description="About me" />
       <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
-        <h1>I am...</h1>
+        <h1>
+          <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
+            I am...
+          </span>
+        </h1>
         <p>You guess.</p>
         <hr />
         <Giscus {...siteConfig.giscus} mapping="specific" term="About" />

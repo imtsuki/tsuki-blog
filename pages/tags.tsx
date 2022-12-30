@@ -15,7 +15,11 @@ const TagsPage: NextPage<TagsPageProps> = ({ tags }) => {
     <Layout>
       <NextSeo title="Tags" description="Tags" />
       <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
-        <h1>Tags</h1>
+        <h1>
+          <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
+            Tags
+          </span>
+        </h1>
         {Object.keys(tags).map((tag) => (
           <div key={tag}>
             <h2>{tag}</h2>
