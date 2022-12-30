@@ -49,9 +49,9 @@ tags:
 
 <div lang="en">
 
-> And both that morning equally lay
+> And both that morning equally lay
 >
-> In leaves no step had trodden black.
+> In leaves no step had trodden black.
 
 </div>
 
