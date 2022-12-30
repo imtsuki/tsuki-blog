@@ -14,11 +14,10 @@ import siteConfig from '../../site.config.js';
 
 interface PostPageProps {
   source: MDXRemoteSerializeResult;
+  formattedDate: string;
 }
 
-const PostPage: NextPage<PostPageProps> = ({ source }) => {
-  const date = new Date(source.frontmatter?.date ?? '1970-01-01');
-  const formattedDate = formatInTimeZone(date, 'UTC', 'yyyy-MM-dd');
+const PostPage: NextPage<PostPageProps> = ({ source, formattedDate }) => {
   const description =
     source.frontmatter?.description ?? source.frontmatter?.title;
   return (
@@ -68,10 +67,13 @@ export const getStaticProps: GetStaticProps<
     throw new Error('No post slug found during getStaticProps');
   }
   const source = await getMdxSourceBySlug(slug);
+  const date = new Date(source.frontmatter?.date ?? '1970-01-01');
+  const formattedDate = formatInTimeZone(date, 'UTC', 'yyyy-MM-dd');
 
   return {
     props: {
       source,
+      formattedDate,
     },
   };
 };

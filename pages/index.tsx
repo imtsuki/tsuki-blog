@@ -7,8 +7,14 @@ import { Layout } from '../components';
 import { postSlugs, getSourceBySlug } from '../lib/content';
 
 interface IndexPageProps {
-  // TODO: Add type for posts
-  posts: any[];
+  posts: Array<{
+    frontmatter: {
+      title: string;
+      date: string;
+    };
+    slug: string;
+    formattedDate: string;
+  }>;
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
@@ -21,7 +27,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ posts }) => {
               className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
               dateTime={post.frontmatter.date}
             >
-              {formatInTimeZone(post.frontmatter.date, 'UTC', 'yyyy-MM-dd')}
+              {post.formattedDate}
             </time>
             <Link
               className="text-lg"
@@ -44,12 +50,15 @@ export const getStaticProps = async () => {
       const { content, data } = matter(source);
       const frontmatter = {
         ...data,
-        date: data.date ? data.date.toJSON() : null,
+        date: data.date?.toJSON(),
       };
+
+      const formattedDate = formatInTimeZone(data.date, 'UTC', 'yyyy-MM-dd');
 
       return {
         frontmatter,
         slug,
+        formattedDate,
       };
     })
   );
