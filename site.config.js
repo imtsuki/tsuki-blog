@@ -2,7 +2,17 @@ const siteConfig = {
   title: 'ツキの月',
   description: "Tsuki's Blog",
   url: 'https://qjx.app',
-  author: { name: 'imtsuki' },
+  author: {
+    name: 'imtsuki',
+    email: 'me@qjx.app',
+  },
+  links: {
+    github: 'https://github.com/imtsuki',
+    twitter: 'https://twitter.com/iimtsuki',
+    mastodon: 'https://mastodon.social/@imtsuki',
+    linkedin: 'https://www.linkedin.com/in/jxqiu/',
+    instagram: 'https://www.instagram.com/iimtsuki/',
+  },
   twitter: {
     handle: '@iimtsuki',
   },
