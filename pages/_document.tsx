@@ -5,9 +5,17 @@ const Document = () => {
     <Html className="dark:bg-zinc-900 dark:text-white">
       <Head>
         {/**
+         * Indicate dark mode support
+         * Improves the default styling in dark mode, such as system controls
+         * and scrollbars
+         * @see https://web.dev/color-scheme/
+         */}
+        <meta name="color-scheme" content="light dark" />
+
+        {/**
          * Favicons
          * Definitive edition of "How to Favicon in 2021"
-         * https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7
+         * @see https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7
          */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
