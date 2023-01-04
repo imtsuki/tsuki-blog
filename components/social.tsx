@@ -20,7 +20,7 @@ interface SocialProps {
 export const Social = ({ href, title, Icon }: SocialProps) => {
   return (
     <a href={href} title={title} target="_blank" rel="me noreferrer">
-      <Icon className="inline-block" size="1em" />
+      <Icon className="inline-block stroke-[1.6px]" size="1em" />
     </a>
   );
 };
