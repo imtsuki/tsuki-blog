@@ -5,22 +5,22 @@ tags:
   - Photography
 ---
 
-![Flower](/images/resusitate/flower.jpg)
+![A field of green plants with purple flowers](/images/resusitate/flower.jpg)
 
-![Shop](/images/resusitate/shop.jpg)
+![A man standing in a store selling items](/images/resusitate/shop.jpg)
 
-![Dog](/images/resusitate/dog.jpg)
+![A brown dog laying in the middle of a street](/images/resusitate/dog.jpg)
 
-![The Same Dog](/images/resusitate/the-same-dog.jpg)
+![The same dog laying on the side of a road](/images/resusitate/the-same-dog.jpg)
 
-![Grass](/images/resusitate/grass.jpg)
+![A street sign with a smiley face on it](/images/resusitate/grass.jpg)
 
-![Hole](/images/resusitate/hole.jpg)
+![A blue bicycle parked next to a green fence](/images/resusitate/hole.jpg)
 
-![Man](/images/resusitate/man.jpg)
+![A man riding a bike past a white sculpture](/images/resusitate/man.jpg)
 
-![Alley](/images/resusitate/alley.jpg)
+![A narrow street with buildings and power lines](/images/resusitate/alley.jpg)
 
-![Calligraphy](/images/resusitate/calligraphy.jpg)
+![The reflection of a calligraphy store's window](/images/resusitate/calligraphy.jpg)
 
-![Bicycles](/images/resusitate/bicycles.jpg)
+![A row of bikes parked next to each other on a sidewalk](/images/resusitate/bicycles.jpg)

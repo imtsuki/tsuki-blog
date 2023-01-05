@@ -5,11 +5,7 @@ tags:
   - Thoughts
 ---
 
-<div lang="en">
-
 > WARNING: This post is highly opinionated and biased, collected randomly from the author's extremely limited feelings and thoughts.
-
-</div>
 
 这篇文章也算快鸽了三个多月了。
 
@@ -53,7 +49,7 @@ Making decisions is hard. 我不想在本文中给出一个最优的，或是一
 
 我还开始尝试做出开源贡献。从今年初，我开始「强迫」自己在 GitHub 上留下痕迹。
 
-![GitHub](/images/where-shall-we-go/github.png)
+![A GitHub contribution graph](/images/where-shall-we-go/github.png 'My GitHub contribution graph in 2020')
 
 我完成了很多第一次：第一次有陌生人 star 我的仓库，第一次提出了不是 typo fix 的、真正的 feature PR（例如[这个](https://github.com/rust-analyzer/rust-analyzer/pull/2843)）。这些旁人看来微不足道的成就，我却可以为之欣喜许久。
 
