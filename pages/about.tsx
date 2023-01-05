@@ -21,6 +21,7 @@ const AboutPage = () => {
             I am...
           </span>
         </h1>
+        <p>Hi.</p>
         <p>
           I am currently a {"master's"} student at the University of Toronto. I
           received my {"bachelor's"} degree from Beijing University of Posts and
