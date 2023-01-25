@@ -17,6 +17,16 @@ module.exports = {
       boxShadow: {
         highlight: 'inset 0 -.5em 0 0',
       },
+      maxWidth: {
+        prose: '75ch',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '75ch',
+          },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
