@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const Document = () => {
   return (
-    <Html className="dark:bg-zinc-900 dark:text-white">
+    <Html className="bg-zinc-50 dark:bg-zinc-900 dark:text-white">
       <Head>
         {/**
          * Indicate dark mode support
