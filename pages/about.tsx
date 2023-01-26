@@ -14,17 +14,17 @@ import siteConfig from '../site.config.js';
 const AboutPage = () => {
   return (
     <Layout>
-      <NextSeo title="I am..." description="About me" />
+      <NextSeo title="Here’s a little bit about me." description="About me" />
       <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
         <h1>
           <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
-            I am...
+            Here’s a little bit about me.
           </span>
         </h1>
         <p>Hi.</p>
         <p>
-          I am currently a {"master's"} student at the University of Toronto. I
-          received my {"bachelor's"} degree from Beijing University of Posts and
+          I am currently a master’s student at the University of Toronto. I
+          received my bachelor’s degree from Beijing University of Posts and
           Telecommunications.
         </p>
         <p>
@@ -39,8 +39,7 @@ const AboutPage = () => {
           some amazing projects in the past, including my internship at tech
           startup SmartX where I worked on developing distributed storage
           systems for data centers. I have also had the chance to work at
-          Alibaba Cloud, where I worked on ClickHouse, a world-renowned
-          distributed database.
+          Alibaba Cloud, where I worked on ClickHouse.
         </p>
         <p>
           My journey to this point has been full of twists and turns. It all
@@ -51,12 +50,6 @@ const AboutPage = () => {
           find my true passion. While I initially chased the trend of machine
           learning, I eventually realized that my true passion lay in building
           the systems that power large-scale applications.
-        </p>
-        <p>
-          As I constantly seek software engineering opportunities, I am
-          confident that I will be able to do great things with the knowledge
-          and experience I have gained. I am excited to see what the future
-          holds, and I am determined to make a difference in the world.
         </p>
         <p>
           If you are interested, you can find me on <Github />, <Twitter />,{' '}
