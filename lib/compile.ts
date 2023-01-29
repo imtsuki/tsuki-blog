@@ -34,7 +34,12 @@ export const compileMdx = async (source: string) => {
           },
         ],
         rehypeKatex,
-        rehypePrettyCode,
+        [
+          rehypePrettyCode,
+          {
+            theme: 'css-variables',
+          },
+        ],
       ],
     },
     parseFrontmatter: true,
