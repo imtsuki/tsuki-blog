@@ -17,7 +17,7 @@ const notoSerif = Noto_Serif_SC({
   display: 'swap',
   variable: '--font-noto-serif-sc',
   adjustFontFallback: false,
-  subsets: ['chinese-simplified'],
+  subsets: ['latin'],
 });
 
 export const Layout = ({ children }: PropsWithChildren) => {
