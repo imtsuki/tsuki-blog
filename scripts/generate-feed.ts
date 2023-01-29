@@ -1,8 +1,28 @@
-import fs from 'fs';
+import fs from 'node:fs';
+import path from 'node:path';
 import { Feed } from 'feed';
 import matter from 'gray-matter';
-import { postSlugs, getSourceBySlug } from '../lib/content.js';
 import siteConfig from '../site.config.js';
+
+// FIXME: copy-pasted here to avoid import errors
+
+const POSTS_ROOT = path.join(process.cwd(), 'posts');
+
+const postFiles = fs
+  .readdirSync(POSTS_ROOT)
+  // Only include md(x) files
+  .filter((path) => /\.mdx?$/.test(path));
+
+const postSlugs = postFiles.map((filename) => filename.replace(/\.mdx?$/, ''));
+
+const getSourceBySlug = async (slug: string) => {
+  const mdxFilePath = path.join(POSTS_ROOT, `${slug}.mdx`);
+  const mdFilePath = path.join(POSTS_ROOT, `${slug}.md`);
+  // prefer mdx over md
+  const filePath = fs.existsSync(mdxFilePath) ? mdxFilePath : mdFilePath;
+  const source = await fs.promises.readFile(filePath, 'utf8');
+  return source;
+};
 
 const getPublicUrlBySlug = (slug: string) => `${siteConfig.url}/posts/${slug}`;
 
