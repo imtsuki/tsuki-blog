@@ -5,7 +5,9 @@ tags:
   - Thoughts
 ---
 
-> WARNING: This post is highly opinionated and biased, collected randomly from the author's extremely limited feelings and thoughts.
+:::warning
+This post is highly opinionated and biased, collected randomly from the author's extremely limited feelings and thoughts.
+:::
 
 这篇文章也算快鸽了三个多月了。
 

@@ -1,4 +1,4 @@
-import { RoughNotation, RoughNotationProps } from 'react-rough-notation';
+import { RoughNotation, type RoughNotationProps } from 'react-rough-notation';
 
 export const Annotation = ({ children, type, color }: RoughNotationProps) => {
   return (

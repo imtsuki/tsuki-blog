@@ -1,5 +1,5 @@
+import { type PropsWithChildren } from 'react';
 import Link from 'next/link';
-import { PropsWithChildren } from 'react';
 import { Noto_Serif_SC } from '@next/font/google';
 import { Logo } from './Logo';
 import siteConfig from '../site.config.js';

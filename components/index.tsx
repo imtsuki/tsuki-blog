@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Image, { ImageProps } from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 import { Layout } from './Layout';
 import { Logo } from './Logo';
+import { Callout } from './Callout';
 
 /** Custom components/renderers to pass to MDX. */
 export const mdxComponents = {
@@ -27,6 +28,7 @@ export const mdxComponents = {
       {title && <figcaption>{title}</figcaption>}
     </figure>
   ),
+  Callout,
   Underline: dynamic(() => import('./Annotation').then((mod) => mod.Underline)),
   Box: dynamic(() => import('./Annotation').then((mod) => mod.Box)),
   Circle: dynamic(() => import('./Annotation').then((mod) => mod.Circle)),
