@@ -67,7 +67,7 @@ export const Callout = ({ type = 'warning', children }: CalloutProps) => (
   </aside>
 );
 
-export const ALL_CALLOUT_TYPES = [
+export const CALLOUT_TYPES = [
   'note',
   'info',
   'tip',

@@ -9,7 +9,7 @@ import {
 
 import { type Icon as TablerIcon } from '@tabler/icons-react';
 
-import siteConfig from '../site.config.js';
+import siteConfig from 'site.config.js';
 
 interface SocialProps {
   href: string;

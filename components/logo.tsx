@@ -1,10 +1,15 @@
-export const Logo = () => (
+type LogoProps = Omit<JSX.IntrinsicElements['svg'], 'scale'> & {
+  scale?: number;
+};
+
+export const Logo = ({ scale = 1, ...props }: LogoProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="108"
-    height="40"
+    width={108 * scale}
+    height={40 * scale}
     viewBox="0 0 108 40"
     fill="currentColor"
+    {...props}
   >
     <g id="title" data-name="title">
       <path
