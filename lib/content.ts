@@ -1,9 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-
-import { compileMdx } from './compile';
+import matter from 'gray-matter';
 
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_ROOT = path.join(process.cwd(), 'posts');
@@ -18,22 +16,59 @@ export const postSlugs = postFiles.map((filename) =>
   filename.replace(/\.mdx?$/, '')
 );
 
-export const getSourceBySlug = async (slug: string) => {
+export const getFilePathBySlug = (slug: string) => {
   const mdxFilePath = path.join(POSTS_ROOT, `${slug}.mdx`);
   const mdFilePath = path.join(POSTS_ROOT, `${slug}.md`);
   // prefer mdx over md
   const filePath = fs.existsSync(mdxFilePath) ? mdxFilePath : mdFilePath;
+  return filePath;
+};
+
+export const getSourceBySlug = async (slug: string) => {
+  const filePath = getFilePathBySlug(slug);
+
   const source = await fs.promises.readFile(filePath, 'utf8');
   return source;
 };
 
-export const getMdxSourceBySlug = async (
-  slug: string
-): Promise<MDXRemoteSerializeResult> => {
-  const source = await getSourceBySlug(slug);
+export const getSourceBySlugSync = (slug: string) => {
+  const filePath = getFilePathBySlug(slug);
 
-  const mdxSource = await compileMdx(source);
-
-  // Date objects cannot be passed across Next.js boundary
-  return JSON.parse(JSON.stringify(mdxSource));
+  const source = fs.readFileSync(filePath, 'utf8');
+  return source;
 };
+
+export const postSlugExists = (slug: string) => {
+  const filePath = getFilePathBySlug(slug);
+  return fs.existsSync(filePath);
+};
+
+export type Frontmatter = {
+  title: string;
+  date: Date;
+  tags: string[];
+};
+
+export const postsMetadata = (
+  postSlugs.map((slug) => {
+    const source = getSourceBySlugSync(slug);
+
+    const { data: frontmatter } = matter(source);
+
+    return {
+      frontmatter,
+      slug,
+    };
+  }) as {
+    frontmatter: Frontmatter;
+    slug: string;
+  }[]
+).sort((a, b) => {
+  if (a.frontmatter.date < b.frontmatter.date) {
+    return 1;
+  } else if (a.frontmatter.date > b.frontmatter.date) {
+    return -1;
+  } else {
+    return 0;
+  }
+});

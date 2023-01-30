@@ -1,3 +1,5 @@
+'use client';
+
 import { RoughNotation, type RoughNotationProps } from 'react-rough-notation';
 
 export const Annotation = ({ children, type, color }: RoughNotationProps) => {
