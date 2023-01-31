@@ -39,8 +39,7 @@ export const getSourceBySlugSync = (slug: string) => {
 };
 
 export const postSlugExists = (slug: string) => {
-  const filePath = getFilePathBySlug(slug);
-  return fs.existsSync(filePath);
+  return postSlugs.includes(slug);
 };
 
 export type Frontmatter = {
