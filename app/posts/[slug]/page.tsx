@@ -1,27 +1,19 @@
-import { notFound } from 'next/navigation';
 import { compileMDX } from 'next-mdx-remote/rsc';
 
 import { formatInTimeZone } from 'date-fns-tz';
 
 import { mdxOptions } from 'lib/compile';
-import {
-  getSourceBySlug,
-  postSlugs,
-  postSlugExists,
-  type Frontmatter,
-} from 'lib/content';
+import { getSourceBySlug, postSlugs, type Frontmatter } from 'lib/content';
 
 import { Giscus } from 'components/giscus';
 import { mdxComponents } from 'components/mdx';
 
 import siteConfig from 'site.config.js';
 
+export const dynamicParams = false;
+
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   console.log('rendering post page', params);
-
-  if (!postSlugExists(params.slug)) {
-    notFound();
-  }
 
   const source = await getSourceBySlug(params.slug);
 
