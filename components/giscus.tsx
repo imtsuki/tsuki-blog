@@ -1,9 +1,9 @@
 'use client';
 
-import Giscus, { type GiscusProps } from '@giscus/react';
+import GiscusComponent, { type GiscusProps } from '@giscus/react';
 
-const ClientGiscus = (props: GiscusProps) => {
-  return <Giscus {...props} />;
+export const Giscus = (props: GiscusProps) => {
+  return <GiscusComponent {...props} />;
 };
 
-export default ClientGiscus;
+export { type GiscusProps };

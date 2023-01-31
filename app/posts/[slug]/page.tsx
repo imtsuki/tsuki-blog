@@ -11,7 +11,7 @@ import {
   type Frontmatter,
 } from 'lib/content';
 
-import Giscus from 'components/giscus';
+import { Giscus } from 'components/giscus';
 import { mdxComponents } from 'components/mdx';
 
 import siteConfig from 'site.config.js';

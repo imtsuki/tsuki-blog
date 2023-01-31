@@ -1,6 +1,7 @@
+import { type Metadata } from 'next';
 import siteConfig from 'site.config.js';
 
-export const globalMetadata = {
+export const globalMetadata: Metadata = {
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.title}`,
@@ -41,4 +42,4 @@ export const globalMetadata = {
     site: siteConfig.twitter.handle,
     creator: siteConfig.twitter.handle,
   },
-} as const;
+};
