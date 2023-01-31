@@ -6,7 +6,7 @@ import {
   Linkedin,
   Mastodon,
 } from 'components/social';
-import Giscus from 'components/giscus';
+import { Giscus } from 'components/giscus';
 
 import siteConfig from 'site.config.js';
 

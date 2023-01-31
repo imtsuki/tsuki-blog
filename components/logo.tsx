@@ -1,4 +1,4 @@
-type LogoProps = Omit<JSX.IntrinsicElements['svg'], 'scale'> & {
+export type LogoProps = Omit<JSX.IntrinsicElements['svg'], 'scale'> & {
   scale?: number;
 };
 

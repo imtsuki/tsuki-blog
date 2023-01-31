@@ -1,9 +1,11 @@
-import Giscus from 'components/giscus';
+import { type Metadata } from 'next';
+
+import { Giscus } from 'components/giscus';
 import { postsMetadata } from 'lib/content';
 
 import siteConfig from 'site.config.js';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Tags',
   description: 'Tags',
 };
