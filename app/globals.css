@@ -15,6 +15,11 @@
     --shiki-token-string-expression: #22863a;
     --shiki-token-punctuation: #212121;
     --shiki-token-link: #22863a;
+
+    --annotation-box: green;
+    --annotation-circle: crimson;
+    --annotation-highlight: rgba(255, 215, 0, 25%);
+    --annotation-underline: dodgerblue;
   }
 
   @media (prefers-color-scheme: dark) {

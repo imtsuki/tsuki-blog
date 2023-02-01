@@ -3,18 +3,18 @@ import { visit } from 'unist-util-visit';
 import { AnnotationProps } from 'components/annotation';
 import { CalloutProps } from 'components/callout';
 
-export const enforceArrayMembers =
+export const exhaustiveVariants =
   <T extends unknown>() =>
   <U extends T[]>(
     array: U & ([T] extends [U[number]] ? unknown : 'missing array member(s)')
   ) =>
     array;
 
-export const CALLOUT_TYPES = enforceArrayMembers<
+export const CALLOUT_TYPES = exhaustiveVariants<
   NonNullable<CalloutProps['type']>
 >()(['note', 'info', 'tip', 'warning', 'danger']);
 
-export const ANNOTATION_TYPES = enforceArrayMembers<
+export const ANNOTATION_TYPES = exhaustiveVariants<
   NonNullable<AnnotationProps['type']>
 >()(['box', 'circle', 'highlight', 'underline']);
 
