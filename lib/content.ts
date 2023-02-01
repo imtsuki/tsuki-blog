@@ -45,6 +45,7 @@ export const postSlugExists = (slug: string) => {
 export type Frontmatter = {
   title: string;
   date: Date;
+  description?: string;
   tags: string[];
 };
 

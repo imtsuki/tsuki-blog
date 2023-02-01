@@ -41,5 +41,16 @@ export const globalMetadata: Metadata = {
     card: 'summary',
     site: siteConfig.twitter.handle,
     creator: siteConfig.twitter.handle,
+    title: {
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.title}`,
+    },
+  },
+  openGraph: {
+    title: {
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.title}`,
+    },
+    description: siteConfig.description,
   },
 };

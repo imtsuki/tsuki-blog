@@ -1,9 +1,16 @@
+import { type Metadata } from 'next';
+
 import { compileMDX } from 'next-mdx-remote/rsc';
 
 import { formatInTimeZone } from 'date-fns-tz';
 
 import { mdxOptions } from 'lib/compile';
-import { getSourceBySlug, postSlugs, type Frontmatter } from 'lib/content';
+import {
+  getSourceBySlug,
+  postSlugs,
+  postsMetadata,
+  type Frontmatter,
+} from 'lib/content';
 
 import { Giscus } from 'components/giscus';
 import { mdxComponents } from 'components/mdx';
@@ -11,6 +18,35 @@ import { mdxComponents } from 'components/mdx';
 import siteConfig from 'site.config.js';
 
 export const dynamicParams = false;
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const metadata = postsMetadata.find((post) => post.slug === params.slug);
+
+  if (!metadata) {
+    console.warn('no metadata found for slug', params.slug);
+    return {};
+  }
+
+  const title = metadata.frontmatter.title;
+  const description = metadata.frontmatter.description ?? title;
+
+  return {
+    title,
+    description,
+    twitter: {
+      title,
+    },
+    openGraph: {
+      // @ts-ignore
+      title,
+      description,
+    },
+  };
+};
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   console.log('rendering post page', params);
