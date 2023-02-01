@@ -66,14 +66,3 @@ export const Callout = ({ type = 'warning', children }: CalloutProps) => (
     {children}
   </aside>
 );
-
-const enforceArrayMembers =
-  <T extends unknown>() =>
-  <U extends T[]>(
-    array: U & ([T] extends [U[number]] ? unknown : 'missing array member(s)')
-  ) =>
-    array;
-
-export const CALLOUT_TYPES = enforceArrayMembers<
-  NonNullable<CalloutProps['type']>
->()(['note', 'info', 'tip', 'warning', 'danger']);
