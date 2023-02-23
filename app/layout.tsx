@@ -33,7 +33,7 @@ const notoSerif = Noto_Serif_SC({
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html className="bg-zinc-50 dark:bg-zinc-900 dark:text-white">
+    <html lang="en" className="bg-zinc-50 dark:bg-zinc-900 dark:text-white">
       <body>
         <div
           className={`container mx-auto min-h-screen min-w-[360px] px-5 ${notoSerif.variable} font-serif`}

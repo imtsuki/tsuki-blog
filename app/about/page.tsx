@@ -18,11 +18,7 @@ export const metadata = {
 const AboutPage = () => {
   return (
     <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
-      <h1>
-        <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
-          Here’s a little bit about me.
-        </span>
-      </h1>
+      <h1>Here’s a little bit about me.</h1>
       <p>Hi.</p>
       <p>
         I am currently a master’s student at the University of Toronto. I

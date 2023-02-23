@@ -21,8 +21,8 @@ export const GET = async () => {
     },
   });
 
-  const items = await Promise.all(
-    postsMetadata.map(async ({ frontmatter, slug }) => {
+  postsMetadata
+    .map(({ frontmatter, slug }) => {
       return {
         title: frontmatter.title,
         id: getPublicUrlBySlug(slug),
@@ -30,11 +30,8 @@ export const GET = async () => {
         date: frontmatter.date,
       };
     })
-  );
-
-  items.sort((a, b) => (a.date > b.date ? -1 : 1));
-
-  items.forEach((item) => feed.addItem(item));
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+    .forEach((item) => feed.addItem(item));
 
   const rss = feed.rss2();
 

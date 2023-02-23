@@ -29,11 +29,7 @@ const TagsPage = async () => {
 
   return (
     <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
-      <h1>
-        <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
-          Tags
-        </span>
-      </h1>
+      <h1>Tags</h1>
       {Object.keys(tags).map((tag) => (
         <div key={tag}>
           <h2>{tag}</h2>
