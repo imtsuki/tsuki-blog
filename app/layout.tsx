@@ -2,8 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 import { Noto_Serif_SC } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
-import { Analytics } from 'components/analytics';
 import { Logo } from 'components/logo';
 import {
   Github,
