@@ -28,7 +28,7 @@ const TagsPage = async () => {
   );
 
   return (
-    <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
+    <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
       <h1>
         <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
           Tags

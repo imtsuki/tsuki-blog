@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { Noto_Serif_SC } from '@next/font/google';
+import { Noto_Serif_SC } from 'next/font/google';
 
 import { Analytics } from 'components/analytics';
 import { Logo } from 'components/logo';
@@ -39,7 +39,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           className={`container mx-auto min-h-screen min-w-[360px] px-5 ${notoSerif.variable} font-serif`}
         >
           <header className="mx-auto mb-12 mt-8 flex max-w-prose items-center justify-between">
-            <Link href="/">
+            <Link href="/" aria-label={`Home | ${siteConfig.title}`}>
               <Logo />
             </Link>
             <nav className="flex space-x-4">

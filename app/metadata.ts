@@ -1,7 +1,7 @@
 import { type Metadata } from 'next';
 import siteConfig from 'site.config.js';
 
-export const globalMetadata: Metadata = {
+export const globalMetadata = {
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.title}`,
@@ -32,7 +32,7 @@ export const globalMetadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  /* TODO: link rel="manifest" href="/site.webmanifest" */
+  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -53,4 +53,4 @@ export const globalMetadata: Metadata = {
     },
     description: siteConfig.description,
   },
-};
+} satisfies Metadata;

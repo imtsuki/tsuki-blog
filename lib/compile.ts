@@ -11,7 +11,8 @@ import { imageSize } from 'image-size';
 
 import { type SerializeOptions } from 'next-mdx-remote/dist/types';
 
-import { remarkTransformDirectives } from './directives';
+import { remarkTransformDirectives } from 'lib/directives';
+import * as Log from 'lib/log';
 
 const rewriteImageSize = (
   node: import('hast').Element,
@@ -19,7 +20,7 @@ const rewriteImageSize = (
   parent: Element
 ) => {
   if (!node.properties || !node.properties.src) {
-    console.warn('img node without src', node);
+    Log.warn('img node without src', node);
     return;
   }
   let src = node.properties.src as string;
@@ -28,7 +29,7 @@ const rewriteImageSize = (
     node.properties.width = width;
     node.properties.height = height;
   } else {
-    console.warn(`Image ${src} is not local.`);
+    Log.warn(`Image ${src} is not local.`);
   }
 };
 

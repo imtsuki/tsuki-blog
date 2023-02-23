@@ -11,6 +11,7 @@ import {
   postsMetadata,
   type Frontmatter,
 } from 'lib/content';
+import * as Log from 'lib/log';
 
 import { Giscus } from 'components/giscus';
 import { mdxComponents } from 'components/mdx';
@@ -27,7 +28,7 @@ export const generateMetadata = async ({
   const metadata = postsMetadata.find((post) => post.slug === params.slug);
 
   if (!metadata) {
-    console.warn('no metadata found for slug', params.slug);
+    Log.warn('no metadata found for slug', params.slug);
     return {};
   }
 
@@ -41,7 +42,6 @@ export const generateMetadata = async ({
       title,
     },
     openGraph: {
-      // @ts-ignore
       title,
       description,
     },
@@ -49,8 +49,6 @@ export const generateMetadata = async ({
 };
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
-  console.log('rendering post page', params);
-
   const source = await getSourceBySlug(params.slug);
 
   const {
@@ -65,7 +63,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     })) as { content: JSX.Element; frontmatter: Frontmatter };
 
   return (
-    <article className="prose prose-zinc mx-auto prose-headings:font-black dark:prose-invert">
+    <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
       <h1>
         <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
           {title}
