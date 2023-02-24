@@ -43,7 +43,7 @@ const visitCallout = (node: any) => {
 };
 
 export const remarkTransformDirectives = () => {
-  // annotating types here causes TypeScript language server to lag
+  // annotating types here makes TypeScript language server suffer
   const transformer = (tree: any) => {
     visit(tree, (node) => {
       if (ANNOTATION_TYPES.includes(node.name)) {
@@ -53,6 +53,27 @@ export const remarkTransformDirectives = () => {
       if (CALLOUT_TYPES.includes(node.name)) {
         visitCallout(node);
         return;
+      }
+
+      // handle directives that are not transformed
+      switch (node.type) {
+        case 'textDirective':
+          node.type = 'text';
+          node.value = `:${node.name}`;
+          break;
+        case 'leafDirective':
+          node.type = 'text';
+          node.value = `::${node.name}`;
+          break;
+        case 'containerDirective':
+          node.type = 'paragraph';
+          node.children = [
+            {
+              type: 'text',
+              value: `::${node.name}`,
+            },
+          ];
+          break;
       }
     });
   };
