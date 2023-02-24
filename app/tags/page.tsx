@@ -1,4 +1,7 @@
 import { type Metadata } from 'next';
+import Link from 'next/link';
+
+import { formatInTimeZone } from 'date-fns-tz';
 
 import { Giscus } from 'components/giscus';
 import { postsMetadata } from 'lib/content';
@@ -13,14 +16,14 @@ export const metadata: Metadata = {
 const TagsPage = async () => {
   const tags = postsMetadata.reduce(
     (
-      acc: Record<string, { title: string; slug: string }[]>,
-      { slug, frontmatter: { title, tags } }
+      acc: Record<string, { title: string; slug: string; date: Date }[]>,
+      { slug, frontmatter: { title, date, tags } }
     ) => {
       tags.forEach((tag) => {
         if (!acc[tag]) {
           acc[tag] = [];
         }
-        acc[tag].push({ slug, title });
+        acc[tag].push({ slug, title, date });
       });
       return acc;
     },
@@ -34,9 +37,17 @@ const TagsPage = async () => {
         <div key={tag}>
           <h2>{tag}</h2>
           <ul>
-            {tags[tag].map(({ title, slug }) => (
-              <li key={slug}>
-                <a href={`/posts/${slug}`}>{title}</a>
+            {tags[tag].map(({ title, slug, date }) => (
+              <li className="flex space-x-4 max-[320px]:flex-col" key={slug}>
+                <time
+                  className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
+                  dateTime={date.toJSON()}
+                >
+                  {formatInTimeZone(date, 'UTC', 'yyyy-MM-dd')}
+                </time>
+                <Link className="text-lg" href={`/posts/${slug}`}>
+                  {title}
+                </Link>
               </li>
             ))}
           </ul>
