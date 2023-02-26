@@ -3,10 +3,7 @@ import Link from 'next/link';
 
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { Giscus } from 'components/giscus';
 import { postsMetadata } from 'lib/content';
-
-import siteConfig from 'site.config.js';
 
 export const metadata: Metadata = {
   title: 'Tags',
@@ -54,7 +51,6 @@ const TagsPage = async () => {
         </div>
       ))}
       <hr />
-      <Giscus {...siteConfig.giscus} mapping="specific" term="Tags" />
     </article>
   );
 };
