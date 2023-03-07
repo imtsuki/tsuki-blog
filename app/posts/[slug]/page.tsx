@@ -54,13 +54,11 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
   const {
     content,
     frontmatter: { title, date, tags },
-  } =
-    // @ts-ignore
-    (await compileMDX({
-      source,
-      options: { mdxOptions, parseFrontmatter: true },
-      components: mdxComponents,
-    })) as { content: JSX.Element; frontmatter: Frontmatter };
+  } = await compileMDX<Frontmatter>({
+    source,
+    options: { mdxOptions, parseFrontmatter: true },
+    components: mdxComponents,
+  });
 
   return (
     <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
