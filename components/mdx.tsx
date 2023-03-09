@@ -1,4 +1,5 @@
 import Image, { type ImageProps } from 'next/image';
+import { NextTweet } from 'next-tweet';
 
 import { Callout } from 'components/callout';
 import { Annotation } from 'components/annotation';
@@ -28,4 +29,9 @@ export const mdxComponents = {
   ),
   Annotation,
   Callout,
+  Tweet: (props: Parameters<typeof NextTweet>[0]) => (
+    <div className="not-prose">
+      <NextTweet {...props} />
+    </div>
+  ),
 };

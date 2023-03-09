@@ -42,6 +42,16 @@ const visitCallout = (node: any) => {
   ];
 };
 
+const visitTweet = (node: any) => {
+  if (node.type !== 'leafDirective') return;
+
+  node.type = 'mdxJsxFlowElement';
+  node.name = 'Tweet';
+  node.attributes = [
+    { type: 'mdxJsxAttribute', name: 'id', value: node.attributes.id },
+  ];
+};
+
 export const remarkTransformDirectives = () => {
   // annotating types here makes TypeScript language server suffer
   const transformer = (tree: any) => {
@@ -53,6 +63,9 @@ export const remarkTransformDirectives = () => {
       if (CALLOUT_TYPES.includes(node.name)) {
         visitCallout(node);
         return;
+      }
+      if (node.name === 'tweet') {
+        visitTweet(node);
       }
 
       // handle directives that are not transformed
@@ -70,7 +83,7 @@ export const remarkTransformDirectives = () => {
           node.children = [
             {
               type: 'text',
-              value: `::${node.name}`,
+              value: `:::${node.name}`,
             },
           ];
           break;

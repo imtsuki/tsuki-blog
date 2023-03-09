@@ -24,6 +24,7 @@ specifiers:
   next: 13.2.3
   next-mdx-remote: ^4.4.1
   next-sitemap: ^4.0.3
+  next-tweet: ^0.8.1
   postcss: ^8.4.21
   prettier: ^2.8.4
   prettier-plugin-tailwindcss: ^0.2.4
@@ -54,6 +55,7 @@ dependencies:
   katex: 0.16.4
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
   next-mdx-remote: 4.4.1_biqbaboplfbrettd7655fr4n2y
+  next-tweet: 0.8.1_nvzgbose6yf6w7ijjprgspqefi
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-intersection-observer: 9.4.3_react@18.2.0
@@ -815,6 +817,11 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -2886,6 +2893,21 @@ packages:
       minimist: 1.2.8
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
     dev: true
+
+  /next-tweet/0.8.1_nvzgbose6yf6w7ijjprgspqefi:
+    resolution: {integrity: sha512-ciApYVGy6/VS0MALcRHDxpnZ3SeGxm6RKM2BsX4/5/OL7g68X0Oew3s6/neGHZF9JfbwIvxpMQoi3FPJ2gL4hA==}
+    peerDependencies:
+      next: '>= 13.2.1'
+      react: '>= 18.0.0'
+      react-dom: '>= 18.0.0'
+    dependencies:
+      '@swc/helpers': 0.4.14
+      clsx: 1.2.1
+      date-fns: 2.29.3
+      next: 13.2.3_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next/13.2.3_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-nKFJC6upCPN7DWRx4+0S/1PIOT7vNlCT157w9AzbXEgKy6zkiPKEt5YyRUsRZkmpEqBVrGgOqNfwecTociyg+w==}
