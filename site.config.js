@@ -1,7 +1,7 @@
 const siteConfig = {
   title: 'ツキの月',
   description: "Tsuki's Blog",
-  url: 'https://qjx.app',
+  url: 'https://tsuki.blog',
   author: {
     name: 'imtsuki',
     email: 'me@qjx.app',
