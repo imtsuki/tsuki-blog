@@ -12,6 +12,7 @@ const siteConfig = {
     mastodon: 'https://mastodon.social/@imtsuki',
     linkedin: 'https://www.linkedin.com/in/jxqiu/',
     instagram: 'https://www.instagram.com/iimtsuki/',
+    telegram: 'https://t.me/imtsuki',
   },
   twitter: {
     handle: '@iimtsuki',

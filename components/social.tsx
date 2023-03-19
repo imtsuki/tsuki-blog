@@ -4,6 +4,7 @@ import {
   IconBrandLinkedin,
   IconBrandInstagram,
   IconBrandMastodon,
+  IconBrandTelegram,
   IconMail,
 } from '@tabler/icons-react';
 
@@ -70,5 +71,13 @@ export const Email = () => (
     href={`mailto:${siteConfig.author.email}`}
     title="Email"
     Icon={IconMail}
+  />
+);
+
+export const Telegram = () => (
+  <Social
+    href={siteConfig.links.telegram}
+    title="Telegram"
+    Icon={IconBrandTelegram}
   />
 );

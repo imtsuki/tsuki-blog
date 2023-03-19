@@ -5,6 +5,7 @@ import {
   Instagram,
   Linkedin,
   Mastodon,
+  Telegram,
 } from 'components/social';
 import { Giscus } from 'components/giscus';
 
@@ -51,7 +52,7 @@ const AboutPage = () => {
       </p>
       <p>
         If you are interested, you can find me on <Github />, <Twitter />,{' '}
-        <Mastodon />, <Instagram />, <Linkedin />, and <Email />.
+        <Mastodon />, <Instagram />, <Telegram />, <Linkedin />, and <Email />.
       </p>
       <hr />
       <Giscus {...siteConfig.giscus} mapping="specific" term="About" />

@@ -10,6 +10,7 @@ import {
   Twitter,
   Mastodon,
   Instagram,
+  Telegram,
   Linkedin,
   Email,
 } from 'components/social';
@@ -65,6 +66,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <Twitter />
               <Mastodon />
               <Instagram />
+              <Telegram />
               <Linkedin />
               <Email />
             </div>
