@@ -37,6 +37,12 @@
     }
   }
 
+  .prose {
+    @apply text-justify;
+    /* TODO: use hyphens-auto once tailwind 3.3 is released */
+    hyphens: auto;
+  }
+
   .prose blockquote {
     @apply not-italic;
   }
