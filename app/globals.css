@@ -43,6 +43,10 @@
     hyphens: auto;
   }
 
+  .prose h1 {
+    @apply text-start;
+  }
+
   .prose blockquote {
     @apply not-italic;
   }
