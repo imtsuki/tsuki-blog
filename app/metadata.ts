@@ -14,24 +14,6 @@ export const globalMetadata = {
    * @see https://web.dev/color-scheme/
    */
   colorScheme: 'light dark',
-  /**
-   * Favicons.
-   * Definitive edition of "How to Favicon in 2021"
-   * @see https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7
-   */
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        url: '/favicon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-touch-icon.png',
-  },
   manifest: '/site.webmanifest',
   robots: {
     index: true,
