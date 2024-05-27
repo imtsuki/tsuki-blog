@@ -13,7 +13,7 @@ export const postFiles = fs
   .filter((path) => /\.mdx?$/.test(path));
 
 export const postSlugs = postFiles.map((filename) =>
-  filename.replace(/\.mdx?$/, '')
+  filename.replace(/\.mdx?$/, ''),
 );
 
 export const getFilePathBySlug = (slug: string) => {
@@ -44,7 +44,7 @@ export const postSlugExists = (slug: string) => {
 
 export type Frontmatter = {
   title: string;
-  date: Date;
+  date: string;
   description?: string;
   tags: string[];
 };

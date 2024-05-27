@@ -1,4 +1,4 @@
-import { type Metadata } from 'next';
+import { Viewport, Metadata } from 'next';
 import siteConfig from 'site.config.js';
 
 export const globalMetadata = {
@@ -7,13 +7,6 @@ export const globalMetadata = {
     template: `%s | ${siteConfig.title}`,
   },
   description: siteConfig.description,
-  /**
-   * Indicate dark mode support.
-   * Improves the default styling in dark mode, such as system controls
-   * and scrollbars.
-   * @see https://web.dev/color-scheme/
-   */
-  colorScheme: 'light dark',
   manifest: '/site.webmanifest',
   robots: {
     index: true,
@@ -36,3 +29,13 @@ export const globalMetadata = {
     description: siteConfig.description,
   },
 } satisfies Metadata;
+
+export const globalViewport = {
+  /**
+   * Indicate dark mode support.
+   * Improves the default styling in dark mode, such as system controls
+   * and scrollbars.
+   * @see https://web.dev/color-scheme/
+   */
+  colorScheme: 'light dark',
+} satisfies Viewport;

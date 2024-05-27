@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 const TagsPage = async () => {
   const tags = postsMetadata.reduce(
     (
-      acc: Record<string, { title: string; slug: string; date: Date }[]>,
-      { slug, frontmatter: { title, date, tags } }
+      acc: Record<string, { title: string; slug: string; date: string }[]>,
+      { slug, frontmatter: { title, date, tags } },
     ) => {
       tags.forEach((tag) => {
         if (!acc[tag]) {
@@ -24,7 +24,7 @@ const TagsPage = async () => {
       });
       return acc;
     },
-    {}
+    {},
   );
 
   return (
@@ -38,7 +38,7 @@ const TagsPage = async () => {
               <li className="flex space-x-4 max-[320px]:flex-col" key={slug}>
                 <time
                   className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
-                  dateTime={date.toJSON()}
+                  dateTime={date}
                 >
                   {formatInTimeZone(date, 'UTC', 'yyyy-MM-dd')}
                 </time>

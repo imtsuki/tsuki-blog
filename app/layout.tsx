@@ -15,13 +15,14 @@ import {
   Email,
 } from 'components/social';
 
-import { globalMetadata } from './metadata';
+import { globalViewport, globalMetadata } from './metadata';
 
 import siteConfig from 'site.config.js';
 
 import './globals.css';
 import 'katex/dist/katex.min.css';
 
+export const viewport = globalViewport;
 export const metadata = globalMetadata;
 
 const notoSerif = Noto_Serif_SC({
