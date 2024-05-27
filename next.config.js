@@ -9,9 +9,6 @@ const nextConfig = {
       { protocol: 'https', hostname: 'abs.twimg.com' },
     ],
   },
-  experimental: {
-    appDir: true,
-  },
 };
 
 export default nextConfig;

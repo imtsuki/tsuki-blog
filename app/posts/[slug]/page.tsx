@@ -67,10 +67,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           {title}
         </span>
       </h1>
-      <time
-        className="mr-4 text-zinc-500 dark:text-zinc-400"
-        dateTime={date.toJSON()}
-      >
+      <time className="mr-4 text-zinc-500 dark:text-zinc-400" dateTime={date}>
         {formatInTimeZone(date, 'UTC', 'yyyy-MM-dd')}
       </time>
       <span className="space-x-2 text-sm uppercase text-zinc-500 dark:text-zinc-400">

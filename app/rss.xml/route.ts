@@ -27,7 +27,7 @@ export const GET = async () => {
         title: frontmatter.title,
         id: getPublicUrlBySlug(slug),
         link: getPublicUrlBySlug(slug),
-        date: frontmatter.date,
+        date: new Date(frontmatter.date),
       };
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1))

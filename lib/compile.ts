@@ -17,7 +17,7 @@ import * as Log from 'lib/log';
 const rewriteImageSize = (
   node: import('hast').Element,
   index: number,
-  parent: Element
+  parent: Element,
 ) => {
   if (!node.properties || !node.properties.src) {
     Log.warn('img node without src', node);
@@ -53,7 +53,11 @@ export const mdxOptions = {
     [
       rehypePrettyCode,
       {
-        theme: 'css-variables',
+        theme: {
+          dark: 'aurora-x',
+          light: 'one-light',
+        },
+        keepBackground: false,
       },
     ],
   ],

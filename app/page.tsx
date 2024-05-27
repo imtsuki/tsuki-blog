@@ -10,7 +10,7 @@ const IndexPage = () => {
         <li className="flex space-x-4 max-[320px]:flex-col" key={post.slug}>
           <time
             className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
-            dateTime={post.frontmatter.date.toJSON()}
+            dateTime={post.frontmatter.date}
           >
             {formatInTimeZone(post.frontmatter.date, 'UTC', 'yyyy-MM-dd')}
           </time>
