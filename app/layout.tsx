@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { Noto_Serif_SC } from 'next/font/google';
+import { Noto_Serif_SC, Fira_Code } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 
 import { Logo } from 'components/logo';
@@ -33,12 +33,20 @@ const notoSerif = Noto_Serif_SC({
   subsets: ['latin'],
 });
 
+const firaCode = Fira_Code({
+  weight: 'variable',
+  display: 'swap',
+  variable: '--font-fira-code',
+  adjustFontFallback: false,
+  subsets: ['latin'],
+});
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className="bg-zinc-50 dark:bg-zinc-900 dark:text-white">
       <body>
         <div
-          className={`container mx-auto min-h-screen min-w-[360px] px-5 ${notoSerif.variable} font-serif`}
+          className={`container mx-auto min-h-screen min-w-[360px] px-5 ${notoSerif.variable} ${firaCode.variable} font-serif`}
         >
           <header className="mx-auto mb-12 mt-8 flex max-w-prose items-center justify-between">
             <Link href="/" aria-label={`Home | ${siteConfig.title}`}>

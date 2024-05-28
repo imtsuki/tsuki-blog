@@ -19,6 +19,7 @@ const config = {
       },
       fontFamily: {
         serif: ['var(--font-noto-serif-sc)', ...fontFamily.serif],
+        mono: ['var(--font-fira-code)', ...fontFamily.mono],
       },
       maxWidth: {
         prose: '640px',
