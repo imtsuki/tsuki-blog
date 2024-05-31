@@ -6,7 +6,7 @@ import { CalloutProps } from 'components/callout';
 export const exhaustiveVariants =
   <T extends unknown>() =>
   <U extends T[]>(
-    array: U & ([T] extends [U[number]] ? unknown : 'missing array member(s)')
+    array: U & ([T] extends [U[number]] ? unknown : 'missing array member(s)'),
   ) =>
     array;
 
@@ -66,6 +66,7 @@ export const remarkTransformDirectives = () => {
       }
       if (node.name === 'tweet') {
         visitTweet(node);
+        return;
       }
 
       // handle directives that are not transformed

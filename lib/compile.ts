@@ -1,7 +1,7 @@
 import path from 'node:path';
 
 import rehypeKatex from 'rehype-katex';
-import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeShiki from '@shikijs/rehype';
 import rehypeRewrite from 'rehype-rewrite';
 import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
@@ -14,7 +14,7 @@ import { type SerializeOptions } from 'next-mdx-remote/dist/types';
 import { remarkTransformDirectives } from 'lib/directives';
 import * as Log from 'lib/log';
 
-const rewriteImageSize = (
+const injectImageSizeAttributes = (
   node: import('hast').Element,
   index: number,
   parent: Element,
@@ -46,18 +46,18 @@ export const mdxOptions = {
       rehypeRewrite,
       {
         selector: 'img',
-        rewrite: rewriteImageSize,
+        rewrite: injectImageSizeAttributes,
       },
     ],
     rehypeKatex,
     [
-      rehypePrettyCode,
+      rehypeShiki,
       {
-        theme: {
+        themes: {
           dark: 'aurora-x',
           light: 'one-light',
         },
-        keepBackground: false,
+        defaultColor: false,
       },
     ],
   ],

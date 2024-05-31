@@ -1,11 +1,22 @@
 import Image, { type ImageProps } from 'next/image';
+import Link from 'next/link';
 import { Tweet } from 'react-tweet';
+import { IconExternalLink } from '@tabler/icons-react';
 
 import { Callout } from 'components/callout';
 import { Annotation } from 'components/annotation';
 
 /** Custom components/renderers to pass to MDX. */
 export const mdxComponents = {
+  a: ({ href, ...props }: JSX.IntrinsicElements['a']) => {
+    if (href && href.startsWith('/')) {
+      return <Link href={href} {...props} />;
+    } else if (href && !href.startsWith('#')) {
+      return <a href={href} target="_blank" rel="noreferrer" {...props} />;
+    } else {
+      return <a href={href} {...props} />;
+    }
+  },
   img: ({
     title,
     src,

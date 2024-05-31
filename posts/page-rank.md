@@ -56,7 +56,7 @@ $$
 
 为了解决 rank sink 的问题，PageRank 引入了:box[阻尼系数 (decay factor)] 的概念[^Haveliwala(1999)]。阻尼系数基于这样一个假设：在用户随机地点击页面链接进行浏览的过程中，如果用户进入了一个 rank sink，他并不会在这组网页中无限循环，而是很有可能停止点击，随机开启另一个新的页面重新开始浏览。这样，经过修改的完整 PageRank 算法 $R'$ 定义如下：
 
-[^Haveliwala(1999)]: Taher Haveliwala. Efficient computation of pagerank. Technical report, Stanford, 1999.
+[^Haveliwala(1999)]: Taher Haveliwala. Efficient Computation of PageRank. Technical report, Stanford, 1999.
 
 $$
 R'_{t + 1}(p) = \frac{1 - d}{n} + d\sum_{q \in B_p}\frac{R'_{t}(q)}{N_q}, \text{where } d \in (0, 1)
@@ -64,7 +64,7 @@ $$
 
 这里，$d$ 为阻尼系数。在论文中，它被设置为 :circle[$0.85$]，代表用户继续点击的概率[^Page.et.al.(1999)]。
 
-[^Page.et.al.(1999)]: Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The pagerank citation ranking: Bringing order to the web. Technical report, Stanford InfoLab, 1999.
+[^Page.et.al.(1999)]: Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank Citation Ranking: Bringing Order to the Web. Technical report, Stanford InfoLab, 1999.
 
 使用矩阵形式重写如下：
 
