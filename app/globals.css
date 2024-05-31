@@ -10,18 +10,20 @@
     --annotation-underline: dodgerblue;
   }
 
-  code[data-theme*=' '],
-  code[data-theme*=' '] span {
+  .shiki,
+  .shiki span {
     color: var(--shiki-light);
-    background-color: var(--shiki-light-bg);
   }
 
   @media (prefers-color-scheme: dark) {
-    code[data-theme*=' '],
-    code[data-theme*=' '] span {
+    .shiki,
+    .shiki span {
       color: var(--shiki-dark);
-      background-color: var(--shiki-dark-bg);
     }
+  }
+
+  .prose a {
+    @apply decoration-from-font underline-offset-4;
   }
 
   .prose blockquote {
@@ -40,7 +42,27 @@
     @apply overflow-x-auto overflow-y-hidden;
   }
 
+  .prose .contains-task-list {
+    @apply list-none ps-0;
+  }
+
+  .prose .task-list-item input[type='checkbox'] {
+    @apply mr-1.5;
+  }
+
+  .prose a[data-footnote-ref] {
+    @apply font-mono font-normal no-underline before:content-['\['] after:content-['\]'];
+  }
+
+  .prose .footnotes {
+    @apply text-sm text-zinc-500 dark:text-zinc-400;
+  }
+
+  .prose .footnotes p {
+    @apply my-0;
+  }
+
   .prose .data-footnote-backref {
-    @apply font-mono font-normal;
+    @apply font-mono font-normal no-underline;
   }
 }

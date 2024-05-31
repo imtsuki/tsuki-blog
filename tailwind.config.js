@@ -8,6 +8,7 @@ const config = {
     './components/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
+  safelist: ['sr-only', 'shiki'],
   theme: {
     extend: {
       colors: {
