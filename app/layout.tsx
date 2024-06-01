@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Noto_Serif_SC, Fira_Code } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Logo } from 'components/logo';
 import {
@@ -82,6 +83,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           </footer>
         </div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

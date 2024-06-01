@@ -1,7 +1,6 @@
 import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
 import { Tweet } from 'react-tweet';
-import { IconExternalLink } from '@tabler/icons-react';
 
 import { Callout } from 'components/callout';
 import { Annotation } from 'components/annotation';
