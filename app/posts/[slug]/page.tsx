@@ -2,7 +2,8 @@ import { type Metadata } from 'next';
 
 import { compileMDX } from 'next-mdx-remote/rsc';
 
-import { formatInTimeZone } from 'date-fns-tz';
+import { format } from 'date-fns/format';
+import { utc } from '@date-fns/utc';
 import { IconTag } from '@tabler/icons-react';
 
 import { mdxOptions } from 'lib/compile';
@@ -72,7 +73,7 @@ const PostPage = async (props: { params: Promise<{ slug: string }> }) => {
         className="mr-2 text-sm text-zinc-500 dark:text-zinc-400"
         dateTime={date}
       >
-        {formatInTimeZone(date, 'UTC', 'yyyy-MM-dd')}
+        {format(date, 'yyyy-MM-dd', { in: utc })}
       </time>
       <span className="space-x-2 font-mono text-sm capitalize text-zinc-500 dark:text-zinc-400">
         {tags.map((tag) => (

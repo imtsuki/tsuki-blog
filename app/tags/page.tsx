@@ -1,7 +1,8 @@
 import { type Metadata } from 'next';
 import Link from 'next/link';
 
-import { formatInTimeZone } from 'date-fns-tz';
+import { format } from 'date-fns/format';
+import { utc } from '@date-fns/utc';
 
 import { postsMetadata } from 'lib/content';
 
@@ -40,7 +41,7 @@ const TagsPage = async () => {
                   className="shrink-0 grow-0 lining-nums tabular-nums text-zinc-500 dark:text-zinc-400"
                   dateTime={date}
                 >
-                  {formatInTimeZone(date, 'UTC', 'yyyy-MM-dd')}
+                  {format(date, 'yyyy-MM-dd', { in: utc })}
                 </time>
                 <Link className="text-lg" href={`/posts/${slug}`}>
                   {title}
