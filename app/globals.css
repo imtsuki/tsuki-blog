@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@theme inline {
+  --color-blurple: rgb(82, 0, 255);
+  --color-franklin: rgb(60, 255, 208);
+  --color-pernod: rgb(214, 243, 31);
+  --color-hotbrick: rgb(255, 61, 0);
+  --color-pep: rgb(255, 194, 231);
+
+  --font-noto-serif: var(--google-font-noto-serif-sc), var(--font-serif);
+  --font-fira-code: var(--google-font-fira-code), var(--font-mono);
+
+  --max-width-prose: 640px;
+
+  --shadow-highlight: inset 0 -0.5em 0 0;
+}
+
+@utility prose-zinc {
+  --tw-prose-pre-bg: var(--color-zinc-100);
+  --tw-prose-invert-pre-bg: color-mix(
+    in srgb,
+    var(--color-zinc-800),
+    transparent 50%
+  );
+}
 
 @layer base {
   :root {
@@ -38,6 +62,14 @@
     @apply content-none;
   }
 
+  .prose pre {
+    @apply font-fira-code;
+  }
+
+  .prose code {
+    @apply font-fira-code;
+  }
+
   .prose .katex-html {
     @apply overflow-x-auto overflow-y-hidden;
   }
@@ -51,7 +83,7 @@
   }
 
   .prose a[data-footnote-ref] {
-    @apply font-mono font-normal no-underline before:content-['\['] after:content-['\]'];
+    @apply font-fira-code font-normal no-underline before:content-['\['] after:content-['\]'];
   }
 
   .prose .footnotes {
@@ -63,6 +95,6 @@
   }
 
   .prose .data-footnote-backref {
-    @apply font-mono font-normal no-underline;
+    @apply font-fira-code font-normal no-underline;
   }
 }
