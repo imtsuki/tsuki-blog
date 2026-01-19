@@ -10,8 +10,8 @@ export type AnnotationProps = JSX.IntrinsicElements['span'] & {
 };
 
 export const Annotation = ({ type, children }: AnnotationProps) => {
-  const elementRef = useRef<HTMLElement | null>(null);
-  const annotationRef = useRef<ReturnType<typeof annotate>>(undefined);
+  const elementRef = useRef<HTMLElement>(null);
+  const annotationRef = useRef<ReturnType<typeof annotate>>(null);
 
   const { ref: inViewRef } = useInView({
     root: null,
@@ -20,7 +20,7 @@ export const Annotation = ({ type, children }: AnnotationProps) => {
     triggerOnce: true,
     onChange: (inView) => {
       if (inView && elementRef.current) {
-        let annotation = annotate(elementRef.current, {
+        const annotation = annotate(elementRef.current, {
           type,
           color: `var(--annotation-${type})`,
           strokeWidth: 2,
