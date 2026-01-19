@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { readFileSync } from 'node:fs';
 
 import rehypeKatex from 'rehype-katex';
 import rehypeShiki from '@shikijs/rehype';
@@ -9,7 +10,7 @@ import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import { imageSize } from 'image-size';
 
-import { type SerializeOptions } from 'next-mdx-remote/dist/types';
+import { type MDXRemoteProps } from 'next-mdx-remote/rsc';
 
 import { remarkTransformDirectives } from 'lib/directives';
 import * as Log from 'lib/log';
@@ -23,9 +24,10 @@ const injectImageSizeAttributes = (
     Log.warn('img node without src', node);
     return;
   }
-  let src = node.properties.src as string;
+  const src = node.properties.src as string;
   if (src.startsWith('/')) {
-    let { width, height } = imageSize(path.join(process.cwd(), 'public', src));
+    const buffer = readFileSync(path.join(process.cwd(), 'public', src));
+    const { width, height } = imageSize(buffer);
     node.properties.width = width;
     node.properties.height = height;
   } else {
@@ -61,4 +63,4 @@ export const mdxOptions = {
       },
     ],
   ],
-} satisfies SerializeOptions['mdxOptions'];
+} satisfies NonNullable<MDXRemoteProps['options']>['mdxOptions'];

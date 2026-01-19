@@ -1,12 +1,3 @@
-import {
-  Email,
-  Github,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mastodon,
-  Telegram,
-} from 'components/social';
 import { Giscus } from 'components/giscus';
 
 import siteConfig from 'site.config.js';
