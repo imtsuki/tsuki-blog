@@ -1,13 +1,15 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 
-import rehypeKatex from 'rehype-katex';
-import rehypeShiki from '@shikijs/rehype';
-import rehypeRewrite from 'rehype-rewrite';
 import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import remarkUnwrapImages from 'remark-unwrap-images';
+
+import rehypeKatex from 'rehype-katex';
+import rehypeShiki from '@shikijs/rehype';
+import rehypeRewrite from 'rehype-rewrite';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
+
 import { imageSize } from 'image-size';
 
 import { type MDXRemoteProps } from 'next-mdx-remote/rsc';
@@ -41,9 +43,9 @@ export const mdxOptions = {
     remarkDirective,
     remarkTransformDirectives,
     remarkMath,
-    remarkUnwrapImages,
   ],
   rehypePlugins: [
+    rehypeUnwrapImages,
     [
       rehypeRewrite,
       {

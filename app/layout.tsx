@@ -76,8 +76,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <Twitter />
               <Mastodon />
               <Instagram />
-              <Telegram />
               <Linkedin />
+              <Telegram />
               <Email />
             </div>
           </footer>
