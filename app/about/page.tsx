@@ -9,7 +9,7 @@ export const metadata = {
 
 const AboutPage = () => {
   return (
-    <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
+    <article className="prose prose-zinc dark:prose-invert prose-headings:font-black mx-auto max-w-prose">
       <h1>{metadata.title}</h1>
       <hr />
       <Giscus {...siteConfig.giscus} mapping="specific" term="About" />

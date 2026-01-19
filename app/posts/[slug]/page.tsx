@@ -63,7 +63,7 @@ const PostPage = async (props: { params: Promise<{ slug: string }> }) => {
   });
 
   return (
-    <article className="prose prose-zinc mx-auto dark:prose-invert prose-headings:font-black">
+    <article className="prose prose-zinc mx-auto max-w-prose dark:prose-invert prose-headings:font-black">
       <h1>
         <span className="shadow-highlight shadow-franklin dark:shadow-blurple">
           {title}
@@ -75,7 +75,7 @@ const PostPage = async (props: { params: Promise<{ slug: string }> }) => {
       >
         {format(date, 'yyyy-MM-dd', { in: utc })}
       </time>
-      <span className="space-x-2 font-mono text-sm capitalize text-zinc-500 dark:text-zinc-400">
+      <span className="font-fira-code space-x-2 text-sm capitalize text-zinc-500 dark:text-zinc-400">
         {tags.map((tag) => (
           <span key={tag} className="inline-flex items-baseline">
             <IconTag className="mr-0.5 inline self-center" size="1em" />
