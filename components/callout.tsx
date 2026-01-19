@@ -1,5 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import type { JSX } from 'react';
+
 const callout = cva(
   [
     'my-5',
@@ -55,7 +57,7 @@ const callout = cva(
     defaultVariants: {
       type: 'warning',
     },
-  }
+  },
 );
 
 export type CalloutProps = JSX.IntrinsicElements['aside'] &

@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 export type LogoProps = Omit<JSX.IntrinsicElements['svg'], 'scale'> & {
   scale?: number;
 };
