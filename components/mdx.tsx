@@ -5,6 +5,8 @@ import { Tweet } from 'react-tweet';
 import { Callout } from 'components/callout';
 import { Annotation } from 'components/annotation';
 
+import type { JSX } from 'react';
+
 /** Custom components/renderers to pass to MDX. */
 export const mdxComponents = {
   a: ({ href, ...props }: JSX.IntrinsicElements['a']) => {

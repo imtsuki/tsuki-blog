@@ -21,11 +21,10 @@ import siteConfig from 'site.config.js';
 
 export const dynamicParams = false;
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
+export const generateMetadata = async (props: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
+  const params = await props.params;
   const metadata = postsMetadata.find((post) => post.slug === params.slug);
 
   if (!metadata) {
@@ -49,7 +48,8 @@ export const generateMetadata = async ({
   };
 };
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
+const PostPage = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const source = await getSourceBySlug(params.slug);
 
   const {

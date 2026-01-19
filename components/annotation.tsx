@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, type JSX } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { annotate } from 'rough-notation';
@@ -11,7 +11,7 @@ export type AnnotationProps = JSX.IntrinsicElements['span'] & {
 
 export const Annotation = ({ type, children }: AnnotationProps) => {
   const elementRef = useRef<HTMLElement | null>(null);
-  const annotationRef = useRef<ReturnType<typeof annotate>>();
+  const annotationRef = useRef<ReturnType<typeof annotate>>(undefined);
 
   const { ref: inViewRef } = useInView({
     root: null,
@@ -38,7 +38,7 @@ export const Annotation = ({ type, children }: AnnotationProps) => {
       elementRef.current = node;
       inViewRef(node);
     },
-    [inViewRef]
+    [inViewRef],
   );
 
   return <span ref={setRef}>{children}</span>;
