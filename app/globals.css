@@ -2,6 +2,8 @@
 
 @plugin '@tailwindcss/typography';
 
+@source inline('sr-only');
+
 @theme inline {
   --color-blurple: rgb(82, 0, 255);
   --color-franklin: rgb(60, 255, 208);
@@ -15,6 +17,10 @@
   --max-width-prose: 640px;
 
   --shadow-highlight: inset 0 -0.5em 0 0;
+}
+
+@utility text-autospace-normal {
+  text-autospace: normal;
 }
 
 @utility prose-zinc {
@@ -32,6 +38,10 @@
     --annotation-circle: crimson;
     --annotation-highlight: rgba(255, 215, 0, 25%);
     --annotation-underline: dodgerblue;
+  }
+
+  body {
+    @apply text-autospace-normal;
   }
 
   .shiki,
@@ -81,7 +91,9 @@
   .prose .task-list-item input[type='checkbox'] {
     @apply mr-1.5;
   }
+}
 
+@layer utilities {
   .prose a[data-footnote-ref] {
     @apply font-fira-code font-normal no-underline before:content-['\['] after:content-['\]'];
   }
