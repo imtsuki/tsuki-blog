@@ -8,14 +8,14 @@ const siteConfig = {
   },
   links: {
     github: 'https://github.com/imtsuki',
-    twitter: 'https://twitter.com/iimtsuki',
+    twitter: 'https://twitter.com/imtsuki',
     mastodon: 'https://mastodon.social/@imtsuki',
     linkedin: 'https://www.linkedin.com/in/jxqiu/',
     instagram: 'https://www.instagram.com/iimtsuki/',
     telegram: 'https://t.me/imtsuki',
   },
   twitter: {
-    handle: '@iimtsuki',
+    handle: '@imtsuki',
   },
   /** @type {import('@giscus/react').GiscusProps} */
   giscus: {
