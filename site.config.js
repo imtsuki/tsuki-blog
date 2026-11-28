@@ -1,5 +1,5 @@
 const siteConfig = {
-  title: 'ツキの月',
+  title: '静海',
   description: "Tsuki's Blog",
   url: 'https://tsuki.blog',
   author: {

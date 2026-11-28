@@ -1,9 +1,15 @@
+import { type Metadata } from 'next';
 import Link from 'next/link';
 
 import { format } from 'date-fns/format';
 import { utc } from '@date-fns/utc';
 
 import { postsMetadata } from 'lib/content';
+import siteConfig from 'site.config.js';
+
+export const metadata: Metadata = {
+  title: `Posts | ${siteConfig.title}`,
+};
 
 const IndexPage = () => {
   return (
