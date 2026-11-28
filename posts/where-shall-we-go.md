@@ -2,7 +2,7 @@
 title: 我们在做什么？我们该何去何从？
 date: 2020-08-09
 tags:
-  - Thoughts
+  - 杂谈
 ---
 
 :::warning
