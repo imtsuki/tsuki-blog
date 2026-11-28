@@ -2,7 +2,7 @@
 title: Epilogue, Prologue
 date: 2019-12-31
 tags:
-  - Thoughts
+  - 杂谈
 ---
 
 ## 十二、
